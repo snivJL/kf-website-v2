@@ -111,7 +111,7 @@ export type OurApproach = {
   heading?: string;
   graySubHeading?: string;
   blueSubHeading?: string;
-  steps?: Array<
+  steps: Array<
     {
       _key: string;
     } & StepsItem
@@ -139,6 +139,7 @@ export type Hero = {
   _updatedAt: string;
   _rev: string;
   heading?: string;
+  headingBlue?: string;
   image?: {
     asset: {
       _ref: string;
