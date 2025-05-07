@@ -25,20 +25,20 @@ export default function OurApproach({ approach }: { approach: OurApproach }) {
 
   return (
     <section className="py-12">
-      <div className="container mx-auto px-4 mb-4">
-        <div className="text-center">
+      <div className="container mx-auto px-4 mb-4 max-w-[700px]">
+        <div className="flex flex-col">
           {approach.heading && (
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
               {approach.heading}
             </h2>
           )}
           {approach.graySubHeading && (
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-2xl text-gray-400 max-w-3xl pl-13">
               {approach.graySubHeading}
             </p>
           )}
           {approach.blueSubHeading && (
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-2xl text-accent max-w-3xl pl-13">
               {approach.blueSubHeading}
             </p>
           )}

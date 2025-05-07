@@ -1,3 +1,4 @@
+import FaqSection from "@/components/faqs-section";
 import HeroSection from "@/components/hero";
 import OurApproach from "@/components/our-approach";
 import WhatWeDo from "@/components/what-we-do";
@@ -6,6 +7,7 @@ import {
   Hero,
   OurApproach as OurApproachType,
   WhatWeDo as WhatWeDoType,
+  Faq,
   Home,
 } from "@/lib/sanity/types";
 import { groq } from "next-sanity";
@@ -42,22 +44,32 @@ const query = groq`
       index,
       description[]  // this brings in your block content
     }
+  },
+    "faq": *[_type=="faq"][0]{
+    heading,
+    faqItem[]{
+      _key,
+      question,
+      answer[],
+    }
   }
 }
 `;
 export default async function HomePage() {
-  const { hero, whatWeDo, ourApproach } = await sanityClient.fetch<{
+  const { hero, whatWeDo, ourApproach, faq } = await sanityClient.fetch<{
     hero: Hero;
     home: Home;
     whatWeDo: WhatWeDoType;
     ourApproach: OurApproachType;
+    faq: Faq;
   }>(query);
-
+  console.log(faq);
   return (
     <>
       <HeroSection hero={hero} />
       <WhatWeDo whatWeDo={whatWeDo} />
       <OurApproach approach={ourApproach} />
+      <FaqSection faq={faq} />
     </>
   );
 }

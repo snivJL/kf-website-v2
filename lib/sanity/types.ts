@@ -68,6 +68,29 @@ export type Geopoint = {
   alt?: number;
 };
 
+export type FaqItem = {
+  _type: "faqItem";
+  question?: string;
+  answer?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+};
+
 export type StepsItem = {
   _type: "stepsItem";
   title?: string;
@@ -102,6 +125,20 @@ export type WhatWeDoItem = {
   grayLines?: Array<string>;
 };
 
+export type Faq = {
+  _id: string;
+  _type: "faq";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  heading?: string;
+  faqItem?: Array<
+    {
+      _key: string;
+    } & FaqItem
+  >;
+};
+
 export type OurApproach = {
   _id: string;
   _type: "ourApproach";
@@ -111,7 +148,7 @@ export type OurApproach = {
   heading?: string;
   graySubHeading?: string;
   blueSubHeading?: string;
-  steps: Array<
+  steps?: Array<
     {
       _key: string;
     } & StepsItem
@@ -234,8 +271,10 @@ export type AllSanitySchemaTypes =
   | SanityImageDimensions
   | SanityFileAsset
   | Geopoint
+  | FaqItem
   | StepsItem
   | WhatWeDoItem
+  | Faq
   | OurApproach
   | WhatWeDo
   | Hero
@@ -246,14 +285,90 @@ export type AllSanitySchemaTypes =
   | SanityImageMetadata
   | Home
   | Slug;
-
 export declare const internalGroqTypeReferenceTo: unique symbol;
-// // Source: ../kf-website-frontend/app/page.tsx
-// // Variable: EVENTS_QUERY
-// // Query: *[  _type == "event"  && defined(slug.current)]{_id, name, slug, date}|order// Query TypeMap
-// import "@sanity/client";
-// declare module "@sanity/client" {
-//   interface SanityQueries {
-//     '*[\n  _type == "event"\n  && defined(slug.current)\n]{_id, name, slug, date}|order(date desc)': EVENTS_QUERYResult;
-//   }
-// }
+// Source: ../kf-website-frontend/app/page.tsx
+// Variable: query
+// Query: {    "hero": *[_type == "hero"][0]{    heading,    headingBlue,    image {      asset,           alt    }  },    "home":        *[_type=="home"][0],  "whatWeDo": *[_type=="whatWeDo"][0]{    heading,    cards[]{      title,      subtitle,      buttonText,      buttonLink,      blueLines,      grayLines    }    },    "ourApproach": *[_type=="ourApproach"][0]{    heading,    graySubHeading,    blueSubHeading,    steps[]{      _key,      title,      index,      description[]  // this brings in your block content    }  },    "faq": *[_type=="faq"][0]{    heading,    steps[]{      _key,      question,      answer[],    }  }}
+export type QueryResult = {
+  hero: {
+    heading: string | null;
+    headingBlue: string | null;
+    image: {
+      asset: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      } | null;
+      alt: string | null;
+    } | null;
+  } | null;
+  home: {
+    _id: string;
+    _type: "home";
+    _createdAt: string;
+    _updatedAt: string;
+    _rev: string;
+    title?: string;
+    slug?: Slug;
+  } | null;
+  whatWeDo: {
+    heading: string | null;
+    cards: Array<{
+      title: string | null;
+      subtitle: string | null;
+      buttonText: string | null;
+      buttonLink: string | null;
+      blueLines: Array<string> | null;
+      grayLines: Array<string> | null;
+    }> | null;
+  } | null;
+  ourApproach: {
+    heading: string | null;
+    graySubHeading: string | null;
+    blueSubHeading: string | null;
+    steps: Array<{
+      _key: string;
+      title: string | null;
+      index: number | null;
+      description: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?:
+          | "blockquote"
+          | "h1"
+          | "h2"
+          | "h3"
+          | "h4"
+          | "h5"
+          | "h6"
+          | "normal";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+      }> | null;
+    }> | null;
+  } | null;
+  faq: {
+    heading: string | null;
+    steps: null;
+  } | null;
+};
+
+// Query TypeMap
+import "@sanity/client";
+declare module "@sanity/client" {
+  interface SanityQueries {
+    '\n{\n    "hero": *[_type == "hero"][0]{\n    heading,\n    headingBlue,\n    image {\n      asset,     \n      alt\n    }\n  },\n    "home":        *[_type=="home"][0],\n  "whatWeDo": *[_type=="whatWeDo"][0]{\n    heading,\n    cards[]{\n      title,\n      subtitle,\n      buttonText,\n      buttonLink,\n      blueLines,\n      grayLines\n    } \n   }, \n   "ourApproach": *[_type=="ourApproach"][0]{\n    heading,\n    graySubHeading,\n    blueSubHeading,\n    steps[]{\n      _key,\n      title,\n      index,\n      description[]  // this brings in your block content\n    }\n  },\n    "faq": *[_type=="faq"][0]{\n    heading,\n    steps[]{\n      _key,\n      question,\n      answer[],\n    }\n  }\n}\n': QueryResult;
+  }
+}

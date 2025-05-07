@@ -28,7 +28,7 @@ export default function ApproachCard({
   const shouldReduce = useReducedMotion();
   const scale = useTransform(progress, range, [1, targetScale]);
   const description = step.description ?? [];
-
+  console.log(i);
   return (
     <div
       ref={containerRef}
@@ -37,10 +37,10 @@ export default function ApproachCard({
       <motion.div
         style={{
           scale,
-          top: `calc(-2vh + ${i * 18}px)`,
+          top: `calc(-5vh + ${i * 24}px)`,
         }}
         initial={shouldReduce ? undefined : "hidden"}
-        className="relative flex items-center gap-6 rounded-2xl shadow p-8 md:p-12 w-[90%] max-w-5xl h-[300px] bg-white"
+        className="relative flex items-center gap-6 rounded-2xl shadow p-8 md:p-12 w-[90%] max-w-5xl h-[500px] bg-white"
       >
         <span className="text-accent font-semibold text-6xl">{step.index}</span>
         <div className="flex flex-col">

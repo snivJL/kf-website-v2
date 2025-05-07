@@ -28,9 +28,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {/* fixed navbar at top for all pages */}
         <Navbar />
-        {/* push content below navbar */}
         <div className="pt-16">{children}</div>
         <SanityLive />
       </body>

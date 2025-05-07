@@ -19,16 +19,28 @@ const navItems = [
 export default function Navbar() {
   const shouldReduce = useReducedMotion();
   const { scrollY } = useScroll();
+
+  // background fade
   const bgColor = useTransform(
     scrollY,
     [0, 200],
-    ["rgba(255,255,255,0)", "rgba(255,255,255,1)"]
+    ["rgba(255,255,255,0)", "rgba(255,255,255,0.8)"]
+  );
+
+  // subtle drop-shadow as you scroll
+  const shadow = useTransform(
+    scrollY,
+    [0, 50],
+    [
+      "drop-shadow(0 0px 0 rgba(0,0,0,0))",
+      "drop-shadow(0 4px 8px rgba(0,0,0,0.1))",
+    ]
   );
 
   return (
     <motion.header
-      className="fixed top-0 left-0 w-full z-50 backdrop-blur-md"
-      style={{ backgroundColor: bgColor }}
+      className="fixed top-0 left-0 w-full z-50 backdrop-filter backdrop-blur-md py-4"
+      style={{ backgroundColor: bgColor, filter: shadow }}
       initial={shouldReduce ? {} : { y: -50, opacity: 0 }}
       animate={shouldReduce ? {} : { y: 0, opacity: 1 }}
       transition={{ duration: 0.5 }}
@@ -46,23 +58,25 @@ export default function Navbar() {
           </span>
           <p className="text-sm uppercase tracking-wider">AI+DATA+WORKFLOWS</p>
         </motion.a>
-        <nav>
-          <ul className="hidden md:flex space-x-8 text-sm font-medium">
-            {navItems.map((item, i) => (
-              <motion.li
-                key={item.href}
-                initial={shouldReduce ? {} : { opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 + i * 0.1, duration: 0.3 }}
-              >
-                <Button variant="link" size="sm" asChild>
-                  <Link href={item.href}>{item.name}</Link>
-                </Button>
-              </motion.li>
-            ))}
-          </ul>
-        </nav>
       </div>
+
+      {/* centered nav */}
+      <nav className="absolute inset-x-0 top-4 flex justify-center pointer-events-none h-16">
+        <ul className="pointer-events-auto hidden md:flex space-x-8 text-sm font-medium bg-primary p-4 rounded-full border border-accent">
+          {navItems.map((item, i) => (
+            <motion.li
+              key={item.href}
+              initial={shouldReduce ? {} : { opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 + i * 0.1, duration: 0.3 }}
+            >
+              <Button variant="link" className="text-white" size="sm" asChild>
+                <Link href={item.href}>{item.name}</Link>
+              </Button>
+            </motion.li>
+          ))}
+        </ul>
+      </nav>
     </motion.header>
   );
 }
