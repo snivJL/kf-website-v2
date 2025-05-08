@@ -365,10 +365,10 @@ export type QueryResult = {
   } | null;
 };
 
-// Query TypeMap
-import "@sanity/client";
-declare module "@sanity/client" {
-  interface SanityQueries {
-    '\n{\n    "hero": *[_type == "hero"][0]{\n    heading,\n    headingBlue,\n    image {\n      asset,     \n      alt\n    }\n  },\n    "home":        *[_type=="home"][0],\n  "whatWeDo": *[_type=="whatWeDo"][0]{\n    heading,\n    cards[]{\n      title,\n      subtitle,\n      buttonText,\n      buttonLink,\n      blueLines,\n      grayLines\n    } \n   }, \n   "ourApproach": *[_type=="ourApproach"][0]{\n    heading,\n    graySubHeading,\n    blueSubHeading,\n    steps[]{\n      _key,\n      title,\n      index,\n      description[]  // this brings in your block content\n    }\n  },\n    "faq": *[_type=="faq"][0]{\n    heading,\n    steps[]{\n      _key,\n      question,\n      answer[],\n    }\n  }\n}\n': QueryResult;
-  }
-}
+// // Query TypeMap
+// import "@sanity/client";
+// declare module "@sanity/client" {
+//   interface SanityQueries {
+//     '\n{\n    "hero": *[_type == "hero"][0]{\n    heading,\n    headingBlue,\n    image {\n      asset,     \n      alt\n    }\n  },\n    "home":        *[_type=="home"][0],\n  "whatWeDo": *[_type=="whatWeDo"][0]{\n    heading,\n    cards[]{\n      title,\n      subtitle,\n      buttonText,\n      buttonLink,\n      blueLines,\n      grayLines\n    } \n   }, \n   "ourApproach": *[_type=="ourApproach"][0]{\n    heading,\n    graySubHeading,\n    blueSubHeading,\n    steps[]{\n      _key,\n      title,\n      index,\n      description[]  // this brings in your block content\n    }\n  },\n    "faq": *[_type=="faq"][0]{\n    heading,\n    steps[]{\n      _key,\n      question,\n      answer[],\n    }\n  }\n}\n': QueryResult;
+//   }
+// }

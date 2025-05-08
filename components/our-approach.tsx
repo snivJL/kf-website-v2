@@ -46,19 +46,21 @@ export default function OurApproach({ approach }: { approach: OurApproach }) {
       </div>
 
       <div ref={containerRef}>
-        {approach.steps.map((step, i) => {
-          const targetScale = 1 - (approach.steps.length - i) * 0.05;
-          return (
-            <ApproachCard
-              key={step._key}
-              i={step.index!}
-              step={step}
-              progress={scrollYProgress}
-              range={[i * 0.25, 1]}
-              targetScale={targetScale}
-            />
-          );
-        })}
+        {approach.steps
+          ? approach.steps.map((step, i) => {
+              const targetScale = 1 - (approach.steps!.length - i) * 0.05;
+              return (
+                <ApproachCard
+                  key={step._key}
+                  i={step.index!}
+                  step={step}
+                  progress={scrollYProgress}
+                  range={[i * 0.25, 1]}
+                  targetScale={targetScale}
+                />
+              );
+            })
+          : null}
       </div>
     </section>
   );

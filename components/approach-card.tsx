@@ -1,4 +1,4 @@
-import { OurApproach } from "@/lib/sanity/types";
+import type { StepsItem } from "@/lib/sanity/types";
 import {
   motion,
   type MotionValue,
@@ -10,7 +10,7 @@ import { useRef } from "react";
 
 interface ApproachCardProps {
   i: number;
-  step: OurApproach["steps"][number];
+  step: StepsItem;
   progress: MotionValue<number>;
   range: number[];
   targetScale: number;
