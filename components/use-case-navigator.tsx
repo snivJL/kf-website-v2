@@ -1,42 +1,17 @@
-// components/UseCaseNavigator.tsx
 "use client";
 
-import { useEffect, useState } from "react";
 import { AlertTriangle, Lightbulb, TrendingUp, Users } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "./ui/button";
 
-const SECTIONS = [
+export const SECTIONS = [
   { id: "pain-points", label: "Pain Points", Icon: AlertTriangle },
   { id: "solution", label: "Solution", Icon: Lightbulb },
   { id: "benefits", label: "Benefits", Icon: TrendingUp },
   { id: "our-role", label: "Korefocus Role", Icon: Users },
 ] as const;
 
-export default function UseCaseNavigator() {
-  const [activeId, setActiveId] = useState(SECTIONS[0].id as string);
-
-  // scroll-spy
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
-        if (visible.length) setActiveId(visible[0].target.id);
-      },
-      {
-        rootMargin: "-96px 0px -70% 0px",
-        threshold: 0,
-      }
-    );
-    SECTIONS.forEach(({ id }) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-    return () => observer.disconnect();
-  }, []);
-
+export default function UseCaseNavigator({ activeId }: { activeId: string }) {
   const handleClick = (id: string) => (e: React.MouseEvent) => {
     e.preventDefault();
     const el = document.getElementById(id);
@@ -47,7 +22,7 @@ export default function UseCaseNavigator() {
   };
 
   return (
-    <nav aria-label="On-page navigation" className="relative">
+    <nav aria-label="On-page navigation" className="relative hidden md:block">
       {/* line between text and icon (icons are 2.5rem wide) */}
       <div className="absolute inset-y-0 left-[calc(100%-1.25rem)] w-px bg-gray-200" />
 
