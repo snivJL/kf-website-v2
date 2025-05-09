@@ -1,4 +1,5 @@
 import FaqSection from "@/components/faqs-section";
+import Footer from "@/components/footer";
 import HeroSection from "@/components/hero";
 import OurApproach from "@/components/our-approach";
 import { UseCases } from "@/components/use-cases";
@@ -76,13 +77,7 @@ const query = groq`
 `;
 
 // **1 min cache / ISR**
-// export const revalidate = 60;
-
-// // Generate all slugs at build time
-// export async function generateStaticParams() {
-//   const slugs = await getAllUseCasesSlugs();
-//   return slugs.map((slug) => ({ slug }));
-// }
+export const revalidate = 60;
 
 export default async function HomePage() {
   const { hero, whatWeDo, ourApproach, faq, useCase } =
@@ -94,7 +89,7 @@ export default async function HomePage() {
       faq: Faq;
       useCase: UseCaseType;
     }>(query);
-  console.log(useCase);
+
   return (
     <>
       <HeroSection hero={hero} />

@@ -8,6 +8,7 @@ import {
 } from "framer-motion";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 const navItems = [
   { name: "Concretely", href: "#concretely" },
@@ -53,10 +54,12 @@ export default function Navbar() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.4 }}
         >
-          <span className="text-2xl font-bold tracking-tight">
-            KORE<span className="font-light">focus</span>
-          </span>
-          <p className="text-sm uppercase tracking-wider">AI+DATA+WORKFLOWS</p>
+          <Image
+            src="/logo-small.svg"
+            alt="Korefocus logo"
+            width={128}
+            height={128}
+          />
         </motion.a>
       </div>
 
