@@ -1,7 +1,7 @@
 import { groq, PortableText } from "next-sanity";
 import { Button } from "@/components/ui/button";
 import { sanityClient } from "@/lib/sanity/client";
-import { UseCaseItem } from "@/lib/sanity/types";
+import type { UseCaseItem } from "@/lib/sanity/types";
 import Link from "next/link";
 
 const useCaseQuery = groq`
@@ -45,8 +45,12 @@ export default async function UseCasePage({
     <article className="prose prose-lg mx-auto py-16 px-4">
       <h1 className="text-3xl font-bold">{useCaseItem.title}</h1>
       <p className="text-gray-600 mb-8">{useCaseItem.hook}</p>
+      <PortableText value={useCaseItem.objective || []} />
 
       <PortableText value={useCaseItem.painPoints || []} />
+      <PortableText value={useCaseItem.solution || []} />
+      <PortableText value={useCaseItem.benefits || []} />
+      <PortableText value={useCaseItem.korefocusRole || []} />
 
       <Button asChild variant="outline">
         <Link href="/">← Back to all use cases</Link>

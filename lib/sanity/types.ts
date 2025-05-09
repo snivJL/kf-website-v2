@@ -292,7 +292,7 @@ export type Hero = {
   heading?: string;
   headingBlue?: string;
   image?: {
-    asset?: {
+    asset: {
       _ref: string;
       _type: "reference";
       _weak?: boolean;
