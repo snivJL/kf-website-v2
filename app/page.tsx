@@ -1,5 +1,4 @@
 import FaqSection from "@/components/faqs-section";
-import Footer from "@/components/footer";
 import HeroSection from "@/components/hero";
 import OurApproach from "@/components/our-approach";
 import { UseCases } from "@/components/use-cases";
