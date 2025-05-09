@@ -48,7 +48,7 @@ export default function UseCaseContent({ useCase }: Props) {
   return (
     <article className="scroll-smooth max-w-7xl mx-auto py-16 pt-0 md:pt-16 px-4 md:grid md:grid-cols-3 md:gap-x-16">
       {/* LEFT: Sticky overview + nav */}
-      <aside className="sticky top-24 md:top-32 self-start md-space-y-8 bg-white col-span-1">
+      <aside className="sticky top-24 md:top-32 self-start md:space-y-8 bg-white col-span-1">
         <div className="space-y-4">
           <h1 className="text-xl md:text-3xl pl-4 font-bold">
             {useCase.title}
@@ -71,7 +71,7 @@ export default function UseCaseContent({ useCase }: Props) {
       </aside>
 
       {/* RIGHT: Scrollable deep dive */}
-      <main className="space-y-8 md:space-y-16 pb-24 px-4 md-px-16 [&_li]:list-disc [&_li]:list-inside [&_li]:ml-1  md:[&_li]:ml-4 col-span-2">
+      <main className="space-y-8 md:space-y-16 pb-24 px-4 md:px-16 [&_li]:list-disc [&_li]:list-inside [&_li]:ml-1  md:[&_li]:ml-4 col-span-2">
         <section id="pain-points" style={{ scrollMarginTop: `${topOffset}px` }}>
           <h2 className="text-2xl font-semibold mb-2">Pain Points</h2>
           <div className="prose md:prose-lg">
