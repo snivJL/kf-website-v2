@@ -2,6 +2,7 @@ import UseCaseContent from "@/components/use-case-content";
 import { groq } from "next-sanity";
 import { sanityClient } from "@/lib/sanity/client";
 import type { UseCaseItem } from "@/lib/sanity/types";
+import type { SearchParams } from "@/types";
 
 export const revalidate = 60;
 
@@ -21,9 +22,9 @@ const useCaseQuery = groq`
 export default async function UseCasePage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<SearchParams>;
 }) {
-  const { slug } = params;
+  const { slug } = await params;
   const { useCase } = await sanityClient.fetch<{ useCase: UseCaseItem | null }>(
     useCaseQuery,
     { slug }

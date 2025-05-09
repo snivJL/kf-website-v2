@@ -12,15 +12,14 @@ interface Props {
 
 export default function UseCaseContent({ useCase }: Props) {
   return (
-    // <-- scroll-smooth here enables smooth behavior for all in-page links
-    <article className="scroll-smooth max-w-7xl mx-auto py-16 px-4 md:grid md:grid-cols-2 md:gap-x-12 ">
+    <article className="scroll-smooth max-w-7xl mx-auto py-16 px-4 md:grid md:grid-cols-2 md:gap-x-12 [&_li]:list-disc! [&_li]:list-inside [&_li]:ml-4">
       {/* LEFT: Sticky overview + nav */}
       <aside className="sticky top-32 self-start space-y-8">
         <div className="space-y-4">
           <h1 className="text-3xl font-bold">{useCase.title}</h1>
 
           <h2 className="text-2xl font-semibold">Objective</h2>
-          <div className="prose">
+          <div className="prose ">
             <PortableText value={useCase.objective || []} />
           </div>
         </div>
