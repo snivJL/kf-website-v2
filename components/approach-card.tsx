@@ -28,7 +28,7 @@ export default function ApproachCard({
   const shouldReduce = useReducedMotion();
   const scale = useTransform(progress, range, [1, targetScale]);
   const description = step.description ?? [];
-  console.log(i);
+
   return (
     <div
       ref={containerRef}
