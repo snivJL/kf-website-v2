@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { useReducedMotion, motion } from "framer-motion";
+import Link from "next/link";
 import { urlFor } from "@/lib/sanity/client";
 import type { Hero } from "@/lib/sanity/types";
 import Image from "next/image";
@@ -13,9 +14,10 @@ export default function HeroSection({ hero }: { hero: Hero }) {
     : "";
 
   return (
-    <>
+    <div className="h-screen flex flex-col px-4 gap-12">
+      {/* HERO */}
       <motion.section
-        className="relative flex flex-col items-center justify-center gap-2 min-h-screen px-4 pb-12"
+        className="flex flex-col items-center gap-4 pt-8"
         initial={shouldReduce ? undefined : "hidden"}
         animate="show"
         variants={{
@@ -25,29 +27,71 @@ export default function HeroSection({ hero }: { hero: Hero }) {
       >
         {imgSrc && (
           <motion.div
-            className="w-full lg:w-1/2 relative h-64 sm:h-96 lg:h-[300px]"
+            className="w-full max-w-lg relative h-48 sm:h-64 lg:h-72"
             variants={shouldReduce ? {} : fadeUp}
           >
             <Image
               src={imgSrc}
               alt={hero.image?.alt || "Hero image"}
               fill
-              className="object-contain "
+              className="object-contain"
               sizes="(max-width: 768px) 100vw, 50vw"
             />
           </motion.div>
         )}
 
         <motion.div
-          className="w-full lg:w-2/3 text-center lg:text-left"
+          className="w-full max-w-3xl text-center"
           variants={shouldReduce ? {} : fadeUp}
         >
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight">
             {hero.heading}{" "}
             <span className="effect-shine text-accent">{hero.headingBlue}</span>
           </h1>
         </motion.div>
       </motion.section>
-    </>
+
+      {/* BLURBS */}
+      <motion.div
+        className="w-full max-w-5xl mx-auto pb-8 flex flex-col prose"
+        initial={shouldReduce ? undefined : "hidden"}
+        animate="show"
+        variants={{
+          hidden: {},
+          show: { transition: { staggerChildren: 0.15 } },
+        }}
+      >
+        <motion.p
+          variants={shouldReduce ? {} : fadeUp}
+          className="prose-lg mb-0"
+        >
+          We design and implement AI solutions to better generate, structure and
+          activate data —{" "}
+          <Link href="/#concretely" className="font-semibold text-accent">
+            Concretely
+          </Link>
+        </motion.p>
+        <motion.p
+          variants={shouldReduce ? {} : fadeUp}
+          className="prose-lg mb-0"
+        >
+          We support small and mid-size organizations with an obsession: it’s
+          working. It’s simple. It’s helping —{" "}
+          <Link href="/#how-we-work" className="font-semibold text-accent">
+            Approach
+          </Link>
+        </motion.p>
+        <motion.p
+          variants={shouldReduce ? {} : fadeUp}
+          className="prose-lg mb-0"
+        >
+          We provide comprehensive support, covering business and technology: to
+          be your ideal partner if you don’t have a full-fledge team in-house —{" "}
+          <Link href="/#how-we-work" className="font-semibold text-accent">
+            How we work
+          </Link>
+        </motion.p>
+      </motion.div>
+    </div>
   );
 }
