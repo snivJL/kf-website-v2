@@ -231,7 +231,25 @@ export type UseCase = {
   _rev: string;
   heading?: string;
   subHeading?: string;
-  description?: string;
+  description?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+  blueSection?: string;
   useCases?: Array<
     {
       _key: string;
@@ -404,7 +422,7 @@ export type AllSanitySchemaTypes =
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ../kf-website-frontend/app/page.tsx
 // Variable: query
-// Query: {  "hero": *[_type == "hero"][0] {    heading,    headingBlue,    image {      asset,      alt    }  },  "home": *[_type == "home"][0],  "whatWeDo": *[_type == "whatWeDo"][0] {    heading,    cards[] {      title,      subtitle,      buttonText,      buttonLink,      blueLines,      grayLines    }  },  "ourApproach": *[_type == "ourApproach"][0] {    heading,    graySubHeading,    blueSubHeading,    steps[] {      _key,      title,      index,      description[]    // if this is Portable Text    }  },  "faq": *[_type == "faq"][0] {    heading,    faqItem[] {      _key,      question,      answer[]         // Portable Text array    }  },  "useCase": *[_type == "useCase"][0] {    heading,    subHeading,    description,     // ← here!    useCaseItem[] {      _key,      title,      hook,      buttonText,      buttonLink,      objective[]{..., markDefs[]{...}},      painPoints[]{..., markDefs[]{...}},      solution[]{..., markDefs[]{...}},      benefits[]{..., markDefs[]{...}},      korefocusRole[]{..., markDefs[]{...}}    }  }}
+// Query: {  "hero": *[_type == "hero"][0] {    heading,    headingBlue,    image {      asset,      alt    }  },  "home": *[_type == "home"][0],  "whatWeDo": *[_type == "whatWeDo"][0] {    heading,    cards[] {      title,      subtitle,      buttonText,      buttonLink,      blueLines,      grayLines    }  },  "ourApproach": *[_type == "ourApproach"][0] {    heading,    graySubHeading,    blueSubHeading,    steps[] {      _key,      title,      index,      description[]      }  },  "faq": *[_type == "faq"][0] {    heading,    faqItem[] {      _key,      question,      answer[]            }  },  "useCase": *[_type == "useCase"][0] {    heading,    subHeading,    description,         useCases[] {      _key,      title,      hook,      buttonText,      buttonLink,      objective[]{..., markDefs[]{...}},      painPoints[]{..., markDefs[]{...}},      solution[]{..., markDefs[]{...}},      benefits[]{..., markDefs[]{...}},      korefocusRole[]{..., markDefs[]{...}}    }  }}
 export type QueryResult = {
   hero: {
     heading: string | null;
@@ -511,15 +529,268 @@ export type QueryResult = {
   useCase: {
     heading: string | null;
     subHeading: string | null;
-    description: string | null;
-    useCaseItem: null;
+    description: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<{
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+    }> | null;
+    useCases: Array<{
+      _key: string;
+      title: string | null;
+      hook: string | null;
+      buttonText: string | null;
+      buttonLink: string | null;
+      objective: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?:
+          | "blockquote"
+          | "h1"
+          | "h2"
+          | "h3"
+          | "h4"
+          | "h5"
+          | "h6"
+          | "normal";
+        listItem?: "bullet" | "number";
+        markDefs: Array<{
+          href?: string;
+          _type: "link";
+          _key: string;
+        }> | null;
+        level?: number;
+        _type: "block";
+        _key: string;
+      }> | null;
+      painPoints: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?:
+          | "blockquote"
+          | "h1"
+          | "h2"
+          | "h3"
+          | "h4"
+          | "h5"
+          | "h6"
+          | "normal";
+        listItem?: "bullet" | "number";
+        markDefs: Array<{
+          href?: string;
+          _type: "link";
+          _key: string;
+        }> | null;
+        level?: number;
+        _type: "block";
+        _key: string;
+      }> | null;
+      solution: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?:
+          | "blockquote"
+          | "h1"
+          | "h2"
+          | "h3"
+          | "h4"
+          | "h5"
+          | "h6"
+          | "normal";
+        listItem?: "bullet" | "number";
+        markDefs: Array<{
+          href?: string;
+          _type: "link";
+          _key: string;
+        }> | null;
+        level?: number;
+        _type: "block";
+        _key: string;
+      }> | null;
+      benefits: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?:
+          | "blockquote"
+          | "h1"
+          | "h2"
+          | "h3"
+          | "h4"
+          | "h5"
+          | "h6"
+          | "normal";
+        listItem?: "bullet" | "number";
+        markDefs: Array<{
+          href?: string;
+          _type: "link";
+          _key: string;
+        }> | null;
+        level?: number;
+        _type: "block";
+        _key: string;
+      }> | null;
+      korefocusRole: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?:
+          | "blockquote"
+          | "h1"
+          | "h2"
+          | "h3"
+          | "h4"
+          | "h5"
+          | "h6"
+          | "normal";
+        listItem?: "bullet" | "number";
+        markDefs: Array<{
+          href?: string;
+          _type: "link";
+          _key: string;
+        }> | null;
+        level?: number;
+        _type: "block";
+        _key: string;
+      }> | null;
+    }> | null;
   } | null;
 };
 
-// // Query TypeMap
+// Source: ../kf-website-frontend/app/use-cases/[slug]/page.tsx
+// Variable: useCaseQuery
+// Query: *[_type == "useCase"][0] {    "useCase": useCases[buttonLink == "/use-cases/" + $slug][0] {      title,      objective[]{..., markDefs[]{...}},      painPoints[]{..., markDefs[]{...}},      solution[]{..., markDefs[]{...}},      benefits[]{..., markDefs[]{...}},      korefocusRole[]{..., markDefs[]{...}}    }  }
+export type UseCaseQueryResult = {
+  useCase: {
+    title: string | null;
+    objective: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+      listItem?: "bullet" | "number";
+      markDefs: Array<{
+        href?: string;
+        _type: "link";
+        _key: string;
+      }> | null;
+      level?: number;
+      _type: "block";
+      _key: string;
+    }> | null;
+    painPoints: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+      listItem?: "bullet" | "number";
+      markDefs: Array<{
+        href?: string;
+        _type: "link";
+        _key: string;
+      }> | null;
+      level?: number;
+      _type: "block";
+      _key: string;
+    }> | null;
+    solution: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+      listItem?: "bullet" | "number";
+      markDefs: Array<{
+        href?: string;
+        _type: "link";
+        _key: string;
+      }> | null;
+      level?: number;
+      _type: "block";
+      _key: string;
+    }> | null;
+    benefits: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+      listItem?: "bullet" | "number";
+      markDefs: Array<{
+        href?: string;
+        _type: "link";
+        _key: string;
+      }> | null;
+      level?: number;
+      _type: "block";
+      _key: string;
+    }> | null;
+    korefocusRole: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+      listItem?: "bullet" | "number";
+      markDefs: Array<{
+        href?: string;
+        _type: "link";
+        _key: string;
+      }> | null;
+      level?: number;
+      _type: "block";
+      _key: string;
+    }> | null;
+  } | null;
+} | null;
+
+// Query TypeMap
 // import "@sanity/client";
 // declare module "@sanity/client" {
 //   interface SanityQueries {
-//     "\n{\n  \"hero\": *[_type == \"hero\"][0] {\n    heading,\n    headingBlue,\n    image {\n      asset,\n      alt\n    }\n  },\n  \"home\": *[_type == \"home\"][0],\n  \"whatWeDo\": *[_type == \"whatWeDo\"][0] {\n    heading,\n    cards[] {\n      title,\n      subtitle,\n      buttonText,\n      buttonLink,\n      blueLines,\n      grayLines\n    }\n  },\n  \"ourApproach\": *[_type == \"ourApproach\"][0] {\n    heading,\n    graySubHeading,\n    blueSubHeading,\n    steps[] {\n      _key,\n      title,\n      index,\n      description[]    // if this is Portable Text\n    }\n  },\n  \"faq\": *[_type == \"faq\"][0] {\n    heading,\n    faqItem[] {\n      _key,\n      question,\n      answer[]         // Portable Text array\n    }\n  },\n  \"useCase\": *[_type == \"useCase\"][0] {\n    heading,\n    subHeading,\n    description,     // \u2190 here!\n    useCaseItem[] {\n      _key,\n      title,\n      hook,\n      buttonText,\n      buttonLink,\n      objective[]{..., markDefs[]{...}},\n      painPoints[]{..., markDefs[]{...}},\n      solution[]{..., markDefs[]{...}},\n      benefits[]{..., markDefs[]{...}},\n      korefocusRole[]{..., markDefs[]{...}}\n    }\n  }\n}\n": QueryResult;
+//     '\n{\n  "hero": *[_type == "hero"][0] {\n    heading,\n    headingBlue,\n    image {\n      asset,\n      alt\n    }\n  },\n  "home": *[_type == "home"][0],\n  "whatWeDo": *[_type == "whatWeDo"][0] {\n    heading,\n    cards[] {\n      title,\n      subtitle,\n      buttonText,\n      buttonLink,\n      blueLines,\n      grayLines\n    }\n  },\n  "ourApproach": *[_type == "ourApproach"][0] {\n    heading,\n    graySubHeading,\n    blueSubHeading,\n    steps[] {\n      _key,\n      title,\n      index,\n      description[]  \n    }\n  },\n  "faq": *[_type == "faq"][0] {\n    heading,\n    faqItem[] {\n      _key,\n      question,\n      answer[]        \n    }\n  },\n  "useCase": *[_type == "useCase"][0] {\n    heading,\n    subHeading,\n    description,     \n    useCases[] {\n      _key,\n      title,\n      hook,\n      buttonText,\n      buttonLink,\n      objective[]{..., markDefs[]{...}},\n      painPoints[]{..., markDefs[]{...}},\n      solution[]{..., markDefs[]{...}},\n      benefits[]{..., markDefs[]{...}},\n      korefocusRole[]{..., markDefs[]{...}}\n    }\n  }\n}\n': QueryResult;
+//     '\n  *[_type == "useCase"][0] {\n    "useCase": useCases[buttonLink == "/use-cases/" + $slug][0] {\n      title,\n      objective[]{..., markDefs[]{...}},\n      painPoints[]{..., markDefs[]{...}},\n      solution[]{..., markDefs[]{...}},\n      benefits[]{..., markDefs[]{...}},\n      korefocusRole[]{..., markDefs[]{...}}\n    }\n  }\n': UseCaseQueryResult;
 //   }
 // }

@@ -9,13 +9,14 @@ import { Card, CardContent, CardHeader } from "./ui/card";
 import { UseCaseMobileNav } from "./use-case-mobile-nav";
 import { useEffect, useState } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { cn } from "@/lib/utils";
 
 interface Props {
   useCase: UseCaseItem;
 }
 
 export default function UseCaseContent({ useCase }: Props) {
-  const [activeId, setActiveId] = useState(SECTIONS[0].id as string);
+  const [activeId, setActiveId] = useState<string>(SECTIONS[0].id);
   const isMobile = useIsMobile();
   const topOffset = isMobile ? 416 : 96;
 
@@ -29,7 +30,7 @@ export default function UseCaseContent({ useCase }: Props) {
         if (visible.length) setActiveId(visible[0].target.id);
       },
       {
-        rootMargin: `${-topOffset}px 0px -70% 0px`,
+        rootMargin: `${-topOffset}px 0px -60% 0px`,
         threshold: 0,
       }
     );
@@ -71,37 +72,45 @@ export default function UseCaseContent({ useCase }: Props) {
       </aside>
 
       {/* RIGHT: Scrollable deep dive */}
-      <main className="space-y-8 md:space-y-16 pb-24 px-4 md:px-16 [&_li]:list-disc [&_li]:list-inside [&_li]:ml-1  md:[&_li]:ml-4 col-span-2">
-        <section id="pain-points" style={{ scrollMarginTop: `${topOffset}px` }}>
-          <h2 className="text-2xl font-semibold mb-2">Pain Points</h2>
-          <div className="prose md:prose-lg">
-            <PortableText value={useCase.painPoints || []} />
-          </div>
-        </section>
-
-        <section id="solution" style={{ scrollMarginTop: `${topOffset}px` }}>
-          <h2 className="text-2xl font-semibold mb-2">Solution</h2>
-          <div className="prose md:prose-lg">
-            <PortableText value={useCase.solution || []} />
-          </div>
-        </section>
-
-        <section id="benefits" style={{ scrollMarginTop: `${topOffset}px` }}>
-          <h2 className="text-2xl font-semibold mb-2">Benefits</h2>
-          <div className="prose md:prose-lg">
-            <PortableText value={useCase.benefits || []} />
-          </div>
-        </section>
-
-        <section id="our-role" style={{ scrollMarginTop: `${topOffset}px` }}>
-          <h2 className="text-2xl font-semibold mb-2">Our Role at Korefocus</h2>
-          <div className="prose md:prose-lg">
-            <PortableText value={useCase.korefocusRole || []} />
-          </div>
-        </section>
+      <main className="space-y-8 md:space-y-16 pb-24 px-4 md:px-16 [&_li]:list-disc [&_li]:list-inside [&_li]:ml-1 md:[&_li]:ml-4 col-span-2">
+        {SECTIONS.map(({ id, label }) => (
+          <section
+            key={id}
+            id={id}
+            style={{ scrollMarginTop: `${topOffset}px` }}
+            className={cn(
+              "rounded-xl p-4 md:p-8 transition-colors duration-300 ease-in-out",
+              activeId === id && "bg-accent/10"
+            )}
+          >
+            <h2
+              className={cn(
+                "text-2xl font-semibold mb-2",
+                activeId === id ? "text-accent" : "text-gray-900"
+              )}
+            >
+              {label}
+            </h2>
+            <div className="prose md:prose-lg">
+              <PortableText
+                value={
+                  useCase[
+                    id === "pain-points"
+                      ? "painPoints"
+                      : id === "solution"
+                        ? "solution"
+                        : id === "benefits"
+                          ? "benefits"
+                          : "korefocusRole"
+                  ] || []
+                }
+              />
+            </div>
+          </section>
+        ))}
 
         <Button asChild variant="outline">
-          <Link href="/use-cases">← Back to all use cases</Link>
+          <Link href="/">← Back to all use cases</Link>
         </Button>
       </main>
     </article>

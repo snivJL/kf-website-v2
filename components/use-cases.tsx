@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import type { UseCase } from "@/lib/sanity/types";
+import { PortableText } from "next-sanity";
 
 const container: Variants = {
   hidden: {},
@@ -34,14 +35,14 @@ export const UseCases = ({ useCaseSection }: UseCasesProps) => {
     <section id="use-cases" className="bg-white text-gray-900 py-16 px-8">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
         {/* Left Intro */}
-        <div className="space-y-6">
+        <div className="space-y-6 prose">
           <h2 className="text-4xl font-bold leading-tight">{heading}</h2>
           {subHeading && (
-            <p className="text-4xl italic leading-tight text-gray-700">
+            <p className="prose-xl italic leading-tight text-gray-700">
               {subHeading}
             </p>
           )}
-          <p className="text-gray-600">{description}</p>
+          <PortableText value={description || []} />
         </div>
 
         {/* Right Cards */}
