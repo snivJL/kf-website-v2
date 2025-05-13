@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { motion, Variants } from "framer-motion";
+import { motion, useReducedMotion, Variants } from "framer-motion";
 import {
   Card,
   CardContent,
@@ -17,6 +17,7 @@ const container: Variants = {
   show: {
     transition: {
       staggerChildren: 0.15,
+      delayChildren: 0.3,
     },
   },
 };
@@ -30,9 +31,18 @@ type UseCasesProps = {
   useCaseSection: UseCase;
 };
 export const UseCases = ({ useCaseSection }: UseCasesProps) => {
-  const { heading, subHeading, description, useCases } = useCaseSection || {};
+  const { heading, subHeading, description, useCases, blueSection } =
+    useCaseSection || {};
+  const shouldReduce = useReducedMotion();
   return (
-    <section id="use-cases" className="bg-white text-gray-900 py-16 px-8">
+    <motion.section
+      id="use-cases"
+      className="bg-white text-gray-900 py-16 px-8 scroll-mt-24"
+      initial={shouldReduce ? {} : { opacity: 0, y: 20 }}
+      whileInView={shouldReduce ? {} : { opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ duration: 0.6 }}
+    >
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
         {/* Left Intro */}
         <div className="space-y-6 prose">
@@ -43,6 +53,7 @@ export const UseCases = ({ useCaseSection }: UseCasesProps) => {
             </p>
           )}
           <PortableText value={description || []} />
+          <p className="text-accent prose-xl italic">{blueSection}</p>
         </div>
 
         {/* Right Cards */}
@@ -74,6 +85,6 @@ export const UseCases = ({ useCaseSection }: UseCasesProps) => {
             : null}
         </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 };

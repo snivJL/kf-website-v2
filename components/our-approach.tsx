@@ -2,7 +2,7 @@
 
 import { useRef, useEffect } from "react";
 import Lenis from "lenis";
-import { useScroll } from "framer-motion";
+import { useScroll, motion, useReducedMotion } from "framer-motion";
 import type { OurApproach } from "@/lib/sanity/types";
 import ApproachCard from "./approach-card";
 
@@ -12,6 +12,7 @@ export default function OurApproach({ approach }: { approach: OurApproach }) {
     target: containerRef,
     offset: ["start start", "end end"],
   });
+
   // Smooth scroll
   useEffect(() => {
     const lenis = new Lenis();
@@ -23,9 +24,23 @@ export default function OurApproach({ approach }: { approach: OurApproach }) {
     return () => lenis.destroy();
   }, []);
 
+  // number of steps
+  const stepCount = approach.steps?.length ?? 0;
+  const shouldReduce = useReducedMotion();
+
   return (
-    <section className="py-12">
-      <div className="container mx-auto px-4 mb-4 max-w-[700px]">
+    <section
+      className="py-12 relative h-[2400px] scroll-mt-24"
+      ref={containerRef}
+      id="how-we-work"
+    >
+      <motion.div
+        className="container mx-auto px-4 mb-4 max-w-[700px] sticky top-[20vh]"
+        initial={shouldReduce ? {} : { opacity: 0, y: 20 }}
+        whileInView={shouldReduce ? {} : { opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.6 }}
+      >
         <div className="flex flex-col">
           {approach.heading && (
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
@@ -43,24 +58,23 @@ export default function OurApproach({ approach }: { approach: OurApproach }) {
             </p>
           )}
         </div>
-      </div>
+      </motion.div>
 
-      <div ref={containerRef}>
-        {approach.steps
-          ? approach.steps.map((step, i) => {
-              const targetScale = 1 - (approach.steps!.length - i) * 0.05;
-              return (
-                <ApproachCard
-                  key={step._key}
-                  i={step.index!}
-                  step={step}
-                  progress={scrollYProgress}
-                  range={[i * 0.25, 1]}
-                  targetScale={targetScale}
-                />
-              );
-            })
-          : null}
+      <div className="mt-[50px] flex flex-col w-full sticky top-[50vh]">
+        {approach.steps?.map((step, i) => {
+          const start = i / stepCount;
+          const end = (i + 1) / stepCount;
+          return (
+            <ApproachCard
+              key={step._key}
+              i={step.index!}
+              step={step}
+              progress={scrollYProgress}
+              range={[start, end]}
+              targetScale={1 - (stepCount + i) * 0.02}
+            />
+          );
+        })}
       </div>
     </section>
   );

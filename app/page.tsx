@@ -58,7 +58,8 @@ const query = groq`
   "useCase": *[_type == "useCase"][0] {
     heading,
     subHeading,
-    description,     
+    description,  
+    blueSection,   
     useCases[] {
       _key,
       title,

@@ -27,7 +27,7 @@ export default function WhatWeDo({ whatWeDo }: WhatWeDoProps) {
         </h2>
       </div>
 
-      <div className="container mx-auto px-4 grid gap-8 md:grid-cols-3">
+      <div className="container mx-auto px-4 grid gap-8 scroll-mt-24 md:grid-cols-3">
         {whatWeDo.cards?.map((card: WhatWeDoItem, idx: number) => {
           // interleave blue/gray lines
           const lines: { text: string; color: "blue" | "gray" }[] = [];
@@ -48,7 +48,7 @@ export default function WhatWeDo({ whatWeDo }: WhatWeDoProps) {
               key={idx}
               className="
                 relative overflow-hidden bg-white rounded-2xl 
-                shadow-md flex flex-col h-full 
+                shadow-md flex flex-col h-full scroll-mt-24
                 group hover:-translate-y-1
                 transition-transform duration-300
                 
@@ -57,6 +57,7 @@ export default function WhatWeDo({ whatWeDo }: WhatWeDoProps) {
               whileInView={shouldReduce ? {} : { opacity: 1 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ delay: idx * 0.15, duration: 0.5 }}
+              id="what-we-do"
             >
               <span data-glow className="glow" />
 

@@ -17,7 +17,7 @@ export default function FaqSection({ faq }: FaqProps) {
   const shouldReduce = useReducedMotion();
 
   return (
-    <section className="bg-accent text-white py-20">
+    <section className="bg-accent text-white py-20 scroll-mt-24" id="faq">
       {/* Heading */}
       <motion.h2
         className="text-4xl font-bold text-center mb-12"

@@ -54,7 +54,7 @@ export default function UseCaseContent({ useCase }: Props) {
           <h1 className="text-xl md:text-3xl pl-4 font-bold">
             {useCase.title}
           </h1>
-          <Card className="bg-accent py-3 md:py-6 gap-0 md:gap-2">
+          <Card className="bg-accent h-[268px] overflow-y-auto py-3 md:py-6 gap-0 md:gap-2">
             <CardHeader className="gap-0">
               <h2 className="prose-lg md:prose-xl text-white font-semibold">
                 Objective
@@ -91,7 +91,7 @@ export default function UseCaseContent({ useCase }: Props) {
             >
               {label}
             </h2>
-            <div className="prose md:prose-lg">
+            <div className="prose">
               <PortableText
                 value={
                   useCase[

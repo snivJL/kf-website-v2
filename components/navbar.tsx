@@ -11,10 +11,10 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
 const navItems = [
-  { name: "Concretely", href: "#concretely" },
-  { name: "Benefits", href: "#benefits" },
-  { name: "How it works", href: "#how-it-works" },
-  { name: "Pricing", href: "#pricing" },
+  { name: "What We Do", href: "/#what-we-do" },
+  { name: "How We Work", href: "/#how-we-work" },
+  { name: "Client Cases", href: "/#use-cases" },
+  { name: "FAQ", href: "/#faq" },
 ];
 
 export default function Navbar() {
@@ -65,7 +65,7 @@ export default function Navbar() {
 
       {/* centered nav */}
       <nav className="absolute inset-x-0 top-4 flex justify-center pointer-events-none h-16">
-        <ul className="pointer-events-auto hidden md:flex space-x-8 text-sm font-medium bg-primary p-4 rounded-full border border-accent">
+        <ul className="pointer-events-auto hidden md:flex space-x-4 text-sm font-medium bg-primary p-4 rounded-full border border-accent">
           {navItems.map((item, i) => (
             <motion.li
               key={item.href}
