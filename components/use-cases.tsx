@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { motion, useReducedMotion, Variants } from "framer-motion";
+import Link from 'next/link';
+import { motion, useReducedMotion, Variants } from 'framer-motion';
 import {
   Card,
   CardContent,
   CardTitle,
   CardDescription,
-} from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import type { UseCase } from "@/lib/sanity/types";
-import { PortableText } from "next-sanity";
+} from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import type { UseCase } from '@/lib/sanity/types';
+import { PortableText } from 'next-sanity';
 
 const container: Variants = {
   hidden: {},
@@ -37,18 +37,18 @@ export const UseCases = ({ useCaseSection }: UseCasesProps) => {
   return (
     <motion.section
       id="use-cases"
-      className="bg-white text-gray-900 py-16 px-8 scroll-mt-24"
+      className="scroll-mt-24 bg-white px-8 py-16 text-gray-900"
       initial={shouldReduce ? {} : { opacity: 0, y: 20 }}
       whileInView={shouldReduce ? {} : { opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.6 }}
     >
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 md:grid-cols-2">
         {/* Left Intro */}
-        <div className="space-y-6 prose">
-          <h2 className="text-4xl font-bold leading-tight">{heading}</h2>
+        <div className="prose space-y-6">
+          <h2 className="text-4xl leading-tight font-bold">{heading}</h2>
           {subHeading && (
-            <p className="prose-xl italic leading-tight text-gray-700">
+            <p className="prose-xl leading-tight text-gray-700 italic">
               {subHeading}
             </p>
           )}
@@ -67,14 +67,14 @@ export const UseCases = ({ useCaseSection }: UseCasesProps) => {
           {useCases
             ? useCases.map((useCase) => (
                 <motion.div key={useCase._key} variants={item}>
-                  <Card className="shadow-sm hover:shadow-md transition-shadow">
+                  <Card className="shadow-sm transition-shadow hover:shadow-md">
                     <CardContent className="space-y-4">
                       <CardTitle className="text-xl">{useCase.title}</CardTitle>
                       <CardDescription className="text-gray-600">
                         {useCase.hook}
                       </CardDescription>
                       <Button asChild variant="outline">
-                        <Link href={useCase.buttonLink || ""}>
+                        <Link href={useCase.buttonLink || ''}>
                           Learn More →
                         </Link>
                       </Button>

@@ -1,9 +1,9 @@
-import FaqSection from "@/components/faqs-section";
-import HeroSection from "@/components/hero";
-import OurApproach from "@/components/our-approach";
-import { UseCases } from "@/components/use-cases";
-import WhatWeDo from "@/components/what-we-do";
-import { sanityClient } from "@/lib/sanity/client";
+import FaqSection from '@/components/faqs-section';
+import HeroSection from '@/components/hero';
+import OurApproach from '@/components/our-approach';
+import { UseCases } from '@/components/use-cases';
+import WhatWeDo from '@/components/what-we-do';
+import { sanityClient } from '@/lib/sanity/client';
 import {
   Hero,
   OurApproach as OurApproachType,
@@ -11,8 +11,8 @@ import {
   Faq,
   Home,
   UseCase as UseCaseType,
-} from "@/lib/sanity/types";
-import { groq } from "next-sanity";
+} from '@/lib/sanity/types';
+import { groq } from 'next-sanity';
 
 const query = groq`
 {

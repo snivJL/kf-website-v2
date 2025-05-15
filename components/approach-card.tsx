@@ -1,13 +1,13 @@
-import type { StepsItem } from "@/lib/sanity/types";
-import { cn } from "@/lib/utils";
+import type { StepsItem } from '@/lib/sanity/types';
+import { cn } from '@/lib/utils';
 import {
   motion,
   type MotionValue,
   useMotionValueEvent,
   useTransform,
-} from "framer-motion";
-import { PortableText } from "next-sanity";
-import { useState } from "react";
+} from 'framer-motion';
+import { PortableText } from 'next-sanity';
+import { useState } from 'react';
 
 interface ApproachCardProps {
   i: number;
@@ -27,7 +27,7 @@ export default function ApproachCard({
   const windowSize = enterEnd - enterStart;
 
   const [isStatic, setIsStatic] = useState(false);
-  useMotionValueEvent(progress, "change", (latest) => {
+  useMotionValueEvent(progress, 'change', (latest) => {
     if (i === 4) {
       // once progress >= enterStart, we flip to static
       setIsStatic(latest >= enterStart);
@@ -58,18 +58,18 @@ export default function ApproachCard({
         zIndex: 100 - i,
       }}
       className={cn(
-        "flex items-center px-16 w-5/6 h-[300px] bg-white gap-6 rounded-2xl shadow-lg hover:shadow-2xl transition-shadow",
+        'flex h-[300px] w-full items-center gap-6 rounded-2xl bg-white px-8 shadow-lg transition-shadow hover:shadow-2xl md:w-5/6 md:px-16',
         i === 3
           ? isStatic
-            ? "static"
-            : "absolute top-0 left-1/2 transform -translate-x-1/2"
-          : "absolute top-0 left-1/2 transform -translate-x-1/2"
+            ? 'static'
+            : 'absolute top-0 left-1/2 -translate-x-1/2 transform'
+          : 'absolute top-0 left-1/2 -translate-x-1/2 transform'
       )}
     >
-      <span className="text-accent font-semibold text-6xl">{step.index}</span>
+      <span className="text-accent text-6xl font-semibold">{step.index}</span>
       <div className="flex flex-col">
         <h3 className="text-3xl font-bold">{step.title}</h3>
-        <div className="text-gray-400 text-xl mt-2 leading-6">
+        <div className="mt-2 text-xl leading-6 text-gray-400">
           <PortableText value={step.description ?? []} />
         </div>
       </div>

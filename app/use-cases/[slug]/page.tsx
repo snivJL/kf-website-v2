@@ -1,8 +1,8 @@
-import UseCaseContent from "@/components/use-case-content";
-import { groq } from "next-sanity";
-import { sanityClient } from "@/lib/sanity/client";
-import type { UseCaseItem } from "@/lib/sanity/types";
-import type { SearchParams } from "@/types";
+import UseCaseContent from '@/components/use-case-content';
+import { groq } from 'next-sanity';
+import { sanityClient } from '@/lib/sanity/client';
+import type { UseCaseItem } from '@/lib/sanity/types';
+import type { SearchParams } from '@/types';
 
 export const revalidate = 60;
 

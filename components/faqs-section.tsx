@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion } from 'framer-motion';
 import {
   Accordion,
   AccordionItem,
   AccordionTrigger,
   AccordionContent,
-} from "@/components/ui/accordion";
-import { PortableText } from "next-sanity";
-import { Faq } from "@/lib/sanity/types";
+} from '@/components/ui/accordion';
+import { PortableText } from 'next-sanity';
+import { Faq } from '@/lib/sanity/types';
 
 type FaqProps = {
   faq: Faq;
@@ -17,10 +17,10 @@ export default function FaqSection({ faq }: FaqProps) {
   const shouldReduce = useReducedMotion();
 
   return (
-    <section className="bg-accent text-white py-20 scroll-mt-24" id="faq">
+    <section className="bg-accent scroll-mt-24 py-20 text-white" id="faq">
       {/* Heading */}
       <motion.h2
-        className="text-4xl font-bold text-center mb-12"
+        className="mb-12 text-center text-4xl font-bold"
         initial={shouldReduce ? {} : { opacity: 0, y: 20 }}
         whileInView={shouldReduce ? {} : { opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
@@ -30,7 +30,7 @@ export default function FaqSection({ faq }: FaqProps) {
       </motion.h2>
 
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1  md:grid-cols-2  gap-6">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {faq.faqItem
             ? faq.faqItem.map((item, i) => (
                 <motion.div
@@ -43,13 +43,13 @@ export default function FaqSection({ faq }: FaqProps) {
                   <Accordion
                     type="single"
                     collapsible
-                    className="bg-white rounded-lg shadow-lg"
+                    className="rounded-lg bg-white shadow-lg"
                   >
                     <AccordionItem value={item._key}>
-                      <AccordionTrigger className="flex items-center p-6 font-medium text-gray-900 text-2xl cursor-pointer min-h-[106px]">
+                      <AccordionTrigger className="flex min-h-[106px] cursor-pointer items-center p-6 text-2xl font-medium text-gray-900">
                         {item.question}
                       </AccordionTrigger>
-                      <AccordionContent className="px-4 pl-20 pb-5 pt-0 text-gray-500">
+                      <AccordionContent className="prose prose-p px-4 pt-0 pb-5 pl-7 text-gray-500">
                         <PortableText value={item.answer ?? []} />
                       </AccordionContent>
                     </AccordionItem>

@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import { PortableText } from "next-sanity";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { UseCaseItem } from "@/lib/sanity/types";
-import UseCaseNavigator, { SECTIONS } from "./use-case-navigator";
-import { Card, CardContent, CardHeader } from "./ui/card";
-import { UseCaseMobileNav } from "./use-case-mobile-nav";
-import { useEffect, useState } from "react";
-import { useIsMobile } from "@/hooks/use-mobile";
-import { cn } from "@/lib/utils";
+import { PortableText } from 'next-sanity';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { UseCaseItem } from '@/lib/sanity/types';
+import UseCaseNavigator, { SECTIONS } from './use-case-navigator';
+import { Card, CardContent, CardHeader } from './ui/card';
+import { UseCaseMobileNav } from './use-case-mobile-nav';
+import { useEffect, useState } from 'react';
+import { useIsMobile } from '@/hooks/use-mobile';
+import { cn } from '@/lib/utils';
 
 interface Props {
   useCase: UseCaseItem;
@@ -18,7 +18,7 @@ interface Props {
 export default function UseCaseContent({ useCase }: Props) {
   const [activeId, setActiveId] = useState<string>(SECTIONS[0].id);
   const isMobile = useIsMobile();
-  const topOffset = isMobile ? 416 : 96;
+  const topOffset = isMobile ? 500 : 96;
 
   // scroll-spy
   useEffect(() => {
@@ -43,20 +43,20 @@ export default function UseCaseContent({ useCase }: Props) {
 
   const jumpTo = (id: string) => {
     const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   return (
-    <article className="scroll-smooth max-w-7xl mx-auto py-16 pt-0 md:pt-16 px-4 md:grid md:grid-cols-3 md:gap-x-16">
+    <article className="mx-auto max-w-7xl scroll-smooth px-4 py-16 pt-0 md:grid md:grid-cols-3 md:gap-x-16 md:pt-16">
       {/* LEFT: Sticky overview + nav */}
-      <aside className="sticky top-24 md:top-32 self-start md:space-y-8 bg-white col-span-1">
+      <aside className="sticky top-24 col-span-1 self-start bg-white md:top-32 md:space-y-8">
         <div className="space-y-4">
-          <h1 className="text-xl md:text-3xl pl-4 font-bold">
+          <h1 className="pl-4 text-xl font-bold md:text-3xl">
             {useCase.title}
           </h1>
-          <Card className="bg-accent h-[268px] overflow-y-auto py-3 md:py-6 gap-0 md:gap-2">
+          <Card className="bg-accent h-48 gap-0 overflow-y-auto py-3 md:h-[268px] md:gap-2 md:py-6">
             <CardHeader className="gap-0">
-              <h2 className="prose-lg md:prose-xl text-white font-semibold">
+              <h2 className="prose-lg md:prose-xl font-semibold text-white">
                 Objective
               </h2>
             </CardHeader>
@@ -72,21 +72,21 @@ export default function UseCaseContent({ useCase }: Props) {
       </aside>
 
       {/* RIGHT: Scrollable deep dive */}
-      <main className="space-y-8 md:space-y-16 pb-24 px-4 md:px-16 [&_li]:list-disc [&_li]:list-inside [&_li]:ml-1 md:[&_li]:ml-4 col-span-2">
+      <main className="col-span-2 space-y-8 px-4 pt-12 pb-4 md:space-y-16 md:px-16 md:pt-0 md:pb-24 [&_li]:ml-1 [&_li]:list-inside [&_li]:list-disc md:[&_li]:ml-4">
         {SECTIONS.map(({ id, label }) => (
           <section
             key={id}
             id={id}
             style={{ scrollMarginTop: `${topOffset}px` }}
             className={cn(
-              "rounded-xl p-4 md:p-8 transition-colors duration-300 ease-in-out",
-              activeId === id && "bg-accent/10"
+              'rounded-xl p-4 transition-colors duration-300 ease-in-out md:p-8',
+              activeId === id && 'bg-accent/10'
             )}
           >
             <h2
               className={cn(
-                "text-2xl font-semibold mb-2",
-                activeId === id ? "text-accent" : "text-gray-900"
+                'mb-2 text-2xl font-semibold',
+                activeId === id ? 'text-accent' : 'text-gray-900'
               )}
             >
               {label}
@@ -95,13 +95,13 @@ export default function UseCaseContent({ useCase }: Props) {
               <PortableText
                 value={
                   useCase[
-                    id === "pain-points"
-                      ? "painPoints"
-                      : id === "solution"
-                        ? "solution"
-                        : id === "benefits"
-                          ? "benefits"
-                          : "korefocusRole"
+                    id === 'pain-points'
+                      ? 'painPoints'
+                      : id === 'solution'
+                        ? 'solution'
+                        : id === 'benefits'
+                          ? 'benefits'
+                          : 'korefocusRole'
                   ] || []
                 }
               />

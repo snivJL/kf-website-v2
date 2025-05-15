@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
-import { useRef, useEffect } from "react";
-import Lenis from "lenis";
-import { useScroll, motion, useReducedMotion } from "framer-motion";
-import type { OurApproach } from "@/lib/sanity/types";
-import ApproachCard from "./approach-card";
+import { useRef, useEffect } from 'react';
+import Lenis from 'lenis';
+import { useScroll, motion, useReducedMotion } from 'framer-motion';
+import type { OurApproach } from '@/lib/sanity/types';
+import ApproachCard from './approach-card';
 
 export default function OurApproach({ approach }: { approach: OurApproach }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start start", "end end"],
+    offset: ['start start', 'end end'],
   });
 
   // Smooth scroll
@@ -30,12 +30,12 @@ export default function OurApproach({ approach }: { approach: OurApproach }) {
 
   return (
     <section
-      className="py-12 relative h-[2400px] scroll-mt-24"
+      className="relative h-[2400px] scroll-mt-24 py-12"
       ref={containerRef}
       id="how-we-work"
     >
       <motion.div
-        className="container mx-auto px-4 mb-4 max-w-[700px] sticky top-[20vh]"
+        className="sticky top-[20vh] container mx-auto mb-4 max-w-[700px] px-4"
         initial={shouldReduce ? {} : { opacity: 0, y: 20 }}
         whileInView={shouldReduce ? {} : { opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
@@ -43,24 +43,24 @@ export default function OurApproach({ approach }: { approach: OurApproach }) {
       >
         <div className="flex flex-col">
           {approach.heading && (
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
+            <h2 className="mb-4 text-center text-3xl font-bold md:text-4xl">
               {approach.heading}
             </h2>
           )}
           {approach.graySubHeading && (
-            <p className="text-2xl text-gray-400 max-w-3xl pl-13">
+            <p className="max-w-3xl pl-13 text-2xl text-gray-400">
               {approach.graySubHeading}
             </p>
           )}
           {approach.blueSubHeading && (
-            <p className="text-2xl text-accent max-w-3xl pl-13">
+            <p className="text-accent max-w-3xl pl-13 text-2xl">
               {approach.blueSubHeading}
             </p>
           )}
         </div>
       </motion.div>
 
-      <div className="mt-[50px] flex flex-col w-full sticky top-[50vh]">
+      <div className="sticky top-[50vh] mt-[50px] flex w-full flex-col">
         {approach.steps?.map((step, i) => {
           const start = i / stepCount;
           const end = (i + 1) / stepCount;

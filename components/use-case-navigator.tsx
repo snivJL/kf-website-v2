@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import { AlertTriangle, Lightbulb, TrendingUp, Users } from "lucide-react";
-import { cn } from "@/lib/utils";
-import { Button } from "./ui/button";
+import { AlertTriangle, Lightbulb, TrendingUp, Users } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { Button } from './ui/button';
 
 export const SECTIONS = [
-  { id: "pain-points", label: "Pain Points", Icon: AlertTriangle },
-  { id: "solution", label: "Solution", Icon: Lightbulb },
-  { id: "benefits", label: "Benefits", Icon: TrendingUp },
-  { id: "our-role", label: "Korefocus Role", Icon: Users },
+  { id: 'pain-points', label: 'Pain Points', Icon: AlertTriangle },
+  { id: 'solution', label: 'Solution', Icon: Lightbulb },
+  { id: 'benefits', label: 'Benefits', Icon: TrendingUp },
+  { id: 'our-role', label: 'Korefocus Role', Icon: Users },
 ] as const;
 
 export default function UseCaseNavigator({ activeId }: { activeId: string }) {
@@ -16,8 +16,8 @@ export default function UseCaseNavigator({ activeId }: { activeId: string }) {
     e.preventDefault();
     const el = document.getElementById(id);
     if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
-      window.history.replaceState(null, "", `#${id}`);
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      window.history.replaceState(null, '', `#${id}`);
     }
   };
 
@@ -34,14 +34,14 @@ export default function UseCaseNavigator({ activeId }: { activeId: string }) {
               <Button
                 onClick={handleClick(id)}
                 variant="ghost"
-                className="pr-0 justify-between w-full cursor-pointer hover:bg-white "
+                className="w-full cursor-pointer justify-between pr-0 hover:bg-white"
               >
                 <span
                   className={cn(
-                    "text-2xl font-medium transition-colors",
-                    isActive ? "text-accent" : "text-gray-700 hover:text-accent"
+                    'text-2xl font-medium transition-colors',
+                    isActive ? 'text-accent' : 'hover:text-accent text-gray-700'
                   )}
-                  aria-current={isActive ? "true" : undefined}
+                  aria-current={isActive ? 'true' : undefined}
                 >
                   {label}
                 </span>
@@ -49,16 +49,16 @@ export default function UseCaseNavigator({ activeId }: { activeId: string }) {
                 {/* icon on right, overlapping the line */}
                 <div
                   className={cn(
-                    "relative z-10 flex items-center justify-center w-10 h-10 rounded-full border-2 transition-all",
+                    'relative z-10 flex h-10 w-10 items-center justify-center rounded-full border-2 transition-all',
                     isActive
-                      ? "bg-accent border-accent scale-110"
-                      : "bg-white border-gray-300"
+                      ? 'bg-accent border-accent scale-110'
+                      : 'border-gray-300 bg-white'
                   )}
                 >
                   <Icon
                     className={cn(
-                      "w-6 h-6 transition-colors",
-                      isActive ? "text-white" : "text-gray-400"
+                      'h-6 w-6 transition-colors',
+                      isActive ? 'text-white' : 'text-gray-400'
                     )}
                   />
                 </div>

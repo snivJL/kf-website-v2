@@ -14,7 +14,7 @@
 
 // Source: schema.json
 export type SanityImagePaletteSwatch = {
-  _type: "sanity.imagePaletteSwatch";
+  _type: 'sanity.imagePaletteSwatch';
   background?: string;
   foreground?: string;
   population?: number;
@@ -22,7 +22,7 @@ export type SanityImagePaletteSwatch = {
 };
 
 export type SanityImagePalette = {
-  _type: "sanity.imagePalette";
+  _type: 'sanity.imagePalette';
   darkMuted?: SanityImagePaletteSwatch;
   lightVibrant?: SanityImagePaletteSwatch;
   darkVibrant?: SanityImagePaletteSwatch;
@@ -33,7 +33,7 @@ export type SanityImagePalette = {
 };
 
 export type SanityImageDimensions = {
-  _type: "sanity.imageDimensions";
+  _type: 'sanity.imageDimensions';
   height?: number;
   width?: number;
   aspectRatio?: number;
@@ -41,7 +41,7 @@ export type SanityImageDimensions = {
 
 export type SanityFileAsset = {
   _id: string;
-  _type: "sanity.fileAsset";
+  _type: 'sanity.fileAsset';
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
@@ -62,14 +62,14 @@ export type SanityFileAsset = {
 };
 
 export type Geopoint = {
-  _type: "geopoint";
+  _type: 'geopoint';
   lat?: number;
   lng?: number;
   alt?: number;
 };
 
 export type UseCaseItem = {
-  _type: "useCaseItem";
+  _type: 'useCaseItem';
   title?: string;
   hook?: string;
   buttonText?: string;
@@ -78,143 +78,143 @@ export type UseCaseItem = {
     children?: Array<{
       marks?: Array<string>;
       text?: string;
-      _type: "span";
+      _type: 'span';
       _key: string;
     }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
-    listItem?: "bullet" | "number";
+    style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote';
+    listItem?: 'bullet' | 'number';
     markDefs?: Array<{
       href?: string;
-      _type: "link";
+      _type: 'link';
       _key: string;
     }>;
     level?: number;
-    _type: "block";
+    _type: 'block';
     _key: string;
   }>;
   painPoints?: Array<{
     children?: Array<{
       marks?: Array<string>;
       text?: string;
-      _type: "span";
+      _type: 'span';
       _key: string;
     }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
-    listItem?: "bullet" | "number";
+    style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote';
+    listItem?: 'bullet' | 'number';
     markDefs?: Array<{
       href?: string;
-      _type: "link";
+      _type: 'link';
       _key: string;
     }>;
     level?: number;
-    _type: "block";
+    _type: 'block';
     _key: string;
   }>;
   solution?: Array<{
     children?: Array<{
       marks?: Array<string>;
       text?: string;
-      _type: "span";
+      _type: 'span';
       _key: string;
     }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
-    listItem?: "bullet" | "number";
+    style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote';
+    listItem?: 'bullet' | 'number';
     markDefs?: Array<{
       href?: string;
-      _type: "link";
+      _type: 'link';
       _key: string;
     }>;
     level?: number;
-    _type: "block";
+    _type: 'block';
     _key: string;
   }>;
   benefits?: Array<{
     children?: Array<{
       marks?: Array<string>;
       text?: string;
-      _type: "span";
+      _type: 'span';
       _key: string;
     }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
-    listItem?: "bullet" | "number";
+    style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote';
+    listItem?: 'bullet' | 'number';
     markDefs?: Array<{
       href?: string;
-      _type: "link";
+      _type: 'link';
       _key: string;
     }>;
     level?: number;
-    _type: "block";
+    _type: 'block';
     _key: string;
   }>;
   korefocusRole?: Array<{
     children?: Array<{
       marks?: Array<string>;
       text?: string;
-      _type: "span";
+      _type: 'span';
       _key: string;
     }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
-    listItem?: "bullet" | "number";
+    style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote';
+    listItem?: 'bullet' | 'number';
     markDefs?: Array<{
       href?: string;
-      _type: "link";
+      _type: 'link';
       _key: string;
     }>;
     level?: number;
-    _type: "block";
+    _type: 'block';
     _key: string;
   }>;
 };
 
 export type FaqItem = {
-  _type: "faqItem";
+  _type: 'faqItem';
   question?: string;
   answer?: Array<{
     children?: Array<{
       marks?: Array<string>;
       text?: string;
-      _type: "span";
+      _type: 'span';
       _key: string;
     }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
-    listItem?: "bullet" | "number";
+    style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote';
+    listItem?: 'bullet' | 'number';
     markDefs?: Array<{
       href?: string;
-      _type: "link";
+      _type: 'link';
       _key: string;
     }>;
     level?: number;
-    _type: "block";
+    _type: 'block';
     _key: string;
   }>;
 };
 
 export type StepsItem = {
-  _type: "stepsItem";
+  _type: 'stepsItem';
   title?: string;
   description?: Array<{
     children?: Array<{
       marks?: Array<string>;
       text?: string;
-      _type: "span";
+      _type: 'span';
       _key: string;
     }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
-    listItem?: "bullet" | "number";
+    style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote';
+    listItem?: 'bullet' | 'number';
     markDefs?: Array<{
       href?: string;
-      _type: "link";
+      _type: 'link';
       _key: string;
     }>;
     level?: number;
-    _type: "block";
+    _type: 'block';
     _key: string;
   }>;
   index?: number;
 };
 
 export type WhatWeDoItem = {
-  _type: "whatWeDoItem";
+  _type: 'whatWeDoItem';
   title?: string;
   subtitle?: string;
   buttonText?: string;
@@ -225,7 +225,7 @@ export type WhatWeDoItem = {
 
 export type UseCase = {
   _id: string;
-  _type: "useCase";
+  _type: 'useCase';
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
@@ -235,18 +235,18 @@ export type UseCase = {
     children?: Array<{
       marks?: Array<string>;
       text?: string;
-      _type: "span";
+      _type: 'span';
       _key: string;
     }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
-    listItem?: "bullet" | "number";
+    style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote';
+    listItem?: 'bullet' | 'number';
     markDefs?: Array<{
       href?: string;
-      _type: "link";
+      _type: 'link';
       _key: string;
     }>;
     level?: number;
-    _type: "block";
+    _type: 'block';
     _key: string;
   }>;
   blueSection?: string;
@@ -259,7 +259,7 @@ export type UseCase = {
 
 export type Faq = {
   _id: string;
-  _type: "faq";
+  _type: 'faq';
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
@@ -273,7 +273,7 @@ export type Faq = {
 
 export type OurApproach = {
   _id: string;
-  _type: "ourApproach";
+  _type: 'ourApproach';
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
@@ -289,7 +289,7 @@ export type OurApproach = {
 
 export type WhatWeDo = {
   _id: string;
-  _type: "whatWeDo";
+  _type: 'whatWeDo';
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
@@ -303,7 +303,7 @@ export type WhatWeDo = {
 
 export type Hero = {
   _id: string;
-  _type: "hero";
+  _type: 'hero';
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
@@ -312,20 +312,20 @@ export type Hero = {
   image?: {
     asset: {
       _ref: string;
-      _type: "reference";
+      _type: 'reference';
       _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
     };
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     alt?: string;
-    _type: "image";
+    _type: 'image';
   };
 };
 
 export type SanityImageCrop = {
-  _type: "sanity.imageCrop";
+  _type: 'sanity.imageCrop';
   top?: number;
   bottom?: number;
   left?: number;
@@ -333,7 +333,7 @@ export type SanityImageCrop = {
 };
 
 export type SanityImageHotspot = {
-  _type: "sanity.imageHotspot";
+  _type: 'sanity.imageHotspot';
   x?: number;
   y?: number;
   height?: number;
@@ -342,7 +342,7 @@ export type SanityImageHotspot = {
 
 export type SanityImageAsset = {
   _id: string;
-  _type: "sanity.imageAsset";
+  _type: 'sanity.imageAsset';
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
@@ -364,14 +364,14 @@ export type SanityImageAsset = {
 };
 
 export type SanityAssetSourceData = {
-  _type: "sanity.assetSourceData";
+  _type: 'sanity.assetSourceData';
   name?: string;
   id?: string;
   url?: string;
 };
 
 export type SanityImageMetadata = {
-  _type: "sanity.imageMetadata";
+  _type: 'sanity.imageMetadata';
   location?: Geopoint;
   dimensions?: SanityImageDimensions;
   palette?: SanityImagePalette;
@@ -383,7 +383,7 @@ export type SanityImageMetadata = {
 
 export type Home = {
   _id: string;
-  _type: "home";
+  _type: 'home';
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
@@ -392,7 +392,7 @@ export type Home = {
 };
 
 export type Slug = {
-  _type: "slug";
+  _type: 'slug';
   current?: string;
   source?: string;
 };
@@ -430,16 +430,16 @@ export type QueryResult = {
     image: {
       asset: {
         _ref: string;
-        _type: "reference";
+        _type: 'reference';
         _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
       } | null;
       alt: string | null;
     } | null;
   } | null;
   home: {
     _id: string;
-    _type: "home";
+    _type: 'home';
     _createdAt: string;
     _updatedAt: string;
     _rev: string;
@@ -469,26 +469,26 @@ export type QueryResult = {
         children?: Array<{
           marks?: Array<string>;
           text?: string;
-          _type: "span";
+          _type: 'span';
           _key: string;
         }>;
         style?:
-          | "blockquote"
-          | "h1"
-          | "h2"
-          | "h3"
-          | "h4"
-          | "h5"
-          | "h6"
-          | "normal";
-        listItem?: "bullet" | "number";
+          | 'blockquote'
+          | 'h1'
+          | 'h2'
+          | 'h3'
+          | 'h4'
+          | 'h5'
+          | 'h6'
+          | 'normal';
+        listItem?: 'bullet' | 'number';
         markDefs?: Array<{
           href?: string;
-          _type: "link";
+          _type: 'link';
           _key: string;
         }>;
         level?: number;
-        _type: "block";
+        _type: 'block';
         _key: string;
       }> | null;
     }> | null;
@@ -502,26 +502,26 @@ export type QueryResult = {
         children?: Array<{
           marks?: Array<string>;
           text?: string;
-          _type: "span";
+          _type: 'span';
           _key: string;
         }>;
         style?:
-          | "blockquote"
-          | "h1"
-          | "h2"
-          | "h3"
-          | "h4"
-          | "h5"
-          | "h6"
-          | "normal";
-        listItem?: "bullet" | "number";
+          | 'blockquote'
+          | 'h1'
+          | 'h2'
+          | 'h3'
+          | 'h4'
+          | 'h5'
+          | 'h6'
+          | 'normal';
+        listItem?: 'bullet' | 'number';
         markDefs?: Array<{
           href?: string;
-          _type: "link";
+          _type: 'link';
           _key: string;
         }>;
         level?: number;
-        _type: "block";
+        _type: 'block';
         _key: string;
       }> | null;
     }> | null;
@@ -533,18 +533,18 @@ export type QueryResult = {
       children?: Array<{
         marks?: Array<string>;
         text?: string;
-        _type: "span";
+        _type: 'span';
         _key: string;
       }>;
-      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
-      listItem?: "bullet" | "number";
+      style?: 'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal';
+      listItem?: 'bullet' | 'number';
       markDefs?: Array<{
         href?: string;
-        _type: "link";
+        _type: 'link';
         _key: string;
       }>;
       level?: number;
-      _type: "block";
+      _type: 'block';
       _key: string;
     }> | null;
     useCases: Array<{
@@ -557,130 +557,130 @@ export type QueryResult = {
         children?: Array<{
           marks?: Array<string>;
           text?: string;
-          _type: "span";
+          _type: 'span';
           _key: string;
         }>;
         style?:
-          | "blockquote"
-          | "h1"
-          | "h2"
-          | "h3"
-          | "h4"
-          | "h5"
-          | "h6"
-          | "normal";
-        listItem?: "bullet" | "number";
+          | 'blockquote'
+          | 'h1'
+          | 'h2'
+          | 'h3'
+          | 'h4'
+          | 'h5'
+          | 'h6'
+          | 'normal';
+        listItem?: 'bullet' | 'number';
         markDefs: Array<{
           href?: string;
-          _type: "link";
+          _type: 'link';
           _key: string;
         }> | null;
         level?: number;
-        _type: "block";
+        _type: 'block';
         _key: string;
       }> | null;
       painPoints: Array<{
         children?: Array<{
           marks?: Array<string>;
           text?: string;
-          _type: "span";
+          _type: 'span';
           _key: string;
         }>;
         style?:
-          | "blockquote"
-          | "h1"
-          | "h2"
-          | "h3"
-          | "h4"
-          | "h5"
-          | "h6"
-          | "normal";
-        listItem?: "bullet" | "number";
+          | 'blockquote'
+          | 'h1'
+          | 'h2'
+          | 'h3'
+          | 'h4'
+          | 'h5'
+          | 'h6'
+          | 'normal';
+        listItem?: 'bullet' | 'number';
         markDefs: Array<{
           href?: string;
-          _type: "link";
+          _type: 'link';
           _key: string;
         }> | null;
         level?: number;
-        _type: "block";
+        _type: 'block';
         _key: string;
       }> | null;
       solution: Array<{
         children?: Array<{
           marks?: Array<string>;
           text?: string;
-          _type: "span";
+          _type: 'span';
           _key: string;
         }>;
         style?:
-          | "blockquote"
-          | "h1"
-          | "h2"
-          | "h3"
-          | "h4"
-          | "h5"
-          | "h6"
-          | "normal";
-        listItem?: "bullet" | "number";
+          | 'blockquote'
+          | 'h1'
+          | 'h2'
+          | 'h3'
+          | 'h4'
+          | 'h5'
+          | 'h6'
+          | 'normal';
+        listItem?: 'bullet' | 'number';
         markDefs: Array<{
           href?: string;
-          _type: "link";
+          _type: 'link';
           _key: string;
         }> | null;
         level?: number;
-        _type: "block";
+        _type: 'block';
         _key: string;
       }> | null;
       benefits: Array<{
         children?: Array<{
           marks?: Array<string>;
           text?: string;
-          _type: "span";
+          _type: 'span';
           _key: string;
         }>;
         style?:
-          | "blockquote"
-          | "h1"
-          | "h2"
-          | "h3"
-          | "h4"
-          | "h5"
-          | "h6"
-          | "normal";
-        listItem?: "bullet" | "number";
+          | 'blockquote'
+          | 'h1'
+          | 'h2'
+          | 'h3'
+          | 'h4'
+          | 'h5'
+          | 'h6'
+          | 'normal';
+        listItem?: 'bullet' | 'number';
         markDefs: Array<{
           href?: string;
-          _type: "link";
+          _type: 'link';
           _key: string;
         }> | null;
         level?: number;
-        _type: "block";
+        _type: 'block';
         _key: string;
       }> | null;
       korefocusRole: Array<{
         children?: Array<{
           marks?: Array<string>;
           text?: string;
-          _type: "span";
+          _type: 'span';
           _key: string;
         }>;
         style?:
-          | "blockquote"
-          | "h1"
-          | "h2"
-          | "h3"
-          | "h4"
-          | "h5"
-          | "h6"
-          | "normal";
-        listItem?: "bullet" | "number";
+          | 'blockquote'
+          | 'h1'
+          | 'h2'
+          | 'h3'
+          | 'h4'
+          | 'h5'
+          | 'h6'
+          | 'normal';
+        listItem?: 'bullet' | 'number';
         markDefs: Array<{
           href?: string;
-          _type: "link";
+          _type: 'link';
           _key: string;
         }> | null;
         level?: number;
-        _type: "block";
+        _type: 'block';
         _key: string;
       }> | null;
     }> | null;
@@ -697,90 +697,90 @@ export type UseCaseQueryResult = {
       children?: Array<{
         marks?: Array<string>;
         text?: string;
-        _type: "span";
+        _type: 'span';
         _key: string;
       }>;
-      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
-      listItem?: "bullet" | "number";
+      style?: 'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal';
+      listItem?: 'bullet' | 'number';
       markDefs: Array<{
         href?: string;
-        _type: "link";
+        _type: 'link';
         _key: string;
       }> | null;
       level?: number;
-      _type: "block";
+      _type: 'block';
       _key: string;
     }> | null;
     painPoints: Array<{
       children?: Array<{
         marks?: Array<string>;
         text?: string;
-        _type: "span";
+        _type: 'span';
         _key: string;
       }>;
-      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
-      listItem?: "bullet" | "number";
+      style?: 'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal';
+      listItem?: 'bullet' | 'number';
       markDefs: Array<{
         href?: string;
-        _type: "link";
+        _type: 'link';
         _key: string;
       }> | null;
       level?: number;
-      _type: "block";
+      _type: 'block';
       _key: string;
     }> | null;
     solution: Array<{
       children?: Array<{
         marks?: Array<string>;
         text?: string;
-        _type: "span";
+        _type: 'span';
         _key: string;
       }>;
-      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
-      listItem?: "bullet" | "number";
+      style?: 'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal';
+      listItem?: 'bullet' | 'number';
       markDefs: Array<{
         href?: string;
-        _type: "link";
+        _type: 'link';
         _key: string;
       }> | null;
       level?: number;
-      _type: "block";
+      _type: 'block';
       _key: string;
     }> | null;
     benefits: Array<{
       children?: Array<{
         marks?: Array<string>;
         text?: string;
-        _type: "span";
+        _type: 'span';
         _key: string;
       }>;
-      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
-      listItem?: "bullet" | "number";
+      style?: 'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal';
+      listItem?: 'bullet' | 'number';
       markDefs: Array<{
         href?: string;
-        _type: "link";
+        _type: 'link';
         _key: string;
       }> | null;
       level?: number;
-      _type: "block";
+      _type: 'block';
       _key: string;
     }> | null;
     korefocusRole: Array<{
       children?: Array<{
         marks?: Array<string>;
         text?: string;
-        _type: "span";
+        _type: 'span';
         _key: string;
       }>;
-      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
-      listItem?: "bullet" | "number";
+      style?: 'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal';
+      listItem?: 'bullet' | 'number';
       markDefs: Array<{
         href?: string;
-        _type: "link";
+        _type: 'link';
         _key: string;
       }> | null;
       level?: number;
-      _type: "block";
+      _type: 'block';
       _key: string;
     }> | null;
   } | null;
