@@ -8,6 +8,12 @@ export const contactTool = tool({
   parameters: z.object({}),
 });
 
+export const analyticsTool = tool({
+  description:
+    'Use this tool when the user wants a demo about analytics dashboard and charts',
+  parameters: z.object({}),
+});
+
 export const searchCompanyInfoTool = tool({
   description:
     'Use this if the user tells you his company name and find out what Korefocus can do for this company',

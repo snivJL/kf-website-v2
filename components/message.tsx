@@ -10,6 +10,7 @@ import { MessageReasoning } from './message-reasoning';
 import type { UseChatHelpers } from '@ai-sdk/react';
 import { SparklesIcon } from 'lucide-react';
 import { ContactForm, type ContactFormData } from './contact-form';
+import AnalyticsShowcase from './analytics-showcase';
 
 const PurePreviewMessage = ({
   message,
@@ -68,6 +69,8 @@ const PurePreviewMessage = ({
                 switch (part.toolInvocation.toolName) {
                   case 'contactTool':
                     return <ContactForm onSendEmail={onSendEmail} />;
+                  case 'analyticsTool':
+                    return <AnalyticsShowcase />;
                   default:
                     return null;
                 }

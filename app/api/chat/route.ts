@@ -1,5 +1,6 @@
 import { ChatSDKError } from '@/lib/errors';
 import {
+  analyticsTool,
   contactTool,
   getUseCasesTool,
   searchCompanyInfoTool,
@@ -70,6 +71,7 @@ export async function POST(request: Request) {
         contactTool,
         searchCompanyInfoTool,
         getUseCasesTool,
+        analyticsTool,
       },
       onError: (error) => {
         console.error(error);

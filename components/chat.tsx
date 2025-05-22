@@ -42,7 +42,7 @@ export function Chat({
       }
     },
   });
-
+  console.log(messages);
   const [attachments, setAttachments] = useState<Array<Attachment>>([]);
 
   useAutoResume({
@@ -64,7 +64,6 @@ export function Chat({
           reload={reload}
           isReadonly={isReadonly}
         />
-
         <form className="bg-background mx-auto flex w-full gap-2 px-4 pb-4 md:max-w-3xl md:pb-6">
           <MultimodalInput
             chatId={'1'}
