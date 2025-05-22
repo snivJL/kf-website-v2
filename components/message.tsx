@@ -69,9 +69,7 @@ const PurePreviewMessage = ({
                   case 'contactTool':
                     return <ContactForm onSendEmail={onSendEmail} />;
                   default:
-                    return (
-                      <div>Tool called: {part.toolInvocation.toolName}</div>
-                    );
+                    return null;
                 }
               }
               if (type === 'text') {

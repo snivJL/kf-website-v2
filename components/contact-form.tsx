@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { useEffect, useState, useTransition } from 'react';
+import { useState, useTransition } from 'react';
 import { Label } from '@/components/ui/label';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -29,9 +29,7 @@ export function ContactForm({ onSendEmail }: ContactFormProps) {
   } = useForm<ContactFormData>({
     resolver: zodResolver(formSchema),
   });
-  useEffect(() => {
-    console.log('ContactForm onSendEmail', onSendEmail);
-  }, [onSendEmail]);
+
   const [isPending, startTransition] = useTransition();
   const [isSent, setIsSent] = useState(false);
 

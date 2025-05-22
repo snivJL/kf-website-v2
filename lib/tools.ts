@@ -31,11 +31,6 @@ export const getUseCasesTool = tool({
     product: z.enum(['KNOW', 'DO', 'DECIDE']).describe('The product name'),
   }),
   execute: async ({ product }) => {
-    // Simulate fetching use cases for the specified product
-    // In a real-world scenario, this would involve querying a database or an API
-    // For example:
-    // const result = await fetchUseCases(product);
-    // return result;
     const response = await getUseCases(product);
     return response;
   },

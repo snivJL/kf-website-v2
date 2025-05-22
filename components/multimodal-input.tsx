@@ -50,7 +50,7 @@ function PureMultimodalInput({
 }) {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const { width } = useWindowSize();
-  console.log('In INPUT', JSON.stringify(messages));
+
   useEffect(() => {
     if (textareaRef.current) {
       adjustHeight();

@@ -55,7 +55,7 @@ export async function generateFollowUpQuestions(
         Generate two follow-up questions based on this message.
       `,
     });
-    console.log(object);
+
     return object.questions;
   } catch (error) {
     console.error('Error generating follow-up questions:', error);
