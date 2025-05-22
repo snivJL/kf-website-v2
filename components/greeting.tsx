@@ -29,7 +29,7 @@ export const Greeting = () => {
         transition={{ delay: 0.2 }}
         className="text-2xl font-semibold"
       >
-        Hello there!
+        Hello there, I&apos;m Koro!
       </motion.div>
       <motion.div
         initial={{ opacity: 0, y: 10 }}
@@ -38,7 +38,7 @@ export const Greeting = () => {
         transition={{ delay: 0.3 }}
         className="text-2xl text-zinc-500"
       >
-        Ask about Korefocus
+        Ask anything about Korefocus
       </motion.div>
     </div>
   );

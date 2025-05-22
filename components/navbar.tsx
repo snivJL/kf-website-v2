@@ -137,6 +137,22 @@ export default function Navbar() {
           ))}
         </ul>
       </nav>
+      <motion.div
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.6, duration: 0.4 }}
+        className="fixed top-6 right-6 z-[60] hidden md:block"
+      >
+        <Link href="/chat">
+          <Button className="group animated-background from-accent to-accent/80 relative inline-flex animate-bounce cursor-pointer items-center gap-2 rounded-full bg-gradient-to-r px-5 py-2 text-sm font-semibold text-white shadow-md transition duration-300 hover:from-indigo-500 hover:to-blue-600 hover:shadow-lg">
+            <span className="relative z-10">Try Koro</span>
+            <span
+              className="absolute inset-0 rounded-full opacity-0 transition group-hover:opacity-100 group-hover:ring-2 group-hover:ring-white/40"
+              aria-hidden="true"
+            />
+          </Button>
+        </Link>
+      </motion.div>
     </motion.header>
   );
 }
