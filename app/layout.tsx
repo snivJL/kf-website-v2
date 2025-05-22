@@ -3,9 +3,8 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import { SanityLive } from '@/lib/sanity/live';
 import Navbar from '@/components/navbar';
-import Footer from '@/components/footer';
 import { Analytics } from '@vercel/analytics/next';
-
+import { SpeedInsights } from '@vercel/speed-insights/next';
 const geistSans = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin'],
@@ -26,15 +25,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Navbar />
         <div className="pt-16">{children}</div>
-        <Footer />
+        {/* <Footer /> */}
         <SanityLive />
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

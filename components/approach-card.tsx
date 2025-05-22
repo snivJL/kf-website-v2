@@ -52,7 +52,7 @@ export default function ApproachCard({
   return (
     <motion.div
       style={{
-        translateY: i === 3 && isStatic ? 0 : translateY,
+        translateY,
         scale,
         top: `calc(-5vh + ${i * 20}px)`,
         zIndex: 100 - i,

@@ -20,14 +20,14 @@ export default function WhatWeDo({ whatWeDo }: WhatWeDoProps) {
   const shouldReduce = useReducedMotion();
 
   return (
-    <section id="concretely" className="bg-white py-20">
+    <section id="what-we-do" className="scroll-mt-24 bg-white py-20">
       <div className="container mx-auto mb-12 px-4 text-center">
         <h2 className="text-4xl font-extrabold text-gray-900">
           {whatWeDo.heading}
         </h2>
       </div>
 
-      <div className="container mx-auto grid scroll-mt-24 gap-8 px-4 md:grid-cols-3">
+      <div className="container mx-auto grid gap-8 px-4 md:grid-cols-3">
         {whatWeDo.cards?.map((card: WhatWeDoItem, idx: number) => {
           // interleave blue/gray lines
           const lines: { text: string; color: 'blue' | 'gray' }[] = [];
@@ -46,7 +46,7 @@ export default function WhatWeDo({ whatWeDo }: WhatWeDoProps) {
           return (
             <motion.div
               key={idx}
-              className="group relative flex h-full scroll-mt-24 flex-col overflow-hidden rounded-2xl bg-white shadow-md transition-transform duration-300 hover:-translate-y-1"
+              className="group relative flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-md transition-transform duration-300 hover:-translate-y-1"
               initial={shouldReduce ? {} : { opacity: 0 }}
               whileInView={shouldReduce ? {} : { opacity: 1 }}
               viewport={{ once: true, amount: 0.3 }}

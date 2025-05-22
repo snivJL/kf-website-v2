@@ -53,7 +53,7 @@ export default function HeroSection({ hero }: { hero: Hero }) {
 
       {/* BLURBS */}
       <motion.div
-        className="prose mx-auto flex w-full max-w-5xl flex-col pb-8"
+        className="prose mx-auto flex w-full max-w-5xl flex-col pb-8 text-pretty"
         initial={shouldReduce ? undefined : 'hidden'}
         animate="show"
         variants={{

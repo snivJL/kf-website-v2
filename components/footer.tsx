@@ -12,7 +12,7 @@ export default function Footer() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="prose-lg border-accent/5 mt-4 border-t-2 bg-white px-4 py-6 md:mt-4"
+      className="prose-lg border-accent/5 border-t-2 bg-white px-4 py-6"
     >
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between space-y-4 md:flex-row md:space-y-0">
         {/* Logo & Branding */}
