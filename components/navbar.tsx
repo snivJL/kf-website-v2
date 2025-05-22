@@ -15,7 +15,6 @@ import {
   SheetTrigger,
   SheetContent,
   SheetHeader,
-  SheetClose,
 } from '@/components/ui/sheet';
 import { Menu } from 'lucide-react';
 
