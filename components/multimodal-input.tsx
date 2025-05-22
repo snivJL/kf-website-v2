@@ -149,7 +149,7 @@ function PureMultimodalInput({
       <Textarea
         data-testid="multimodal-input"
         ref={textareaRef}
-        placeholder="Send a message..."
+        placeholder="Ask anything and discover Korefocus"
         value={input}
         onChange={handleInput}
         className={cn(
