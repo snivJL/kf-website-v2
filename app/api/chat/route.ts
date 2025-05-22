@@ -54,8 +54,8 @@ export async function POST(request: Request) {
       Here is information about the Korefocus CEO:
       ${ceoInfo}
 
-      You can use getUseCasesTool tool to fetch a use case relevant to the Korefocus product the user is interested in. The product can be KNOW, DO or DECIDE.
-
+      You can use getUseCasesTool tool to find a use case relevant to the Korefocus product the user is interested in. The product can be KNOW, DO or DECIDE.
+      You can use the contactTool tool when the user wants to contact the company, get in touch or schedule a call.
       You can end your answer with a question to the user to keep the conversation going.
       Remember: Never make up information about the company. If you don't know something specific, acknowledge that and offer to discuss what you do know about the company.
     `;

@@ -11,6 +11,7 @@ import type { UseChatHelpers } from '@ai-sdk/react';
 import { SparklesIcon } from 'lucide-react';
 import { ContactForm, type ContactFormData } from './contact-form';
 import AnalyticsShowcase from './analytics-showcase';
+import Image from 'next/image';
 
 const PurePreviewMessage = ({
   message,
@@ -42,7 +43,13 @@ const PurePreviewMessage = ({
           {message.role === 'assistant' && (
             <div className="ring-border bg-background flex size-8 shrink-0 items-center justify-center rounded-full ring-1">
               <div className="translate-y-px">
-                <SparklesIcon size={14} />
+                <Image
+                  src="/logo-small.svg"
+                  alt="Korefocus logo"
+                  width={56}
+                  height={56}
+                  priority
+                />
               </div>
             </div>
           )}
@@ -68,9 +75,9 @@ const PurePreviewMessage = ({
               if (type === 'tool-invocation') {
                 switch (part.toolInvocation.toolName) {
                   case 'contactTool':
-                    return <ContactForm onSendEmail={onSendEmail} />;
+                    return <ContactForm onSendEmail={onSendEmail} key={key} />;
                   case 'analyticsTool':
-                    return <AnalyticsShowcase />;
+                    return <AnalyticsShowcase key={key} />;
                   default:
                     return null;
                 }

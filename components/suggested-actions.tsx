@@ -12,24 +12,24 @@ interface SuggestedActionsProps {
 function PureSuggestedActions({ append }: SuggestedActionsProps) {
   const suggestedActions = [
     {
-      title: 'Tell me more about',
-      label: 'what you can provide.',
-      action: 'tell me more about what you can provide',
+      title: 'Can you tell me',
+      label: 'what you offer?',
+      action: 'Can you tell me what you offer?',
     },
     {
-      title: 'In which countries',
-      label: `are you based in?`,
-      action: `In which countries are you based in?`,
+      title: 'Which countries',
+      label: 'do you operate in?',
+      action: 'Which countries do you operate in?',
     },
     {
-      title: 'Do you develop',
-      label: `your own technology?`,
-      action: `Do you develop your own technology?`,
+      title: 'Do you build',
+      label: 'your own tech stack?',
+      action: 'Do you build your own tech stack?',
     },
     {
-      title: 'How can I',
-      label: 'contact you ?',
-      action: 'How can I contact you?',
+      title: 'What’s the best way',
+      label: 'to contact you?',
+      action: 'What’s the best way to contact you?',
     },
   ];
 

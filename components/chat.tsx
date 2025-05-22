@@ -55,7 +55,7 @@ export function Chat({
 
   return (
     <>
-      <div className="bg-background flex h-[calc(100dvh_-_96px)] min-w-0 flex-col pt-16">
+      <div className="bg-background flex h-[calc(100dvh_-_96px)] min-w-0 flex-col pt-8">
         <Messages
           chatId={'1'}
           status={status}
