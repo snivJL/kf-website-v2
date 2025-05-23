@@ -22,6 +22,11 @@ const query = groq`
     image {
       asset,
       alt
+    },ctas[]
+    {
+    text,
+    linkText,
+    linkTarget,
     }
   },
   "home": *[_type == "home"][0],
