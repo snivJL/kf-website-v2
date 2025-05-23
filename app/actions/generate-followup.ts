@@ -3,7 +3,7 @@
 import { openai } from '@ai-sdk/openai';
 import { generateObject, Message } from 'ai';
 import { z } from 'zod';
-import { ceoInfo, companyInfo } from '../api/chat/route';
+import { ceoInfo, companyInfo } from '../api/chat/prompts';
 
 // Define a schema for the follow-up questions
 const followUpQuestionsSchema = z.object({
