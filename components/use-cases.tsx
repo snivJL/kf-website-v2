@@ -37,7 +37,7 @@ export const UseCases = ({ useCaseSection }: UseCasesProps) => {
   return (
     <motion.section
       id="use-cases"
-      className="scroll-mt-24 bg-white px-8 py-16 text-gray-900"
+      className="min-h-[calc(100dvh-96px)] scroll-mt-24 bg-white px-8 py-12 text-gray-900"
       initial={shouldReduce ? {} : { opacity: 0, y: 20 }}
       whileInView={shouldReduce ? {} : { opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.3 }}

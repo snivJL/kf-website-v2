@@ -1,6 +1,6 @@
 'use client';
 
-import type { Attachment, UIMessage } from 'ai';
+import type { UIMessage } from 'ai';
 import { useChat } from '@ai-sdk/react';
 import { useState } from 'react';
 import { MultimodalInput } from './multimodal-input';
@@ -9,6 +9,10 @@ import { ChatSDKError } from '@/lib/errors';
 import { fetchWithErrorHandlers, generateUUID } from '@/lib/utils';
 import { Messages } from '@/components/messages';
 import { toast } from 'sonner';
+import {
+  generateFollowUpQuestions,
+  type Question,
+} from '@/app/actions/generate-followup';
 
 export function Chat({
   initialMessages,
@@ -41,9 +45,28 @@ export function Chat({
         toast.error(error.message);
       }
     },
+    async onFinish(lastMessage) {
+      {
+        try {
+          setIsLoadingQuestions(true);
+          const recentMessages = messages.slice(-5);
+          const questions = await generateFollowUpQuestions([
+            ...recentMessages,
+            lastMessage,
+          ]);
+          setFollowUpQuestions(questions);
+        } catch (err) {
+          console.error('Failed to generate follow-up questions:', err);
+        } finally {
+          setIsLoadingQuestions(false);
+        }
+      }
+    },
   });
-  console.log(messages);
-  const [attachments, setAttachments] = useState<Array<Attachment>>([]);
+  const [followUpQuestions, setFollowUpQuestions] = useState<Array<Question>>(
+    []
+  );
+  const [isLoadingQuestions, setIsLoadingQuestions] = useState(false);
 
   useAutoResume({
     autoResume,
@@ -63,6 +86,12 @@ export function Chat({
           setMessages={setMessages}
           reload={reload}
           isReadonly={isReadonly}
+          followUpQuestions={status === 'ready' ? followUpQuestions : []}
+          isLoadingQuestions={isLoadingQuestions}
+          onSelectQuestion={(question) => {
+            setFollowUpQuestions([]);
+            append({ content: question, role: 'user' });
+          }}
         />
         <form className="bg-background mx-auto flex w-full gap-2 px-4 pb-4 md:max-w-3xl md:pb-6">
           <MultimodalInput
@@ -72,11 +101,15 @@ export function Chat({
             handleSubmit={handleSubmit}
             status={status}
             stop={stop}
-            attachments={attachments}
-            setAttachments={setAttachments}
             messages={messages}
             setMessages={setMessages}
             append={append}
+            followUpQuestions={followUpQuestions}
+            isLoadingQuestions={isLoadingQuestions}
+            onSelectQuestion={(question) => {
+              append({ content: question, role: 'user' });
+              setFollowUpQuestions([]);
+            }}
           />
         </form>
       </div>

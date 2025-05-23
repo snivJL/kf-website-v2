@@ -1,14 +1,7 @@
 'use client';
 
-import type { Attachment, UIMessage } from 'ai';
-import {
-  useRef,
-  useEffect,
-  useCallback,
-  type Dispatch,
-  type SetStateAction,
-  memo,
-} from 'react';
+import type { UIMessage } from 'ai';
+import { useRef, useEffect, useCallback, memo } from 'react';
 import { toast } from 'sonner';
 import { useLocalStorage, useWindowSize } from 'usehooks-ts';
 
@@ -21,6 +14,7 @@ import { ArrowDown, ArrowUpIcon, StopCircleIcon } from 'lucide-react';
 import { useScrollToBottom } from '@/hooks/use-scroll-to-bottom';
 import { cn } from '@/lib/utils';
 import { SuggestedActions } from './suggested-actions';
+import type { Question } from '@/app/actions/generate-followup';
 
 function PureMultimodalInput({
   messages,
@@ -28,8 +22,6 @@ function PureMultimodalInput({
   setInput,
   status,
   stop,
-  attachments,
-  setAttachments,
   setMessages,
   handleSubmit,
   append,
@@ -40,13 +32,15 @@ function PureMultimodalInput({
   setInput: UseChatHelpers['setInput'];
   status: UseChatHelpers['status'];
   stop: () => void;
-  attachments: Array<Attachment>;
-  setAttachments: Dispatch<SetStateAction<Array<Attachment>>>;
+
   messages: Array<UIMessage>;
   setMessages: UseChatHelpers['setMessages'];
   append: UseChatHelpers['append'];
   handleSubmit: UseChatHelpers['handleSubmit'];
   className?: string;
+  followUpQuestions: Array<Question>;
+  isLoadingQuestions: boolean;
+  onSelectQuestion: (question: string) => void;
 }) {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const { width } = useWindowSize();
@@ -98,18 +92,15 @@ function PureMultimodalInput({
   };
 
   const submitForm = useCallback(() => {
-    handleSubmit(undefined, {
-      experimental_attachments: attachments,
-    });
+    handleSubmit();
 
-    setAttachments([]);
     setLocalStorageInput('');
     resetHeight();
 
     if (width && width > 768) {
       textareaRef.current?.focus();
     }
-  }, [attachments, handleSubmit, setAttachments, setLocalStorageInput, width]);
+  }, [handleSubmit, setLocalStorageInput, width]);
 
   const { isAtBottom, scrollToBottom } = useScrollToBottom();
 
@@ -146,6 +137,7 @@ function PureMultimodalInput({
         )}
       </AnimatePresence>
       {messages.length === 0 && <SuggestedActions append={append} />}
+
       <Textarea
         data-testid="multimodal-input"
         ref={textareaRef}
@@ -191,9 +183,13 @@ export const MultimodalInput = memo(
   (prevProps, nextProps) => {
     if (prevProps.input !== nextProps.input) return false;
     if (prevProps.status !== nextProps.status) return false;
-    if (!equal(prevProps.attachments, nextProps.attachments)) return false;
     if (prevProps.messages.length !== nextProps.messages.length) return false;
     if (!equal(prevProps.messages, nextProps.messages)) return false;
+    if (!equal(prevProps.followUpQuestions, nextProps.followUpQuestions))
+      return false;
+    if (prevProps.onSelectQuestion !== nextProps.onSelectQuestion) return false;
+    if (prevProps.isLoadingQuestions && nextProps.isLoadingQuestions)
+      return false;
     return true;
   }
 );

@@ -64,7 +64,7 @@ export function ContactForm({ onSendEmail }: ContactFormProps) {
           initial={{ y: 5, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           onSubmit={handleSubmit(onSubmit)}
-          className="mx-auto w-full max-w-md space-y-6"
+          className="mx-auto w-full max-w-md space-y-6 pb-12"
         >
           <div className="space-y-2">
             <h2 className="pb-2 font-semibold">

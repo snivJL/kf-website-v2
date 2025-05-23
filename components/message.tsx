@@ -12,12 +12,18 @@ import { SparklesIcon } from 'lucide-react';
 import { ContactForm, type ContactFormData } from './contact-form';
 import AnalyticsShowcase from './analytics-showcase';
 import Image from 'next/image';
+import SuggestedQuestions from './suggested-questions';
+import type { Question } from '@/app/actions/generate-followup';
 
 const PurePreviewMessage = ({
   message,
   isLoading,
   requiresScrollPadding,
   onSendEmail,
+  followUpQuestions,
+  isLoadingQuestions,
+  isLast,
+  onSelectQuestion,
 }: {
   chatId: string;
   message: UIMessage;
@@ -25,6 +31,10 @@ const PurePreviewMessage = ({
   setMessages: UseChatHelpers['setMessages'];
   requiresScrollPadding: boolean;
   onSendEmail: (data: ContactFormData) => Promise<void>;
+  followUpQuestions: Array<Question>;
+  isLoadingQuestions: boolean;
+  isLast: boolean;
+  onSelectQuestion: (question: string) => void;
 }) => {
   return (
     <AnimatePresence>
@@ -98,6 +108,15 @@ const PurePreviewMessage = ({
                 );
               }
             })}
+            {isLast &&
+              requiresScrollPadding &&
+              !message.parts.find((p) => p.type === 'tool-invocation') && (
+                <SuggestedQuestions
+                  questions={followUpQuestions}
+                  isLoading={isLoadingQuestions}
+                  onSelectQuestion={onSelectQuestion}
+                />
+              )}
           </div>
         </div>
       </motion.div>

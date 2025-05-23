@@ -1,39 +1,36 @@
 'use server';
 
 import { openai } from '@ai-sdk/openai';
-import { generateObject, UIMessage } from 'ai';
+import { generateObject, Message } from 'ai';
 import { z } from 'zod';
+import { ceoInfo, companyInfo } from '../api/chat/route';
 
 // Define a schema for the follow-up questions
 const followUpQuestionsSchema = z.object({
   questions: z
     .array(
       z.object({
-        text: z.string(),
-        type: z.enum(['follow-up', 'needs-assessment']),
+        text: z
+          .string()
+          .optional()
+          .describe('The prompt that will be addressed to you next'),
+        type: z.enum(['follow-up', 'redirect']),
       })
     )
     .length(2),
 });
 
 export interface Question {
-  text: string;
-  type: 'follow-up' | 'needs-assessment';
+  text?: string;
+  type: 'follow-up' | 'redirect' | 'contact';
 }
 
 export async function generateFollowUpQuestions(
-  conversationHistory: UIMessage[]
+  lastMessages: Array<Message>
 ): Promise<Array<Question>> {
   'use server';
   try {
-    if (conversationHistory.length === 0) {
-      return [];
-    }
-
-    // Get the last message from the conversation
-    const lastMessage = conversationHistory[conversationHistory.length - 1];
-    // Only generate follow-up questions for assistant messages
-    if (lastMessage.role !== 'assistant') {
+    if (!lastMessages || lastMessages.length === 0) {
       return [];
     }
 
@@ -41,22 +38,30 @@ export async function generateFollowUpQuestions(
       model: openai('gpt-4o-mini'),
       schema: followUpQuestionsSchema,
       system: `
-        You are a helpful assistant that generates follow-up questions based on a conversation.
-        Generate exactly two questions:
-        1. One follow-up question related to the last assistant message (type: follow-up)
-        2. One question to help the user express their specific needs (type: needs-assessment)
+        You are a helpful assistant. After replying to the user, you generate two suggested follow-up prompts that the user might want to ask next.
+        Each suggestion should be concise (max 12 words), phrased naturally, and easy for a user to click.
+        Generate exactly two suggestions, only if relevant:
+        1. One prompt you would like to address to yourself to dive deeper into what you just said (type: follow-up)
+        2. One prompt that would redirect the conversation to a different Korefocus topic (type: redirect)
         
+        Here is information about Korefocus:
+        ${companyInfo}
+        Here is information about the Korefocus CEO:
+        ${ceoInfo}
         Return these as structured data according to the schema.
       `,
       prompt: `
-        Here is the last message from the assistant:
-        "${lastMessage.content}"
+        Here are the last few messages from the conversation:
+        "${lastMessages.map((m) => `${m.role}: ${m.content}`).join('\n')}"
         
-        Generate two follow-up questions based on this message.
+        If you feel like the conversation need any follow-up questions, return follow up questions according to the schema.
       `,
     });
 
-    return object.questions;
+    return [
+      ...object.questions,
+      { text: 'How can I reach out?', type: 'contact' },
+    ];
   } catch (error) {
     console.error('Error generating follow-up questions:', error);
     return [];

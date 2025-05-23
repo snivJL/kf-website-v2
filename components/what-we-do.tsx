@@ -20,7 +20,10 @@ export default function WhatWeDo({ whatWeDo }: WhatWeDoProps) {
   const shouldReduce = useReducedMotion();
 
   return (
-    <section id="what-we-do" className="scroll-mt-24 bg-white py-20">
+    <section
+      id="what-we-do"
+      className="min-h-[calc(100dvh-96px)] scroll-mt-24 bg-white py-12"
+    >
       <div className="container mx-auto mb-12 px-4 text-center">
         <h2 className="text-4xl font-extrabold text-gray-900">
           {whatWeDo.heading}

@@ -31,7 +31,6 @@ export default function RootLayout({
       >
         <Navbar />
         <div className="pt-16">{children}</div>
-        {/* <Footer /> */}
         <SanityLive />
         <Analytics />
         <SpeedInsights />

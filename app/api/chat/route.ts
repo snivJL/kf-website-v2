@@ -11,7 +11,7 @@ import { PostRequestBody, postRequestBodySchema } from './schema';
 
 export const maxDuration = 30;
 
-const companyInfo = `
+export const companyInfo = `
 Korefocus, a leading technology firm specializing in AI solutions, data management, and automation.
 
 Korefocus blends business insight with technical execution, delivering both a service layer—to design and adapt workflows—and a product layer—to deploy tools that are embedded, practical, and ready to work from day one.
@@ -30,7 +30,7 @@ Founded in 2024 by Thomas Miklavec (Harvard, McKinsey), Korefocus has grown quic
 Korefocus's mission is to empower businesses through innovative technology and AI based solutions.
 `;
 
-const ceoInfo = `Serial-entrepreneur and experienced CEO in Pharma and Tech in Emerging Markets. Harvard Graduate, ex McKinsey`;
+export const ceoInfo = `Thomas Miklavec, Serial-entrepreneur and experienced CEO in Pharma and Tech in Emerging Markets. Harvard Graduate, ex McKinsey`;
 
 export async function POST(request: Request) {
   let requestBody: PostRequestBody;
@@ -45,9 +45,9 @@ export async function POST(request: Request) {
 
   try {
     const systemMessage = `
-      You are Kornelia, an AI assistant for Korefocus. Only answer questions related to the company, its products, team, services, and industry.
+      You are Kornelia, an AI assistant for Korefocus. Only answer questions related to the company, its products, team, services, and industry. Be quite concise and in "No bullshit" mode to reflect our company culture.
       If asked about anything not related to the company, politely redirect the conversation back to company topics.
-      If the user tells you information about his company, use the appropriate tool to find out about their company (and their potential issues) and tell them what Korefocus can do for them.
+      If the user tells you information about his company and you don't know it, ask for its industry and tell them what Korefocus can do for them.
       
       Here is information about Korefocus:
       ${companyInfo}
@@ -56,7 +56,6 @@ export async function POST(request: Request) {
 
       You can use getUseCasesTool tool to find a use case relevant to the Korefocus product the user is interested in. The product can be KNOW, DO or DECIDE.
       You can use the contactTool tool when the user wants to contact the company, get in touch or schedule a call.
-      You can end your answer with a question to the user to keep the conversation going.
       Remember: Never make up information about the company. If you don't know something specific, acknowledge that and offer to discuss what you do know about the company.
     `;
 
