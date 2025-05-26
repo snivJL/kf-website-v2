@@ -3,6 +3,7 @@
 import { useRef, useEffect } from 'react';
 import Lenis from 'lenis';
 import { useScroll, motion, useReducedMotion } from 'framer-motion';
+import { fadeIn } from '@/lib/motion';
 import type { OurApproach } from '@/lib/sanity/types';
 import ApproachCard from './approach-card';
 
@@ -29,10 +30,14 @@ export default function OurApproach({ approach }: { approach: OurApproach }) {
   const shouldReduce = useReducedMotion();
 
   return (
-    <section
-      className="relative h-[2400px] scroll-mt-24 py-12"
+    <motion.section
+      className="relative h-[2400px] snap-start scroll-mt-24 py-12"
       ref={containerRef}
       id="how-we-work"
+      initial={shouldReduce ? {} : 'hidden'}
+      whileInView="show"
+      viewport={{ once: true, amount: 0.3 }}
+      variants={fadeIn}
     >
       <motion.div
         className="sticky top-[20vh] container mx-auto mb-4 max-w-[700px] px-4"
@@ -76,6 +81,6 @@ export default function OurApproach({ approach }: { approach: OurApproach }) {
           );
         })}
       </div>
-    </section>
+    </motion.section>
   );
 }

@@ -1,6 +1,7 @@
 'use client';
 
 import { useReducedMotion, motion } from 'framer-motion';
+import { fadeIn } from '@/lib/motion';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import type { WhatWeDo, WhatWeDoItem } from '@/lib/sanity/types';
@@ -20,9 +21,13 @@ export default function WhatWeDo({ whatWeDo }: WhatWeDoProps) {
   const shouldReduce = useReducedMotion();
 
   return (
-    <section
+    <motion.section
       id="what-we-do"
-      className="min-h-[calc(100dvh-96px)] scroll-mt-24 bg-white py-12"
+      className="min-h-[calc(100dvh-96px)] snap-start scroll-mt-24 bg-white py-12"
+      initial={shouldReduce ? {} : 'hidden'}
+      whileInView="show"
+      viewport={{ once: true, amount: 0.3 }}
+      variants={fadeIn}
     >
       <div className="container mx-auto mb-12 px-4 text-center">
         <h2 className="text-4xl font-extrabold text-gray-900">
@@ -97,6 +102,6 @@ export default function WhatWeDo({ whatWeDo }: WhatWeDoProps) {
           );
         })}
       </div>
-    </section>
+    </motion.section>
   );
 }

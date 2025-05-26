@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { urlFor } from '@/lib/sanity/client';
 import type { Hero } from '@/lib/sanity/types';
 import Image from 'next/image';
-import { fadeUp } from '@/lib/motion';
+import { fadeUp, fadeIn } from '@/lib/motion';
 import { Button } from './ui/button';
 import { ArrowRight } from 'lucide-react';
 
@@ -16,16 +16,26 @@ export default function HeroSection({ hero }: { hero: Hero }) {
     : '';
 
   return (
-    <div className="flex h-screen flex-col gap-12 px-4">
+    <div className="flex h-screen snap-start flex-col gap-12 px-4">
       {/* HERO */}
       <motion.section
         className="flex flex-col items-center gap-4 pt-8"
         initial={shouldReduce ? undefined : 'hidden'}
         animate="show"
-        variants={{
-          hidden: {},
-          show: { transition: { staggerChildren: 0.2 } },
-        }}
+        variants={
+          shouldReduce
+            ? {}
+            : {
+                hidden: fadeIn.hidden,
+                show: {
+                  ...fadeIn.show,
+                  transition: {
+                    ...fadeIn.show.transition,
+                    staggerChildren: 0.2,
+                  },
+                },
+              }
+        }
       >
         {imgSrc && (
           <motion.div

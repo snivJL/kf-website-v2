@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { motion, useReducedMotion, Variants } from 'framer-motion';
+import { fadeIn } from '@/lib/motion';
 import {
   Card,
   CardContent,
@@ -37,11 +38,11 @@ export const UseCases = ({ useCaseSection }: UseCasesProps) => {
   return (
     <motion.section
       id="use-cases"
-      className="min-h-[calc(100dvh-96px)] scroll-mt-24 bg-white px-8 py-12 text-gray-900"
-      initial={shouldReduce ? {} : { opacity: 0, y: 20 }}
-      whileInView={shouldReduce ? {} : { opacity: 1, y: 0 }}
+      className="min-h-[calc(100dvh-96px)] snap-start scroll-mt-24 bg-white px-8 py-12 text-gray-900"
+      initial={shouldReduce ? {} : 'hidden'}
+      whileInView="show"
       viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration: 0.6 }}
+      variants={fadeIn}
     >
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 md:grid-cols-2">
         {/* Left Intro */}
