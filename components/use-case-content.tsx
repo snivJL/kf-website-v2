@@ -49,7 +49,7 @@ export default function UseCaseContent({ useCase }: Props) {
   };
   console.log(overflow);
   return (
-    <article className="mx-auto max-w-7xl scroll-smooth px-4 py-16 pt-0 md:grid md:grid-cols-3 md:gap-x-16 md:pt-16">
+    <article className="mx-auto max-w-7xl scroll-smooth px-4 md:grid md:grid-cols-3 md:gap-x-16 md:pt-16">
       {/* LEFT: Sticky overview + nav */}
       <aside className="sticky top-24 col-span-1 self-start bg-white md:top-32 md:space-y-8">
         <div className="space-y-4">

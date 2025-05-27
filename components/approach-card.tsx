@@ -58,18 +58,25 @@ export default function ApproachCard({
         zIndex: 100 - i,
       }}
       className={cn(
-        'flex h-[300px] w-full items-center gap-6 rounded-xl bg-white px-8 shadow md:w-5/6 md:px-16',
-        i === 3
-          ? isStatic
-            ? 'static'
-            : 'absolute top-0 left-1/2 -translate-x-1/2 transform'
-          : 'absolute top-0 left-1/2 -translate-x-1/2 transform'
+        'w-full rounded-xl bg-white shadow md:w-5/6',
+        'absolute top-0 left-1/2 min-h-76 -translate-x-1/2 transform',
+        i === 3 && isStatic ? 'static' : '',
+        'flex flex-col items-start gap-4 px-6 py-8 md:flex-row md:items-center md:gap-6 md:px-16 md:py-0'
       )}
     >
-      <span className="text-accent text-6xl font-semibold">{step.index}</span>
-      <div className="flex flex-col">
-        <h3 className="text-3xl font-bold">{step.title}</h3>
-        <div className="mt-2 text-xl leading-6 text-gray-400">
+      {/* Left: Index number */}
+      <div className="flex items-center gap-6 md:block md:gap-0">
+        <span className="text-accent text-4xl font-semibold md:text-6xl">
+          {step.index}
+        </span>
+        {/* Mobile only: Title next to index */}
+        <h3 className="text-2xl font-bold md:hidden">{step.title}</h3>
+      </div>
+
+      {/* Right: Title (desktop only) and description */}
+      <div className="flex w-full flex-col">
+        <h3 className="hidden text-3xl font-bold md:block">{step.title}</h3>
+        <div className="prose prose-xl mt-2">
           <PortableText value={step.description ?? []} />
         </div>
       </div>

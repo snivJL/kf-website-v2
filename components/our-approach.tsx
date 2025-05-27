@@ -48,12 +48,12 @@ export default function OurApproach({ approach }: { approach: OurApproach }) {
             </h2>
           )}
           {approach.graySubHeading && (
-            <p className="max-w-3xl pl-13 text-2xl text-gray-400">
+            <p className="mr-auto max-w-3xl px-4 text-2xl text-gray-400 lg:pl-13">
               {approach.graySubHeading}
             </p>
           )}
           {approach.blueSubHeading && (
-            <p className="text-accent max-w-3xl pl-13 text-2xl">
+            <p className="text-accent mr-auto max-w-3xl px-4 text-2xl lg:pl-13">
               {approach.blueSubHeading}
             </p>
           )}

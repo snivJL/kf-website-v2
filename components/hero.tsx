@@ -18,7 +18,7 @@ export default function HeroSection({ hero }: { hero: Hero }) {
   return (
     <div className="flex min-h-[100dvh_-_96px] flex-col justify-between px-4 py-[clamp(3rem,8vh,6rem)]">
       <motion.section
-        className="flex flex-col items-center gap-6 pt-[clamp(2rem,8vh,5rem)]"
+        className="flex flex-col items-center gap-6 md:pt-[clamp(2rem,8vh,5rem)]"
         initial={shouldReduce ? undefined : 'hidden'}
         animate="show"
         variants={{
@@ -28,7 +28,7 @@ export default function HeroSection({ hero }: { hero: Hero }) {
       >
         {imgSrc && (
           <motion.div
-            className="relative h-48 w-full max-w-lg 2xl:h-64"
+            className="relative h-40 w-full max-w-lg md:h-48 2xl:h-64"
             variants={shouldReduce ? {} : fadeUp}
           >
             <Image
@@ -66,9 +66,9 @@ export default function HeroSection({ hero }: { hero: Hero }) {
           <motion.div
             key={cta.text}
             variants={shouldReduce ? {} : fadeUp}
-            className="group border-border bg-card relative flex min-h-44 flex-col justify-between rounded-2xl border p-6 shadow-sm transition-shadow hover:shadow-md sm:min-h-52 lg:min-h-60"
+            className="group border-border bg-card relative flex min-h-40 flex-col justify-between rounded-2xl border p-6 pb-4 shadow-sm transition-shadow hover:shadow-md sm:min-h-52 md:pb-6 lg:min-h-60"
           >
-            <p className="text-muted-foreground prose prose-sm mb-4 italic">
+            <p className="text-muted-foreground prose prose-sm italic md:mb-4">
               {cta.text}
             </p>
             <Button asChild variant="ghost">

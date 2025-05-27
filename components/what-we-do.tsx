@@ -16,10 +16,10 @@ export default function WhatWeDo({ whatWeDo }: WhatWeDoProps) {
   return (
     <section
       id="what-we-do"
-      className="scroll-mt-24py-[clamp(2rem,8vh,6rem)] min-h-[calc(100dvh-96px)]"
+      className="min-h-[calc(100dvh-96px)] scroll-mt-24 pb-[clamp(2rem,8vh,6rem)]"
     >
       <motion.div
-        className="container mx-auto mb-6 max-w-[700px] px-4 text-center xl:mb-8"
+        className="container mx-auto mb-8 max-w-[700px] space-y-2 px-4 text-center"
         initial={shouldReduce ? {} : { opacity: 0, y: 20 }}
         whileInView={shouldReduce ? {} : { opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
