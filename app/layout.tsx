@@ -17,8 +17,70 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Korefocus – AI + Data + Workflows',
+  metadataBase: new URL('https://www.korefocus.com'),
+  title: {
+    default: 'Korefocus – AI + Data + Workflows',
+    template: '%s | Korefocus',
+  },
   description: 'We design and implement your AI workflows to make data simple.',
+  keywords: [
+    'AI workflows',
+    'data automation',
+    'machine learning',
+    'Korefocus',
+  ],
+  authors: [{ name: 'Korefocus', url: 'https://www.korefocus.com' }],
+  creator: 'Korefocus',
+  publisher: 'Korefocus',
+  generator: 'Next.js 15',
+  applicationName: 'Korefocus',
+  manifest: '/manifest.json',
+  themeColor: '#ffffff',
+  viewport: 'width=device-width, initial-scale=1',
+  alternates: {
+    canonical: '/',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-snippet': -1,
+      'max-image-preview': 'large',
+      'max-video-preview': -1,
+    },
+  },
+  openGraph: {
+    title: 'Korefocus – AI + Data + Workflows',
+    description:
+      'We design and implement your AI workflows to make data simple.',
+    url: 'https://www.korefocus.com',
+    siteName: 'Korefocus',
+    images: [
+      {
+        url: '/opengraph-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Korefocus – AI + Data + Workflows',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Korefocus – AI + Data + Workflows',
+    description:
+      'We design and implement your AI workflows to make data simple.',
+    images: ['/opengraph-image.png'],
+  },
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/favicon.ico',
+  },
+  category: 'technology',
 };
 
 export default function RootLayout({

@@ -1,0 +1,16 @@
+{
+  "name": "Korefocus",
+  "short_name": "Korefocus",
+  "description": "We design and implement your AI workflows to make data simple.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "/logo_large.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}

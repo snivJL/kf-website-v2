@@ -13,6 +13,7 @@ import {
   Home,
   UseCase as UseCaseType,
 } from '@/lib/sanity/types';
+import type { Metadata } from 'next';
 import { groq } from 'next-sanity';
 
 const query = groq`
@@ -86,6 +87,11 @@ const query = groq`
 
 // **1 min cache / ISR**
 export const revalidate = 60;
+
+export const metadata: Metadata = {
+  title: 'Korefocus – AI + Data + Workflows',
+  description: 'We design and implement your AI workflows to make data simple.',
+};
 
 export default async function HomePage() {
   const { hero, whatWeDo, ourApproach, faq, useCase } =
