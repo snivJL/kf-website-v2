@@ -24,17 +24,9 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.korefocus.com'),
-  title: {
-    default: 'Korefocus – AI + Data + Workflows',
-    template: '%s | Korefocus',
-  },
+  title: 'Korefocus – AI + Data + Workflows',
   description: 'We design and implement your AI workflows to make data simple.',
-  keywords: [
-    'AI workflows',
-    'data automation',
-    'machine learning',
-    'Korefocus',
-  ],
+  keywords: ['AI workflows', 'data automation', 'Korefocus'],
   authors: [{ name: 'Korefocus', url: 'https://www.korefocus.com' }],
   creator: 'Korefocus',
   publisher: 'Korefocus',

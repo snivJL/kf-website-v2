@@ -125,17 +125,6 @@
   mask-size: 100% 100%;
   mask-repeat: no-repeat;
   mask-composite: exclude;
-  animation: mask-up 1s linear;
-  animation-timeline: scroll(self);
-  animation-range: 0 1rem;
-}
-
-@keyframes mask-up {
-  to {
-    mask-size:
-      100% var(--mask-height),
-      100% 100%;
-  }
 }
 
 @layer base {

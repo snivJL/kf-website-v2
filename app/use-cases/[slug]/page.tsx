@@ -43,7 +43,7 @@ export async function generateMetadata({
     return { title: 'Use case not found' };
   }
 
-  const title = `${useCase.title} | Korefocus`;
+  const title = `${useCase.title}`;
   const description = useCase.hook ?? 'Explore how Korefocus can help you';
   const url = `https://www.korefocus.com/use-cases/${slug}`;
 
