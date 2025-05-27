@@ -58,7 +58,7 @@ export default function ApproachCard({
         zIndex: 100 - i,
       }}
       className={cn(
-        'flex h-[300px] w-full items-center gap-6 rounded-2xl bg-white px-8 shadow-lg transition-shadow hover:shadow-2xl md:w-5/6 md:px-16',
+        'flex h-[300px] w-full items-center gap-6 rounded-xl bg-white px-8 shadow md:w-5/6 md:px-16',
         i === 3
           ? isStatic
             ? 'static'

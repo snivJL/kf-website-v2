@@ -50,26 +50,29 @@ export default function ContactUs() {
 
   return (
     <motion.section
-      className="h-full min-h-[calc(100dvh-96px)] scroll-mt-24 py-12"
+      className="flex min-h-[calc(100vh-96px)] items-center justify-center py-[clamp(4rem,8vh,10rem)]"
       id="faq"
-      initial={'hidden'}
+      initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.3 }}
       variants={fadeIn}
     >
-      <div className="grid h-full grid-cols-1 gap-8 px-4 py-12 md:grid-cols-2 md:px-12">
-        <div>
-          <h2 className="mb-4 text-4xl font-bold">Contact Us</h2>
-          <p className="text-muted-foreground mb-8">
-            We are available for questions, feedback, or collaboration
-            opportunities. Let us know how we can help!
-          </p>
-          <div className="space-y-2 text-sm">
+      <div className="grid w-full max-w-7xl grid-cols-1 items-stretch gap-12 px-6 md:grid-cols-2 md:px-12">
+        {/* LEFT: Intro and Contact Info */}
+        <div className="flex h-full flex-col justify-between">
+          <div>
+            <h2 className="mb-6 text-4xl font-bold">Contact Us</h2>
+            <p className="text-muted-foreground prose-lg mb-12">
+              We are available for questions, feedback, or collaboration
+              opportunities. Let us know how we can help!
+            </p>
+          </div>
+          <div className="text-muted-foreground space-y-2 pb-2 text-sm">
             <p>
-              <strong>Phone:</strong> (123) 34567890
+              <strong className="text-foreground">Phone:</strong> (123) 34567890
             </p>
             <p>
-              <strong>Email:</strong>{' '}
+              <strong className="text-foreground">Email:</strong>{' '}
               <a className="underline" href="mailto:email@example.com">
                 email@example.com
               </a>
@@ -77,9 +80,12 @@ export default function ContactUs() {
           </div>
         </div>
 
-        <Card className="space-y-4 p-6">
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+        <Card className="h-full p-8">
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="flex h-full flex-col gap-y-6"
+          >
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
               <div>
                 <Input placeholder="First Name" {...register('firstName')} />
                 {errors.firstName && (
@@ -136,9 +142,9 @@ export default function ContactUs() {
               )}
             </div>
 
-            <div>
+            <div className="flex-1">
               <Textarea
-                rows={4}
+                rows={6}
                 placeholder="Type your message here."
                 {...register('message')}
               />
@@ -156,7 +162,7 @@ export default function ContactUs() {
 
             <Button
               type="submit"
-              className="bg-accent hover:bg-accent/80 w-full cursor-pointer"
+              className="bg-accent hover:bg-accent/80 mt-auto w-full"
               disabled={isPending}
             >
               {isPending ? 'Sending...' : 'Send Message'}

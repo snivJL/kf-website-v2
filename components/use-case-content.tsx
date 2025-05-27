@@ -10,6 +10,7 @@ import { UseCaseMobileNav } from './use-case-mobile-nav';
 import { useEffect, useState } from 'react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { cn } from '@/lib/utils';
+import { useOverflow } from '@/hooks/use-overflow';
 
 interface Props {
   useCase: UseCaseItem;
@@ -19,6 +20,7 @@ export default function UseCaseContent({ useCase }: Props) {
   const [activeId, setActiveId] = useState<string>(SECTIONS[0].id);
   const isMobile = useIsMobile();
   const topOffset = isMobile ? 500 : 96;
+  const [ref, overflow] = useOverflow<HTMLDivElement>();
 
   // scroll-spy
   useEffect(() => {
@@ -45,7 +47,7 @@ export default function UseCaseContent({ useCase }: Props) {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
-
+  console.log(overflow);
   return (
     <article className="mx-auto max-w-7xl scroll-smooth px-4 py-16 pt-0 md:grid md:grid-cols-3 md:gap-x-16 md:pt-16">
       {/* LEFT: Sticky overview + nav */}
@@ -54,9 +56,15 @@ export default function UseCaseContent({ useCase }: Props) {
           <h1 className="pl-4 text-xl font-bold md:text-3xl">
             {useCase.title}
           </h1>
-          <Card className="bg-accent h-48 gap-0 overflow-y-auto py-3 md:h-[268px] md:gap-2 md:py-6">
+          <Card
+            className={cn(
+              'bg-accent h-48 overflow-y-auto py-3 md:h-[268px] md:gap-2 md:py-6',
+              { scroller: overflow === 'y' || overflow === 'both' }
+            )}
+            ref={ref}
+          >
             <CardHeader className="gap-0">
-              <h2 className="prose-lg md:prose-xl font-semibold text-white">
+              <h2 className="prose prose-lg md:prose-xl font-semibold text-white">
                 Objective
               </h2>
             </CardHeader>

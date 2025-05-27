@@ -22,11 +22,11 @@ export default function WidgetButtons() {
         </a>
       </Button>
 
-      {typeof window !== undefined && (
+      {typeof document !== 'undefined' && (
         <PopupButton
-          url="https://calendly.com/julien-lejay-korefocus/30min"
+          url="https://calendly.com/thomas-korefocus/30min"
           rootElement={document.body}
-          className="flex h-10 w-10 cursor-pointer! items-center justify-center rounded-full bg-blue-600 text-white hover:bg-blue-700"
+          className="hover:bg-accent bg-accent/80 flex h-10 w-10 cursor-pointer! items-center justify-center rounded-full text-white"
           text={(<Calendar className="size-5" />) as unknown as string}
           pageSettings={{
             primaryColor: '2d62ff',

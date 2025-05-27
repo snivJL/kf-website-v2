@@ -16,10 +16,9 @@ export default function HeroSection({ hero }: { hero: Hero }) {
     : '';
 
   return (
-    <div className="flex h-screen flex-col gap-12 px-4">
-      {/* HERO */}
+    <div className="flex min-h-[100dvh_-_96px] flex-col justify-between px-4 py-[clamp(3rem,8vh,6rem)]">
       <motion.section
-        className="flex flex-col items-center gap-4 pt-8"
+        className="flex flex-col items-center gap-6 pt-[clamp(2rem,8vh,5rem)]"
         initial={shouldReduce ? undefined : 'hidden'}
         animate="show"
         variants={{
@@ -29,7 +28,7 @@ export default function HeroSection({ hero }: { hero: Hero }) {
       >
         {imgSrc && (
           <motion.div
-            className="relative h-48 w-full max-w-lg sm:h-64 lg:h-72"
+            className="relative h-48 w-full max-w-lg 2xl:h-64"
             variants={shouldReduce ? {} : fadeUp}
           >
             <Image
@@ -55,7 +54,7 @@ export default function HeroSection({ hero }: { hero: Hero }) {
 
       {/* BLURBS */}
       <motion.div
-        className="mx-auto grid w-full max-w-4xl gap-4 px-4 sm:grid-cols-2 md:grid-cols-3"
+        className="mx-auto mt-8 grid w-full max-w-5xl gap-6 px-4 pb-[clamp(3rem,8vh,6rem)] sm:grid-cols-2 md:grid-cols-3"
         initial={shouldReduce ? undefined : 'hidden'}
         animate="show"
         variants={{
@@ -67,9 +66,9 @@ export default function HeroSection({ hero }: { hero: Hero }) {
           <motion.div
             key={cta.text}
             variants={shouldReduce ? {} : fadeUp}
-            className="group border-border bg-card relative flex h-full flex-col justify-between rounded-2xl border p-6 shadow-sm transition-shadow hover:shadow-md"
+            className="group border-border bg-card relative flex min-h-44 flex-col justify-between rounded-2xl border p-6 shadow-sm transition-shadow hover:shadow-md sm:min-h-52 lg:min-h-60"
           >
-            <p className="text-muted-foreground prose-sm mb-4 italic">
+            <p className="text-muted-foreground prose prose-sm mb-4 italic">
               {cta.text}
             </p>
             <Button asChild variant="ghost">

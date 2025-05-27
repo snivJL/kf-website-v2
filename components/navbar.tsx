@@ -63,7 +63,7 @@ export default function Navbar() {
         >
           <Link href="/" className="flex-shrink-0">
             <Image
-              src="/logo-small.svg"
+              src="/logo.svg"
               alt="Korefocus logo"
               width={128}
               height={128}

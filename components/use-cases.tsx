@@ -53,7 +53,7 @@ export const UseCases = ({ useCaseSection }: UseCasesProps) => {
             </p>
           )}
           <PortableText value={description || []} />
-          <p className="text-accent prose-xl italic">{blueSection}</p>
+          <p className="text-accent prose prose-xl italic">{blueSection}</p>
         </div>
 
         {/* Right Cards */}

@@ -34,5 +34,9 @@ export default async function UseCasePage({
     return <p className="prose mx-auto py-16">Use case not found.</p>;
   }
 
-  return <UseCaseContent useCase={useCase} />;
+  return (
+    <div className="pt-16">
+      <UseCaseContent useCase={useCase} />
+    </div>
+  );
 }
