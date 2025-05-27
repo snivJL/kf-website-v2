@@ -17,12 +17,31 @@ export default function WhatWeDo({ whatWeDo }: WhatWeDoProps) {
       id="what-we-do"
       className="min-h-[calc(100dvh-96px)] scroll-mt-24 bg-white py-12"
     >
-      <div className="container mx-auto mb-12 px-4 text-center">
-        <h2 className="text-4xl font-extrabold text-gray-900">
-          {whatWeDo.heading}
-        </h2>
-      </div>
-
+      <motion.div
+        className="container mx-auto mb-8 max-w-[700px] px-4"
+        initial={shouldReduce ? {} : { opacity: 0, y: 20 }}
+        whileInView={shouldReduce ? {} : { opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.6 }}
+      >
+        <div className="flex flex-col">
+          {whatWeDo.heading && (
+            <h2 className="mb-4 text-center text-3xl font-bold md:text-4xl">
+              {whatWeDo.heading}
+            </h2>
+          )}
+          {whatWeDo.graySubHeading && (
+            <p className="max-w-3xl pl-13 text-2xl text-gray-400">
+              {whatWeDo.graySubHeading}
+            </p>
+          )}
+          {whatWeDo.blueSubHeading && (
+            <p className="text-accent max-w-3xl pl-13 text-2xl">
+              {whatWeDo.blueSubHeading}
+            </p>
+          )}
+        </div>
+      </motion.div>
       <div className="container mx-auto grid gap-8 px-4 md:grid-cols-3">
         {whatWeDo.cards?.map((card: WhatWeDoItem, idx: number) => {
           // interleave blue/gray lines

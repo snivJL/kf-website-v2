@@ -33,6 +33,8 @@ const query = groq`
   "home": *[_type == "home"][0],
   "whatWeDo": *[_type == "whatWeDo"][0] {
     heading,
+    blueSubHeading,
+    graySubHeading,
     cards[] {
       title,
       subtitle,

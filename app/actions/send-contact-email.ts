@@ -8,7 +8,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 export async function sendContactEmail(data: ContactFormData) {
   const html = `
     <div style="font-family: 'Segoe UI', sans-serif; max-width: 600px; margin: 0 auto; padding: 2rem;">
-      <h2 style="color: #212536;">📬 New Contact Form Submission</h2>
+      <h2 style="color: #212536;">New Contact Form Submission from KF Website</h2>
 
       <div style="margin: 1.5rem 0;">
         <p><strong>First Name:</strong> ${data.firstName}</p>
@@ -17,7 +17,7 @@ export async function sendContactEmail(data: ContactFormData) {
         <p><strong>Subject:</strong> ${data.subject}</p>
       </div>
 
-      <div style="background-color: #f9f9f9; border-left: 4px solid #0A6AE7; padding: 1rem; font-size: 1rem; white-space: pre-line;">
+      <div style="background-color: #f9f9f9; border-left: 4px solid #2D62FF; padding: 1rem; font-size: 1rem; white-space: pre-line;">
         ${data.message}
       </div>
 
@@ -29,7 +29,7 @@ export async function sendContactEmail(data: ContactFormData) {
   await resend.emails.send({
     from: 'No Reply <noreply@contact.korefocus.com>',
     to: ['julien.lejay@korefocus.com'],
-    subject: `📥 Contact Form: ${data.firstName} ${data.lastName}`,
+    subject: `Contact Form: ${data.firstName} ${data.lastName}`,
     html,
   });
 }

@@ -110,7 +110,7 @@ export default function UseCaseContent({ useCase }: Props) {
         ))}
 
         <Button asChild variant="outline">
-          <Link href="/">← Back to all use cases</Link>
+          <Link href="/#use-cases">← Back to all use cases</Link>
         </Button>
       </main>
     </article>
