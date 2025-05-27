@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import { SanityLive } from '@/lib/sanity/live';
@@ -15,6 +15,12 @@ const geistMono = Geist_Mono({
   variable: '--font-geist-mono',
   subsets: ['latin'],
 });
+
+export const viewport: Viewport = {
+  themeColor: '#ffffff',
+  width: 'device-width',
+  initialScale: 1,
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.korefocus.com'),
@@ -35,8 +41,6 @@ export const metadata: Metadata = {
   generator: 'Next.js 15',
   applicationName: 'Korefocus',
   manifest: '/manifest.json',
-  themeColor: '#ffffff',
-  viewport: 'width=device-width, initial-scale=1',
   alternates: {
     canonical: '/',
   },
