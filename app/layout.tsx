@@ -5,6 +5,7 @@ import { SanityLive } from '@/lib/sanity/live';
 import Navbar from '@/components/navbar';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import WidgetButtons from '@/components/widget-buttons';
 const geistSans = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin'],
@@ -34,6 +35,7 @@ export default function RootLayout({
         <SanityLive />
         <Analytics />
         <SpeedInsights />
+        <WidgetButtons />
       </body>
     </html>
   );

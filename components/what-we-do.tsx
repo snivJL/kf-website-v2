@@ -4,17 +4,10 @@ import { useReducedMotion, motion } from 'framer-motion';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import type { WhatWeDo, WhatWeDoItem } from '@/lib/sanity/types';
-import { Database, Lightbulb, TrendingUp } from 'lucide-react';
 
 interface WhatWeDoProps {
   whatWeDo: WhatWeDo;
 }
-
-const ICON_MAP: Record<string, typeof Database> = {
-  KNOW: Database,
-  DO: Lightbulb,
-  DECIDE: TrendingUp,
-};
 
 export default function WhatWeDo({ whatWeDo }: WhatWeDoProps) {
   const shouldReduce = useReducedMotion();
@@ -42,10 +35,6 @@ export default function WhatWeDo({ whatWeDo }: WhatWeDoProps) {
             if (gray[i]) lines.push({ text: gray[i], color: 'gray' });
           }
 
-          const Icon = card.title
-            ? ICON_MAP[card.title.toUpperCase()]
-            : Database;
-
           return (
             <motion.div
               key={idx}
@@ -60,7 +49,6 @@ export default function WhatWeDo({ whatWeDo }: WhatWeDoProps) {
 
               {/* Header with icon */}
               <div className="relative z-10 flex items-center space-x-3 bg-black px-6 py-4 text-white">
-                <Icon className="group-hover:text-accent h-6 w-6 text-gray-400 transition-colors duration-200" />
                 <div>
                   <h3 className="text-2xl font-bold uppercase">{card.title}</h3>
                   <p className="mt-1 text-lg text-gray-300">{card.subtitle}</p>

@@ -65,7 +65,7 @@ export default function HeroSection({ hero }: { hero: Hero }) {
       >
         {hero.ctas?.map((cta) => (
           <motion.div
-            key={cta._key}
+            key={cta.text}
             variants={shouldReduce ? {} : fadeUp}
             className="group border-border bg-card relative flex h-full flex-col justify-between rounded-2xl border p-6 shadow-sm transition-shadow hover:shadow-md"
           >

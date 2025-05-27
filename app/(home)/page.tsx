@@ -1,3 +1,4 @@
+import ContactUs from '@/components/contact-us-section';
 import FaqSection from '@/components/faqs-section';
 import HeroSection from '@/components/hero';
 import OurApproach from '@/components/our-approach';
@@ -102,6 +103,7 @@ export default async function HomePage() {
       <OurApproach approach={ourApproach} />
       <UseCases useCaseSection={useCase} />
       <FaqSection faq={faq} />
+      <ContactUs />
     </>
   );
 }
