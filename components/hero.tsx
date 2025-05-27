@@ -16,7 +16,7 @@ export default function HeroSection({ hero }: { hero: Hero }) {
     : '';
 
   return (
-    <div className="flex h-screen flex-col gap-12 px-4">
+    <div className="flex min-h-[calc(100dvh-var(--navbar-height))] flex-col gap-[clamp(2rem,4vw,3rem)] px-4">
       {/* HERO */}
       <motion.section
         className="flex flex-col items-center gap-4 pt-8"

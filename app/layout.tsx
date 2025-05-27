@@ -32,7 +32,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Navbar />
-        <div className="pt-16">{children}</div>
+        <div className="pt-[var(--navbar-height)]">{children}</div>
         <SanityLive />
         <Analytics />
         <SpeedInsights />

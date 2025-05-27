@@ -18,7 +18,7 @@ export default function FaqSection({ faq }: FaqProps) {
 
   return (
     <section
-      className="bg-accent min-h-[calc(100dvh-96px)] scroll-mt-24 py-12 text-white"
+      className="bg-accent min-h-[calc(100dvh-var(--navbar-height))] scroll-mt-24 py-[clamp(3rem,5vw,6rem)] text-white"
       id="faq"
     >
       {/* Heading */}

@@ -30,7 +30,7 @@ export default function OurApproach({ approach }: { approach: OurApproach }) {
 
   return (
     <section
-      className="relative h-[2400px] scroll-mt-24 py-12"
+      className="relative h-[2400px] min-h-[calc(100dvh-var(--navbar-height))] scroll-mt-24 py-[clamp(3rem,5vw,6rem)]"
       ref={containerRef}
       id="how-we-work"
     >

@@ -15,7 +15,7 @@ export default function WhatWeDo({ whatWeDo }: WhatWeDoProps) {
   return (
     <section
       id="what-we-do"
-      className="min-h-[calc(100dvh-96px)] scroll-mt-24 bg-white py-12"
+      className="min-h-[calc(100dvh-var(--navbar-height))] scroll-mt-24 bg-white py-[clamp(3rem,5vw,6rem)]"
     >
       <motion.div
         className="container mx-auto mb-8 max-w-[700px] px-4"

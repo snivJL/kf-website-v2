@@ -54,7 +54,7 @@ export default function Navbar() {
       animate={shouldReduce ? {} : { y: 0, opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="container mx-auto flex h-16 items-center justify-between px-4">
+      <div className="container mx-auto flex h-[var(--navbar-height)] items-center justify-between px-4">
         {/* Logo */}
         <motion.div
           initial={shouldReduce ? {} : { opacity: 0 }}
@@ -118,7 +118,7 @@ export default function Navbar() {
       </div>
 
       {/* Centered Desktop Nav */}
-      <nav className="pointer-events-none absolute inset-x-0 top-4 flex h-16 justify-center">
+      <nav className="pointer-events-none absolute inset-x-0 top-4 flex h-[var(--navbar-height)] justify-center">
         <ul className="bg-primary border-accent pointer-events-auto hidden space-x-4 rounded-full border p-4 text-sm font-medium text-white md:flex">
           {navItems.map((item, i) => (
             <motion.li
