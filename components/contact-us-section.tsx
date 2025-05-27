@@ -51,7 +51,7 @@ export default function ContactUs() {
   return (
     <motion.section
       className="flex min-h-[calc(100vh-96px)] items-center justify-center py-[clamp(4rem,8vh,10rem)]"
-      id="faq"
+      id="contact-us"
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.3 }}

@@ -9,6 +9,7 @@ import {
 } from '@/components/ui/accordion';
 import { PortableText } from 'next-sanity';
 import { Faq } from '@/lib/sanity/types';
+import { fadeIn } from '@/lib/motion';
 
 type FaqProps = {
   faq: Faq;
@@ -24,10 +25,10 @@ export default function FaqSection({ faq }: FaqProps) {
       {/* Heading */}
       <motion.h2
         className="mb-12 text-center text-4xl font-bold"
-        initial={shouldReduce ? {} : { opacity: 0, y: 20 }}
-        whileInView={shouldReduce ? {} : { opacity: 1, y: 0 }}
+        initial={shouldReduce ? {} : 'hidden'}
+        whileInView="show"
         viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.6 }}
+        variants={fadeIn}
       >
         {faq.heading}
       </motion.h2>

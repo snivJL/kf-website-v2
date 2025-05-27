@@ -5,9 +5,31 @@ import Link from 'next/link';
 import { urlFor } from '@/lib/sanity/client';
 import type { Hero } from '@/lib/sanity/types';
 import Image from 'next/image';
-import { fadeUp } from '@/lib/motion';
+import { fadeIn, fadeUp } from '@/lib/motion';
 import { Button } from './ui/button';
 import { ArrowRight } from 'lucide-react';
+
+const container = {
+  hidden: fadeIn.hidden,
+  show: {
+    ...fadeIn.show,
+    transition: {
+      ...fadeIn.show.transition,
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const blurbContainer = {
+  hidden: fadeIn.hidden,
+  show: {
+    ...fadeIn.show,
+    transition: {
+      ...fadeIn.show.transition,
+      staggerChildren: 0.15,
+    },
+  },
+};
 
 export default function HeroSection({ hero }: { hero: Hero }) {
   const shouldReduce = useReducedMotion();
@@ -20,11 +42,9 @@ export default function HeroSection({ hero }: { hero: Hero }) {
       <motion.section
         className="flex flex-col items-center gap-6 md:pt-[clamp(2rem,8vh,5rem)]"
         initial={shouldReduce ? undefined : 'hidden'}
-        animate="show"
-        variants={{
-          hidden: {},
-          show: { transition: { staggerChildren: 0.2 } },
-        }}
+        whileInView="show"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={shouldReduce ? {} : container}
       >
         {imgSrc && (
           <motion.div
@@ -56,11 +76,9 @@ export default function HeroSection({ hero }: { hero: Hero }) {
       <motion.div
         className="mx-auto mt-8 grid w-full max-w-5xl gap-6 px-4 pb-[clamp(3rem,8vh,6rem)] sm:grid-cols-2 md:grid-cols-3"
         initial={shouldReduce ? undefined : 'hidden'}
-        animate="show"
-        variants={{
-          hidden: {},
-          show: { transition: { staggerChildren: 0.15 } },
-        }}
+        whileInView="show"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={shouldReduce ? {} : blurbContainer}
       >
         {hero.ctas?.map((cta) => (
           <motion.div

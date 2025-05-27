@@ -5,6 +5,7 @@ import Lenis from 'lenis';
 import { useScroll, motion, useReducedMotion } from 'framer-motion';
 import type { OurApproach } from '@/lib/sanity/types';
 import ApproachCard from './approach-card';
+import { fadeIn } from '@/lib/motion';
 
 export default function OurApproach({ approach }: { approach: OurApproach }) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -36,10 +37,10 @@ export default function OurApproach({ approach }: { approach: OurApproach }) {
     >
       <motion.div
         className="sticky top-[20vh] container mx-auto mb-4 max-w-[700px] px-4"
-        initial={shouldReduce ? {} : { opacity: 0, y: 20 }}
-        whileInView={shouldReduce ? {} : { opacity: 1, y: 0 }}
+        initial={shouldReduce ? {} : 'hidden'}
+        whileInView="show"
         viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.6 }}
+        variants={fadeIn}
       >
         <div className="flex flex-col">
           {approach.heading && (

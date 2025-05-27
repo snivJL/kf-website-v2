@@ -32,9 +32,10 @@ const metaQuery = groq`
 export async function generateMetadata({
   params,
 }: {
-  params: SearchParams;
+  params: { slug: string };
+  searchParams?: { [key: string]: string | string[] | undefined };
 }): Promise<Metadata> {
-  const { slug } = params;
+  const { slug } = await params;
   const { useCase } = await sanityClient.fetch<{
     useCase: { title?: string; hook?: string } | null;
   }>(metaQuery, { slug });

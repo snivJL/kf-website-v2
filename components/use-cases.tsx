@@ -11,6 +11,7 @@ import {
 import { Button } from '@/components/ui/button';
 import type { UseCase } from '@/lib/sanity/types';
 import { PortableText } from 'next-sanity';
+import { fadeIn } from '@/lib/motion';
 
 const container: Variants = {
   hidden: {},
@@ -38,10 +39,10 @@ export const UseCases = ({ useCaseSection }: UseCasesProps) => {
     <motion.section
       id="use-cases"
       className="min-h-[calc(100dvh-96px)] scroll-mt-24 bg-white px-8 py-12 text-gray-900"
-      initial={shouldReduce ? {} : { opacity: 0, y: 20 }}
-      whileInView={shouldReduce ? {} : { opacity: 1, y: 0 }}
+      initial={shouldReduce ? {} : 'hidden'}
+      whileInView="show"
       viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration: 0.6 }}
+      variants={fadeIn}
     >
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 md:grid-cols-2">
         {/* Left Intro */}
