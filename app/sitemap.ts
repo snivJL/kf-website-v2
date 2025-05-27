@@ -3,7 +3,7 @@ import { MetadataRoute } from 'next';
 import { groq } from 'next-sanity';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://www.korefocus.com';
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL!;
 
   const slugs = await sanityClient.fetch<Array<{ slug: string }>>(groq`
     *[_type == "useCase"][0].useCases[] { "slug": buttonLink }

@@ -45,7 +45,7 @@ export async function generateMetadata({
 
   const title = `${useCase.title}`;
   const description = useCase.hook ?? 'Explore how Korefocus can help you';
-  const url = `https://www.korefocus.com/use-cases/${slug}`;
+  const url = `${process.env.NEXT_PUBLIC_BASE_URL}/use-cases/${slug}`;
 
   return {
     title,

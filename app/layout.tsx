@@ -23,11 +23,11 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.korefocus.com'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL!),
   title: 'Korefocus – AI + Data + Workflows',
   description: 'We design and implement your AI workflows to make data simple.',
   keywords: ['AI workflows', 'data automation', 'Korefocus'],
-  authors: [{ name: 'Korefocus', url: 'https://www.korefocus.com' }],
+  authors: [{ name: 'Korefocus', url: process.env.NEXT_PUBLIC_BASE_URL }],
   creator: 'Korefocus',
   publisher: 'Korefocus',
   generator: 'Next.js 15',
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     title: 'Korefocus – AI + Data + Workflows',
     description:
       'We design and implement your AI workflows to make data simple.',
-    url: 'https://www.korefocus.com',
+    url: process.env.NEXT_PUBLIC_BASE_URL,
     siteName: 'Korefocus',
     images: [
       {
