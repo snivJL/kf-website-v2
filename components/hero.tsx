@@ -1,6 +1,10 @@
 'use client';
 
-import { useReducedMotion, motion } from 'framer-motion';
+import {
+  useReducedMotion,
+  motion,
+  type TargetAndTransition,
+} from 'framer-motion';
 import Link from 'next/link';
 import { urlFor } from '@/lib/sanity/client';
 import type { Hero } from '@/lib/sanity/types';
@@ -14,7 +18,7 @@ const container = {
   show: {
     ...fadeIn.show,
     transition: {
-      ...fadeIn.show.transition,
+      ...(fadeIn.show as TargetAndTransition).transition,
       staggerChildren: 0.2,
     },
   },
@@ -25,7 +29,7 @@ const blurbContainer = {
   show: {
     ...fadeIn.show,
     transition: {
-      ...fadeIn.show.transition,
+      ...(fadeIn.show as TargetAndTransition).transition,
       staggerChildren: 0.15,
     },
   },

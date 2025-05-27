@@ -33,7 +33,6 @@ export async function generateMetadata({
   params,
 }: {
   params: Promise<{ slug: string }>;
-  searchParams?: { [key: string]: string | string[] | undefined };
 }): Promise<Metadata> {
   const { slug } = await params;
   const { useCase } = await sanityClient.fetch<{
