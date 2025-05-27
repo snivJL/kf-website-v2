@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 
 const HomeLayout = ({ children }: { children: ReactNode }) => {
   return (
-    <div>
+    <div className="snap-y snap-mandatory overflow-y-scroll">
       {children}
       <Footer />
     </div>

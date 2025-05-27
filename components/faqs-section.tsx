@@ -1,6 +1,7 @@
 'use client';
 
 import { motion, useReducedMotion } from 'framer-motion';
+import { fadeIn } from '@/lib/motion';
 import {
   Accordion,
   AccordionItem,
@@ -17,9 +18,13 @@ export default function FaqSection({ faq }: FaqProps) {
   const shouldReduce = useReducedMotion();
 
   return (
-    <section
-      className="bg-accent min-h-[calc(100dvh-96px)] scroll-mt-24 py-12 text-white"
+    <motion.section
+      className="bg-accent min-h-[calc(100dvh-96px)] snap-start scroll-mt-24 py-12 text-white"
       id="faq"
+      initial={shouldReduce ? {} : 'hidden'}
+      whileInView="show"
+      viewport={{ once: true, amount: 0.3 }}
+      variants={fadeIn}
     >
       {/* Heading */}
       <motion.h2
@@ -62,6 +67,6 @@ export default function FaqSection({ faq }: FaqProps) {
             : null}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
