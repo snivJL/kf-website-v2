@@ -20,7 +20,7 @@ export default function UseCaseContent({ useCase }: Props) {
   const [activeId, setActiveId] = useState<string>(SECTIONS[0].id);
   const isMobile = useIsMobile();
   const topOffset = isMobile ? 500 : 96;
-  const [ref, overflow] = useOverflow<HTMLDivElement>();
+  const [ref, overflow, isScrolledToBottom] = useOverflow<HTMLDivElement>();
 
   // scroll-spy
   useEffect(() => {
@@ -47,7 +47,9 @@ export default function UseCaseContent({ useCase }: Props) {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
-  console.log(overflow);
+
+  const showScrollerClass =
+    (overflow === 'y' || overflow === 'both') && !isScrolledToBottom;
   return (
     <article className="mx-auto max-w-7xl scroll-smooth px-4 md:grid md:grid-cols-3 md:gap-x-16 md:pt-16">
       {/* LEFT: Sticky overview + nav */}
@@ -59,7 +61,9 @@ export default function UseCaseContent({ useCase }: Props) {
           <Card
             className={cn(
               'bg-accent h-48 overflow-y-auto py-3 md:h-[268px] md:gap-2 md:py-6',
-              { scroller: overflow === 'y' || overflow === 'both' }
+              {
+                scroller: showScrollerClass,
+              }
             )}
             ref={ref}
           >

@@ -3,15 +3,19 @@ import { RefObject, useEffect, useRef, useState } from 'react';
 type OverflowDirection = 'x' | 'y' | 'both' | 'none';
 
 export function useOverflow<T extends HTMLElement>(): [
-  React.RefObject<T>,
+  RefObject<T>,
   OverflowDirection,
+  boolean,
 ] {
   const ref = useRef<T>(null);
   const [overflow, setOverflow] = useState<OverflowDirection>('none');
+  const [isScrolledToBottom, setIsScrolledToBottom] = useState(false);
 
   useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
     const checkOverflow = () => {
-      const el = ref.current;
       if (!el) return;
 
       const hasOverflowX = el.scrollWidth > el.clientWidth;
@@ -23,14 +27,30 @@ export function useOverflow<T extends HTMLElement>(): [
       else setOverflow('none');
     };
 
+    const checkScrollBottom = () => {
+      if (!el) return;
+      const reachedBottom =
+        el.scrollTop + el.clientHeight >= el.scrollHeight - 1;
+      setIsScrolledToBottom(reachedBottom);
+    };
+
     checkOverflow();
+    checkScrollBottom();
 
-    // Optionally handle dynamic resizing
-    const observer = new ResizeObserver(checkOverflow);
-    if (ref.current) observer.observe(ref.current);
+    el.addEventListener('scroll', checkScrollBottom);
 
-    return () => observer.disconnect();
+    const resizeObserver = new ResizeObserver(() => {
+      checkOverflow();
+      checkScrollBottom();
+    });
+
+    resizeObserver.observe(el);
+
+    return () => {
+      el.removeEventListener('scroll', checkScrollBottom);
+      resizeObserver.disconnect();
+    };
   }, []);
 
-  return [ref as RefObject<T>, overflow];
+  return [ref as RefObject<T>, overflow, isScrolledToBottom];
 }
