@@ -3,10 +3,10 @@ import type { ReactNode } from 'react';
 
 const HomeLayout = ({ children }: { children: ReactNode }) => {
   return (
-    <div>
+    <>
       {children}
       <Footer />
-    </div>
+    </>
   );
 };
 

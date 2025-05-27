@@ -19,7 +19,7 @@ export default function FaqSection({ faq }: FaqProps) {
 
   return (
     <motion.section
-      className="bg-accent min-h-[calc(100dvh-96px)] snap-start scroll-mt-24 py-12 text-white"
+      className="bg-accent min-h-[calc(100dvh-96px)] scroll-mt-24 py-12 text-white"
       id="faq"
       initial={shouldReduce ? {} : 'hidden'}
       whileInView="show"

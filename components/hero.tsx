@@ -1,6 +1,6 @@
 'use client';
 
-import { useReducedMotion, motion } from 'framer-motion';
+import { useReducedMotion, motion, TargetAndTransition } from 'framer-motion';
 import Link from 'next/link';
 import { urlFor } from '@/lib/sanity/client';
 import type { Hero } from '@/lib/sanity/types';
@@ -16,7 +16,7 @@ export default function HeroSection({ hero }: { hero: Hero }) {
     : '';
 
   return (
-    <div className="flex h-screen snap-start flex-col gap-12 px-4">
+    <div className="flex h-screen flex-col gap-12 px-4">
       {/* HERO */}
       <motion.section
         className="flex flex-col items-center gap-4 pt-8"
@@ -30,7 +30,7 @@ export default function HeroSection({ hero }: { hero: Hero }) {
                 show: {
                   ...fadeIn.show,
                   transition: {
-                    ...fadeIn.show.transition,
+                    ...(fadeIn.show as TargetAndTransition).transition,
                     staggerChildren: 0.2,
                   },
                 },
@@ -75,7 +75,7 @@ export default function HeroSection({ hero }: { hero: Hero }) {
       >
         {hero.ctas?.map((cta) => (
           <motion.div
-            key={cta._key}
+            key={cta.text}
             variants={shouldReduce ? {} : fadeUp}
             className="group border-border bg-card relative flex h-full flex-col justify-between rounded-2xl border p-6 shadow-sm transition-shadow hover:shadow-md"
           >

@@ -31,7 +31,7 @@ export default function OurApproach({ approach }: { approach: OurApproach }) {
 
   return (
     <motion.section
-      className="relative h-[2400px] snap-start scroll-mt-24 py-12"
+      className="relative h-[2400px] scroll-mt-24 py-12"
       ref={containerRef}
       id="how-we-work"
       initial={shouldReduce ? {} : 'hidden'}

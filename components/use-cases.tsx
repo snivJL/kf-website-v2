@@ -38,7 +38,7 @@ export const UseCases = ({ useCaseSection }: UseCasesProps) => {
   return (
     <motion.section
       id="use-cases"
-      className="min-h-[calc(100dvh-96px)] snap-start scroll-mt-24 bg-white px-8 py-12 text-gray-900"
+      className="min-h-[calc(100dvh-96px)] scroll-mt-24 bg-white px-8 py-12 text-gray-900"
       initial={shouldReduce ? {} : 'hidden'}
       whileInView="show"
       viewport={{ once: true, amount: 0.3 }}
