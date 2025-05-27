@@ -84,7 +84,7 @@ export default function UseCaseContent({ useCase }: Props) {
       </aside>
 
       {/* RIGHT: Scrollable deep dive */}
-      <main className="col-span-2 space-y-8 px-4 pt-12 pb-4 md:space-y-16 md:px-16 md:pt-0 md:pb-24 [&_li]:ml-1 [&_li]:list-inside [&_li]:list-disc md:[&_li]:ml-4">
+      <main className="col-span-2 space-y-8 px-4 pt-12 pb-4 md:space-y-16 md:px-16 md:pt-0 md:pb-8 [&_li]:ml-1 [&_li]:list-inside [&_li]:list-disc md:[&_li]:ml-4">
         {SECTIONS.map(({ id, label }) => (
           <section
             key={id}
