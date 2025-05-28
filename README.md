@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Korefocus Website
 
-## Getting Started
+This project contains the front‑end for the **Korefocus** website. It is built with [Next.js](https://nextjs.org/) 15, React 19 and TypeScript.
 
-First, run the development server:
+## Requirements
+
+- Node.js 18 or newer
+- `pnpm` (or `npm`) for installing dependencies
+
+## Setup
+
+1. Install the dependencies:
+
+   ```bash
+   pnpm install
+   ```
+
+2. Create a `.env.local` file by copying the provided example and filling in your values:
+
+   ```bash
+   cp .env.example .env.local
+   ```
+
+   The following variables must be provided:
+
+   - `NEXT_PUBLIC_BASE_URL` – base URL of the site (e.g. `http://localhost:3000`).
+   - `NEXT_PUBLIC_SANITY_PROJECT_ID` – Sanity CMS project ID.
+   - `NEXT_PUBLIC_SANITY_DATASET` – Sanity dataset name.
+   - `RESEND_API_KEY` – API key used to send emails with Resend.
+
+3. Start the development server:
+
+   ```bash
+   pnpm dev
+   ```
+
+   The site will be available at [http://localhost:3000](http://localhost:3000).
+
+## Available Scripts
+
+- `pnpm dev` – run the development server.
+- `pnpm build` – create a production build.
+- `pnpm start` – start the production server (after building).
+- `pnpm lint` – run ESLint.
+- `pnpm format` – format the codebase using Prettier.
+- `pnpm test` – execute unit tests with Vitest.
+
+## Testing
+
+To execute the unit tests run:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm test
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The tests are located in the `test/` directory and use [Vitest](https://vitest.dev/).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `app/` – application routes and pages.
+- `components/` – React components used throughout the site.
+- `lib/` – utility functions and Sanity helpers.
+- `public/` – static assets.
+- `test/` – unit tests.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Feel free to open issues or submit pull requests to improve the project.
