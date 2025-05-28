@@ -12,6 +12,7 @@ import {
   Faq,
   Home,
   UseCase as UseCaseType,
+  ContactUsPage,
 } from '@/lib/sanity/types';
 import type { Metadata } from 'next';
 import { groq } from 'next-sanity';
@@ -81,6 +82,17 @@ const query = groq`
       benefits[]{..., markDefs[]{...}},
       korefocusRole[]{..., markDefs[]{...}}
     }
+  },"contactUs": *[_type == "contactUsPage"][0] {
+    title,
+    description,
+    phoneLabel,
+    phoneNumber,
+    emailLabel,
+    emailAddress,
+    submitButtonText,
+    sendingButtonText,
+    successToast,
+    errorToast
   }
 }
 `;
@@ -95,7 +107,7 @@ export const metadata: Metadata = {
 };
 
 export default async function HomePage() {
-  const { hero, whatWeDo, ourApproach, faq, useCase } =
+  const { hero, whatWeDo, ourApproach, faq, useCase, contactUs } =
     await sanityClient.fetch<{
       hero: Hero;
       home: Home;
@@ -103,6 +115,7 @@ export default async function HomePage() {
       ourApproach: OurApproachType;
       faq: Faq;
       useCase: UseCaseType;
+      contactUs: ContactUsPage;
     }>(query);
 
   return (
@@ -112,7 +125,7 @@ export default async function HomePage() {
       <OurApproach approach={ourApproach} />
       <UseCases useCaseSection={useCase} />
       <FaqSection faq={faq} />
-      <ContactUs />
+      <ContactUs contactUsSection={contactUs} />
     </>
   );
 }

@@ -12,6 +12,7 @@ import { fadeIn } from '@/lib/motion';
 import { sendContactEmail } from '@/app/actions/send-contact-email';
 import { useTransition } from 'react';
 import { toast } from 'sonner';
+import { ContactUsPage } from '@/lib/sanity/types';
 
 const formSchema = z.object({
   firstName: z.string().min(1, 'Please enter your first name'),
@@ -23,7 +24,11 @@ const formSchema = z.object({
 
 export type ContactFormData = z.infer<typeof formSchema>;
 
-export default function ContactUs() {
+export default function ContactUs({
+  contactUsSection,
+}: {
+  contactUsSection: ContactUsPage;
+}) {
   const [isPending, startTransition] = useTransition();
   const {
     register,
@@ -38,12 +43,12 @@ export default function ContactUs() {
     startTransition(() => {
       sendContactEmail(data)
         .then(() => {
-          toast.success('Message sent successfully');
+          toast.success(contactUsSection.successToast);
           reset();
         })
         .catch((err) => {
           console.error(err);
-          toast.error('Something went wrong. Please try again.');
+          toast.error(contactUsSection.errorToast);
         });
     });
   };
@@ -61,20 +66,29 @@ export default function ContactUs() {
         {/* LEFT: Intro and Contact Info */}
         <div className="flex h-full flex-col justify-between">
           <div>
-            <h2 className="mb-6 text-4xl font-bold">Contact Us</h2>
+            <h2 className="mb-6 text-4xl font-bold">
+              {contactUsSection.title}
+            </h2>
             <p className="text-muted-foreground prose-lg mb-12">
-              We are available for questions, feedback, or collaboration
-              opportunities. Let us know how we can help!
+              {contactUsSection.description}
             </p>
           </div>
           <div className="text-muted-foreground space-y-2 pb-2 text-sm">
             <p>
-              <strong className="text-foreground">Phone:</strong> (123) 34567890
+              <strong className="text-foreground">
+                {contactUsSection.phoneLabel}
+              </strong>{' '}
+              {contactUsSection.phoneNumber || 'N/A'}
             </p>
             <p>
-              <strong className="text-foreground">Email:</strong>{' '}
-              <a className="underline" href="mailto:email@example.com">
-                email@example.com
+              <strong className="text-foreground">
+                {contactUsSection.emailLabel}
+              </strong>{' '}
+              <a
+                className="underline"
+                href={`mailto:${contactUsSection.emailAddress}`}
+              >
+                {contactUsSection.emailAddress || 'N/A'}
               </a>
             </p>
           </div>
@@ -165,7 +179,9 @@ export default function ContactUs() {
               className="bg-accent hover:bg-accent/80 mt-auto w-full"
               disabled={isPending}
             >
-              {isPending ? 'Sending...' : 'Send Message'}
+              {isPending
+                ? contactUsSection.sendingButtonText
+                : contactUsSection.submitButtonText}
             </Button>
           </form>
         </Card>
