@@ -25,7 +25,8 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL!),
   title: 'Korefocus – AI + Data + Workflows',
-  description: 'We design and implement your AI workflows to make data simple.',
+  description:
+    'Korefocus partners with you to streamline data and AI workflows. We blend business insight with technical expertise, delivering proven tools, custom API layers, and tailored AI agents. Discover our approach, use cases, and contact us today.',
   keywords: ['AI workflows', 'data automation', 'Korefocus'],
   authors: [{ name: 'Korefocus', url: process.env.NEXT_PUBLIC_BASE_URL }],
   creator: 'Korefocus',
@@ -50,7 +51,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Korefocus – AI + Data + Workflows',
     description:
-      'We design and implement your AI workflows to make data simple.',
+      'Korefocus partners with you to streamline data and AI workflows. We blend business insight with technical expertise, delivering proven tools, custom API layers, and tailored AI agents. Discover our approach, use cases, and contact us today.',
     url: process.env.NEXT_PUBLIC_BASE_URL,
     siteName: 'Korefocus',
     images: [
@@ -68,7 +69,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Korefocus – AI + Data + Workflows',
     description:
-      'We design and implement your AI workflows to make data simple.',
+      'Korefocus partners with you to streamline data and AI workflows. We blend business insight with technical expertise, delivering proven tools, custom API layers, and tailored AI agents. Discover our approach, use cases, and contact us today.',
     images: ['/opengraph-image.png'],
   },
   icons: {
@@ -96,6 +97,18 @@ export default function RootLayout({
         <SpeedInsights />
         <WidgetButtons />
         <Toaster />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Organization',
+              name: 'Korefocus',
+              url: process.env.NEXT_PUBLIC_BASE_URL,
+              logo: `${process.env.NEXT_PUBLIC_BASE_URL}/logo.svg`,
+            }),
+          }}
+        />
       </body>
     </html>
   );

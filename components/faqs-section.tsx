@@ -7,7 +7,7 @@ import {
   AccordionTrigger,
   AccordionContent,
 } from '@/components/ui/accordion';
-import { PortableText } from 'next-sanity';
+import { PortableText, toPlainText } from 'next-sanity';
 import { Faq } from '@/lib/sanity/types';
 import { fadeIn } from '@/lib/motion';
 
@@ -16,6 +16,19 @@ type FaqProps = {
 };
 export default function FaqSection({ faq }: FaqProps) {
   const shouldReduce = useReducedMotion();
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity:
+      faq.faqItem?.map((item) => ({
+        '@type': 'Question',
+        name: item.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: toPlainText(item.answer ?? []),
+        },
+      })) || [],
+  };
 
   return (
     <section
@@ -63,6 +76,10 @@ export default function FaqSection({ faq }: FaqProps) {
             : null}
         </div>
       </div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
     </section>
   );
 }

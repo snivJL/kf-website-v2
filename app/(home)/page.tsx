@@ -90,7 +90,8 @@ export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: 'Korefocus – AI + Data + Workflows',
-  description: 'We design and implement your AI workflows to make data simple.',
+  description:
+    'Korefocus partners with you to streamline data and AI workflows. We blend business insight with technical expertise, delivering proven tools, custom API layers, and tailored AI agents. Discover our approach, use cases, and contact us today.',
 };
 
 export default async function HomePage() {
