@@ -10,6 +10,7 @@ import {
 import { PortableText, toPlainText } from 'next-sanity';
 import { Faq } from '@/lib/sanity/types';
 import { fadeIn } from '@/lib/motion';
+import Script from 'next/script';
 
 type FaqProps = {
   faq: Faq;
@@ -76,9 +77,13 @@ export default function FaqSection({ faq }: FaqProps) {
             : null}
         </div>
       </div>
-      <script
+      <Script
+        id="faq-schema"
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        strategy="lazyOnload"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqSchema),
+        }}
       />
     </section>
   );

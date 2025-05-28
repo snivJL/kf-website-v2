@@ -7,6 +7,8 @@ import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import WidgetButtons from '@/components/widget-buttons';
 import { Toaster } from 'sonner';
+import Script from 'next/script';
+
 const geistSans = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin'],
@@ -97,8 +99,10 @@ export default function RootLayout({
         <SpeedInsights />
         <WidgetButtons />
         <Toaster />
-        <script
+        <Script
+          id="structured-data"
           type="application/ld+json"
+          strategy="lazyOnload"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               '@context': 'https://schema.org',

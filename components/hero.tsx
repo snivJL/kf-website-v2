@@ -59,6 +59,7 @@ export default function HeroSection({ hero }: { hero: Hero }) {
               src={imgSrc}
               alt={hero.image?.alt || 'Hero image'}
               fill
+              priority
               className="object-contain"
               sizes="(max-width: 768px) 100vw, 50vw"
             />
