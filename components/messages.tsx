@@ -76,7 +76,11 @@ function PureMessages({
       {messages.length > 0 && (
         <Button
           onClick={() => setMessages([])}
-          className="fixed right-6 bottom-13 rounded-full px-4 py-2 text-sm shadow-md"
+          variant="secondary"
+          data-testid="new-chat-button"
+          disabled={status === 'streaming'}
+          aria-label="Start a new chat"
+          className="fixed right-48 bottom-10 cursor-pointer"
         >
           New Chat
         </Button>
