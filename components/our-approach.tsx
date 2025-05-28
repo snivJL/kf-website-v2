@@ -31,7 +31,7 @@ export default function OurApproach({ approach }: { approach: OurApproach }) {
 
   return (
     <section
-      className="relative h-[2400px] scroll-mt-24 py-12"
+      className="relative h-[2400px] scroll-mt-24 pt-12 pb-48"
       ref={containerRef}
       id="how-we-work"
     >
