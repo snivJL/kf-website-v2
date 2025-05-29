@@ -16,7 +16,6 @@ import {
 } from '@/lib/sanity/types';
 import type { Metadata } from 'next';
 import { homePageQuery } from '@/lib/sanity/queries';
-import ValueCarousel from '@/components/value-carrousel';
 import HomeHighlights from '@/components/highlights';
 
 // **1 min cache / ISR**
@@ -47,10 +46,8 @@ export default async function HomePage() {
       <OurApproach approach={ourApproach} />
       <UseCases useCaseSection={useCase} />
       <HomeHighlights />
-
       <FaqSection faq={faq} />
       <ContactUs contactUsSection={contactUs} />
-      <ValueCarousel />
     </>
   );
 }
