@@ -136,6 +136,34 @@
   }
 }
 
+@layer utilities {
+  .divider-animated {
+    @apply relative my-4 h-[1px] w-82 rounded-full border-none bg-gradient-to-r from-white via-white/70 to-white bg-[length:200%_100%];
+    animation: slide 2s infinite alternate;
+  }
+
+  .divider-animated::before {
+    left: 0;
+  }
+
+  .divider-animated::after {
+    right: 0;
+  }
+
+  .divider-animated--delay {
+    animation-delay: 1s;
+  }
+
+  @keyframes slide {
+    from {
+      background-position: left 0;
+    }
+    to {
+      background-position: right 0;
+    }
+  }
+}
+
 html {
   scroll-behavior: smooth;
 }
