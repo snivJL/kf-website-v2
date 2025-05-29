@@ -17,6 +17,7 @@ import {
 import type { Metadata } from 'next';
 import { homePageQuery } from '@/lib/sanity/queries';
 import ValueCarousel from '@/components/value-carrousel';
+import HomeHighlights from '@/components/highlights';
 
 // **1 min cache / ISR**
 export const revalidate = 60;
@@ -45,6 +46,8 @@ export default async function HomePage() {
       <WhatWeDo whatWeDo={whatWeDo} />
       <OurApproach approach={ourApproach} />
       <UseCases useCaseSection={useCase} />
+      <HomeHighlights />
+
       <FaqSection faq={faq} />
       <ContactUs contactUsSection={contactUs} />
       <ValueCarousel />
