@@ -68,9 +68,6 @@ function ValueCarousel() {
 
   return (
     <div className="container mx-auto flex h-full flex-col items-center justify-center py-12">
-      {/* <h2 className="mb-6 pb-12 text-center text-4xl font-bold">
-        How we create value for your business
-      </h2> */}
       <div className="w-full max-w-full">
         <ul
           ref={wrapperRef}

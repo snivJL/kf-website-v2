@@ -51,36 +51,41 @@ const items = [
 
 export default function HomeHighlights() {
   return (
-    <section id="highlights" className="container mx-auto space-y-4 px-4 py-12">
+    <section
+      id="highlights"
+      className="container mx-auto snap-y snap-mandatory space-y-4 overflow-y-auto px-4 py-12"
+    >
       {items.map((item, i) => (
         <div
           key={item.title}
           className={cn(
-            'grid gap-12 md:grid-cols-12',
+            'grid items-center gap-12 md:grid-cols-12',
             i % 2 === 1 ? 'md:[&>*:first-child]:order-last' : ''
           )}
           style={{ minHeight: 'calc(100vh - 96px)' }}
         >
           {/* Left column */}
-          <div className="flex flex-col space-y-6 py-14 md:col-span-5">
+          <div className="flex flex-col space-y-6 md:col-span-5">
             <h3 className="pb-8 text-2xl font-bold md:text-3xl">
               {item.title}
             </h3>
-            <div className="space-y-2">
-              <p className="font-semibold text-gray-600">Problem statement</p>
+            <p className="prose prose-xl bg-primary rounded-lg p-8 font-semibold text-white">
+              We now have a dynamic, enriched and structured view of our
+              collective company knowledge, without any manual input
+            </p>
+            <div className="space-y-2 pb-4">
               <ul className="space-y-2 pl-6">
                 {item.problem.map((line) => (
-                  <li className="-ml-1 list-inside list-disc" key={line}>
+                  <li className="-ml-1" key={line}>
                     {line}
                   </li>
                 ))}
               </ul>
             </div>
             <div className="space-y-2">
-              <p className="font-semibold text-gray-600">Solution</p>
               <ul className="space-y-2 pl-6">
                 {item.solution.map((line) => (
-                  <li className="-ml-1 list-inside list-disc" key={line}>
+                  <li className="-ml-1" key={line}>
                     {line}
                   </li>
                 ))}
@@ -89,18 +94,18 @@ export default function HomeHighlights() {
           </div>
 
           {/* Right column */}
-          <div className="flex flex-col items-center justify-center space-y-6 md:col-span-7">
-            <p className="prose prose-lg text-center font-semibold">
+          <div className="flex flex-col items-center justify-center md:col-span-7">
+            <p className="text-center text-lg font-semibold">
               {item.shortText}
             </p>
-            <div className="flex aspect-video h-96 w-full items-center justify-center rounded-lg">
+            <div className="relative my-6 aspect-video w-full overflow-hidden rounded-xl">
               <video
                 autoPlay
                 loop
                 muted
                 playsInline
                 preload="auto"
-                className="h-auto w-full rounded-xl object-cover"
+                className="absolute inset-0 h-full w-full object-cover"
               >
                 <source src="/kf-ai-connecting-people.mp4" type="video/mp4" />
                 <source src="/kf-ai-connecting-people.webm" type="video/webm" />
