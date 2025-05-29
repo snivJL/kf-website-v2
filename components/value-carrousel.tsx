@@ -40,7 +40,7 @@ const items = [
   },
 ];
 function ValueCarousel() {
-  const [activeItem, setActiveItem] = useState(3);
+  const [activeItem, setActiveItem] = useState(0);
   const wrapperRef = useRef<HTMLUListElement | null>(null);
   const timeoutRef = useRef<number | null>(null);
 
@@ -67,14 +67,14 @@ function ValueCarousel() {
   }, [activeItem]);
 
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center">
-      <h2 className="mb-6 text-center text-4xl font-bold">
+    <div className="container mx-auto flex h-full flex-col items-center justify-center py-12">
+      <h2 className="mb-6 pb-12 text-center text-4xl font-bold">
         How we create value for your business
       </h2>
-      <div className="w-[1200px] max-w-full">
+      <div className="w-full max-w-full">
         <ul
           ref={wrapperRef}
-          className="group flex flex-col gap-3 md:h-[540px] md:flex-row md:gap-[1.5%]"
+          className="group flex w-full flex-col gap-3 md:h-[480px] md:flex-row md:gap-[1.5%]"
         >
           {items.map((item, index) => (
             <li
@@ -85,50 +85,49 @@ function ValueCarousel() {
                 "md:w-[8%] md:[&[aria-current='true']]:w-[48%]",
                 'md:[transition:width_var(--transition,200ms_ease-in)]',
                 'md:before-block before:absolute before:top-0 before:right-[-10px] before:bottom-0 before:left-[-10px] before:hidden before:bg-white',
-                'md:hover:w-[12%]',
+                // 'md:hover:w-[12%]',
                 'md:[&_img]:first:opacity-0 md:[&_img]:last:opacity-0'
               )}
               key={item.title}
             >
-              <div className="from-accent to-accent/80 relative h-full w-full overflow-hidden rounded-2xl bg-gradient-to-br">
-                <p className="absolute top-48 -left-54 w-[520px] rotate-270 text-4xl font-semibold text-white">
+              <div className="relative h-full w-full overflow-hidden rounded-2xl bg-zinc-100">
+                <p
+                  className={cn(
+                    'bg-accent border-accent absolute top-46 -left-48 mx-auto w-[480px] rotate-270 rounded-tl-2xl rounded-tr-2xl border-l py-10 pr-4 pl-12 text-3xl font-semibold transition-colors ease-in-out md:hover:text-blue-500',
+                    activeItem === index ? 'text-blue-500' : 'text-white'
+                  )}
+                >
                   {item.title}
                 </p>
 
                 <div
                   className={cn(
-                    'before:bg-texture after:bg-texture inset-0 opacity-25 duration-300 before:absolute before:top-[-148px] before:right-0 before:bottom-0 before:left-[-546px] before:z-10 after:top-0 after:right-[-434px] after:bottom-[28px] after:left-0 after:z-10 md:absolute md:transition-opacity',
-                    activeItem === index ? 'md:opacity-25' : 'md:opacity-0'
-                  )}
-                />
-                {/* <div
-                  className={cn(
-                    'top-12 left-32 w-[320px] space-y-6 transition-[transform,opacity] md:absolute md:p-0',
+                    'top-0 left-32 flex h-full w-[360px] flex-col justify-between px-0 pt-6 pb-12 md:absolute',
                     activeItem === index
-                      ? 'md:translate-x-0 md:opacity-100'
-                      : 'md:translate-x-4 md:opacity-0'
-                  )}
-                > */}
-                <div
-                  className={cn(
-                    'top-0 left-32 flex h-full w-[360px] flex-col justify-between px-6 py-18 transition-[transform,opacity] md:absolute',
-                    activeItem === index
-                      ? 'md:translate-x-0 md:opacity-100'
-                      : 'md:translate-x-4 md:opacity-0'
+                      ? 'md:translate-x-0'
+                      : 'md:translate-x-4'
                   )}
                 >
                   <div className="space-y-2">
-                    <p className="text-xl font-semibold tracking-wide text-white uppercase">
-                      The Problem
+                    <p className="text-primary pt-4 pb-6 text-2xl font-bold uppercase">
+                      {item.title}
                     </p>
-                    <p className="prose prose-lg text-white">{item.problem}</p>
+
+                    <p className="text-primary text-xl font-semibold tracking-wide uppercase">
+                      Problem to be solved
+                    </p>
+                    <p className="prose prose-lg text-primary">
+                      {item.problem}
+                    </p>
                   </div>{' '}
                   <div className="divider-animated divider-animated--delay" />
                   <div className="space-y-2 delay-100">
-                    <p className="text-xl font-semibold tracking-wide text-white uppercase">
-                      Our Solution
+                    <p className="text-primary text-xl font-semibold tracking-wide uppercase">
+                      Our Approach
                     </p>
-                    <p className="prose prose-lg text-white">{item.solution}</p>
+                    <p className="prose prose-lg text-primary">
+                      {item.solution}
+                    </p>
                   </div>
                 </div>
               </div>
