@@ -8,35 +8,15 @@ import ValueCarousel from './value-carrousel';
 
 export default function OurApproach({ approach }: { approach: OurApproach }) {
   const containerRef = useRef<HTMLDivElement>(null);
-  // const { scrollYProgress } = useScroll({
-  //   target: containerRef,
-  //   offset: ['start start', 'end end'],
-  // });
-
-  // Smooth scroll
-  // useEffect(() => {
-  //   const lenis = new Lenis();
-  //   function raf(time: number) {
-  //     lenis.raf(time);
-  //     requestAnimationFrame(raf);
-  //   }
-  //   requestAnimationFrame(raf);
-  //   return () => lenis.destroy();
-  // }, []);
-
-  // // number of steps
-  // const stepCount = approach.steps?.length ?? 0;
-  // const shouldReduce = useReducedMotion();
 
   return (
     <section
-      className="relative scroll-mt-24 pt-12 pb-48"
+      className="relative scroll-mt-24 pt-12"
       ref={containerRef}
       id="how-we-work"
     >
       <motion.div
         className="container mx-auto mb-4 max-w-[700px] px-4"
-        // initial={shouldReduce ? {} : 'hidden'}
         whileInView="show"
         viewport={{ once: true, amount: 0.3 }}
         variants={fadeIn}
@@ -60,22 +40,6 @@ export default function OurApproach({ approach }: { approach: OurApproach }) {
         </div>
       </motion.div>
       <ValueCarousel />
-      {/* <div className="sticky top-[50vh] mt-[50px] flex w-full flex-col">
-        {approach.steps?.map((step, i) => {
-          const start = i / stepCount;
-          const end = (i + 1) / stepCount;
-          return (
-            <ApproachCard
-              key={step._key}
-              i={step.index!}
-              step={step}
-              progress={scrollYProgress}
-              range={[start, end]}
-              targetScale={1 - (stepCount + i) * 0.02}
-            />
-          );
-        })}
-      </div> */}
     </section>
   );
 }

@@ -38,13 +38,13 @@ export const UseCases = ({ useCaseSection }: UseCasesProps) => {
   return (
     <motion.section
       id="use-cases"
-      className="min-h-[calc(100dvh-96px)] scroll-mt-24 bg-white px-8 py-12 text-gray-900"
+      className="h-[calc(100dvh-96px)] scroll-mt-24 bg-white px-8 py-12"
       initial={shouldReduce ? {} : 'hidden'}
       whileInView="show"
       viewport={{ once: true, amount: 0.3 }}
       variants={fadeIn}
     >
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 md:grid-cols-2">
+      <div className="mx-auto grid h-full max-w-7xl grid-cols-1 items-center gap-12 md:grid-cols-2">
         {/* Left Intro */}
         <div className="prose space-y-6">
           <h2 className="text-4xl leading-tight font-bold">{heading}</h2>

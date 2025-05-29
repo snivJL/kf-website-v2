@@ -78,20 +78,40 @@ function ValueCarousel() {
               onClick={() => setActiveItem(index)}
               aria-current={activeItem === index}
               className={cn(
-                'relative cursor-pointer',
+                'relative mx-4 cursor-pointer',
                 "md:w-[8%] md:[&[aria-current='true']]:w-[48%]",
                 'md:[transition:width_var(--transition,200ms_ease-in)]',
                 'md:before-block before:absolute before:top-0 before:right-[-10px] before:bottom-0 before:left-[-10px] before:hidden before:bg-white',
-                // 'md:hover:w-[12%]',
                 'md:[&_img]:first:opacity-0 md:[&_img]:last:opacity-0'
               )}
               key={item.title}
             >
               <div className="relative h-full w-full overflow-hidden rounded-2xl bg-zinc-100">
+                {/* ✅ Mobile-friendly layout: only visible below md */}
+                <div className="space-y-6 p-6 md:hidden">
+                  <h3 className="text-primary text-xl font-bold">
+                    {item.title}
+                  </h3>
+                  <div>
+                    <p className="text-primary text-sm font-semibold uppercase">
+                      Problem to be solved
+                    </p>
+                    <p className="text-primary">{item.problem}</p>
+                  </div>
+                  <div>
+                    <p className="text-primary text-sm font-semibold uppercase">
+                      Our Approach
+                    </p>
+                    <p className="text-primary">{item.solution}</p>
+                  </div>
+                </div>
+
                 <p
                   className={cn(
-                    'bg-accent border-accent absolute top-46 -left-48 mx-auto w-[480px] rotate-270 rounded-tl-2xl rounded-tr-2xl border-l py-10 pr-4 pl-12 text-3xl font-semibold transition-colors ease-in-out md:hover:text-white/80',
-                    activeItem === index ? 'text-blue-500' : 'text-white'
+                    'md:hover:bg-accent absolute top-46 -left-48 mx-auto hidden w-[480px] rotate-270 rounded-tl-2xl rounded-tr-2xl border-l py-10 pr-4 pl-12 text-3xl font-semibold transition-colors ease-in hover:text-white/50 md:block',
+                    activeItem === index
+                      ? 'bg-accent text-white/50'
+                      : 'bg-accent/85 text-white'
                   )}
                 >
                   {item.title}
@@ -99,7 +119,7 @@ function ValueCarousel() {
 
                 <div
                   className={cn(
-                    'top-0 left-32 flex h-full w-[360px] flex-col justify-between px-0 pt-6 pb-12 md:absolute',
+                    'top-0 left-32 hidden flex-col justify-between px-0 pt-6 pb-12 md:absolute md:flex md:h-full md:w-[360px] 2xl:w-[424px]',
                     activeItem === index
                       ? 'md:translate-x-0'
                       : 'md:translate-x-4'
@@ -116,7 +136,7 @@ function ValueCarousel() {
                     <p className="prose prose-lg text-primary">
                       {item.problem}
                     </p>
-                  </div>{' '}
+                  </div>
                   <div className="divider-animated divider-animated--delay" />
                   <div className="space-y-2 delay-100">
                     <p className="text-primary text-xl font-semibold tracking-wide uppercase">
