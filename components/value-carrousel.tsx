@@ -78,7 +78,7 @@ function ValueCarousel() {
               onClick={() => setActiveItem(index)}
               aria-current={activeItem === index}
               className={cn(
-                'relative mx-4 cursor-pointer',
+                'relative mx-4 cursor-pointer md:mx-0',
                 "md:w-[8%] md:[&[aria-current='true']]:w-[48%]",
                 'md:[transition:width_var(--transition,200ms_ease-in)]',
                 'md:before-block before:absolute before:top-0 before:right-[-10px] before:bottom-0 before:left-[-10px] before:hidden before:bg-white',
