@@ -1,8 +1,7 @@
 'use client';
 
-import { MessageCircle, Calendar } from 'lucide-react';
+import { MessageCircle } from 'lucide-react';
 import { Button } from './ui/button';
-import { PopupButton } from 'react-calendly';
 
 export default function WidgetButtons() {
   return (
@@ -21,18 +20,6 @@ export default function WidgetButtons() {
           <span className="sr-only">Chat on WhatsApp</span>
         </a>
       </Button>
-
-      {typeof document !== 'undefined' && (
-        <PopupButton
-          url="https://calendly.com/thomas-korefocus/30min"
-          rootElement={document.body}
-          className="hover:bg-accent bg-accent/80 flex h-10 w-10 cursor-pointer! items-center justify-center rounded-full text-white"
-          text={(<Calendar className="size-5" />) as unknown as string}
-          pageSettings={{
-            primaryColor: '2d62ff',
-          }}
-        />
-      )}
     </div>
   );
 }

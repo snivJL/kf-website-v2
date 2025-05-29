@@ -6,9 +6,7 @@ import {
   type TargetAndTransition,
 } from 'framer-motion';
 import Link from 'next/link';
-import { urlFor } from '@/lib/sanity/client';
 import type { Hero } from '@/lib/sanity/types';
-import Image from 'next/image';
 import { fadeIn, fadeUp } from '@/lib/motion';
 import { Button } from './ui/button';
 import { ArrowRight } from 'lucide-react';
@@ -37,12 +35,9 @@ const blurbContainer = {
 
 export default function HeroSection({ hero }: { hero: Hero }) {
   const shouldReduce = useReducedMotion();
-  const imgSrc = hero.image?.asset?._ref
-    ? urlFor(hero.image).width(800).auto('format').url()
-    : '';
 
   return (
-    <div className="flex min-h-[100dvh_-_96px] flex-col justify-between px-4 py-[clamp(3rem,8vh,6rem)]">
+    <div className="flex h-screen flex-col justify-between px-4 py-[clamp(3rem,8vh,6rem)]">
       <motion.section
         className="flex flex-col items-center gap-6 md:pt-[clamp(2rem,8vh,5rem)]"
         initial={shouldReduce ? undefined : 'hidden'}
@@ -50,24 +45,8 @@ export default function HeroSection({ hero }: { hero: Hero }) {
         viewport={{ once: true, amount: 0.3 }}
         variants={shouldReduce ? {} : container}
       >
-        {imgSrc && (
-          <motion.div
-            className="relative h-40 w-full max-w-lg md:h-48 2xl:h-64"
-            variants={shouldReduce ? {} : fadeUp}
-          >
-            <Image
-              src={imgSrc}
-              alt={hero.image?.alt || 'Hero image'}
-              fill
-              priority
-              className="object-contain"
-              sizes="(max-width: 768px) 100vw, 50vw"
-            />
-          </motion.div>
-        )}
-
         <motion.div
-          className="w-full max-w-3xl text-center"
+          className="w-full max-w-3xl pt-12 text-center"
           variants={shouldReduce ? {} : fadeUp}
         >
           <h1 className="text-3xl leading-tight font-extrabold sm:text-4xl lg:text-5xl">
@@ -105,6 +84,17 @@ export default function HeroSection({ hero }: { hero: Hero }) {
           </motion.div>
         ))}
       </motion.div>
+      <div className="mx-auto flex w-7/12 flex-col items-center gap-0 text-center">
+        <blockquote className="text-center text-xl text-gray-600 italic">
+          “Every industry will be redefined by AI.
+        </blockquote>
+        <blockquote className="text-center text-xl text-gray-600 italic">
+          If you’re not thinking about how to apply it, you’re already behind.”
+        </blockquote>
+        <blockquote className="ml-auto pt-4 pr-30 text-lg font-semibold text-gray-800">
+          Sundar Pichai, CEO of Google.
+        </blockquote>
+      </div>
     </div>
   );
 }

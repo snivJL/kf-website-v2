@@ -17,6 +17,7 @@ import {
   SheetHeader,
 } from '@/components/ui/sheet';
 import { Menu } from 'lucide-react';
+import { PopupButton } from 'react-calendly';
 
 const navItems = [
   { name: 'What We Do', href: '/#what-we-do' },
@@ -63,7 +64,7 @@ export default function Navbar() {
         >
           <Link href="/" className="flex-shrink-0">
             <Image
-              src="/logo.svg"
+              src="/logo_large.png"
               alt="Korefocus logo"
               width={128}
               height={128}
@@ -143,15 +144,21 @@ export default function Navbar() {
         transition={{ delay: 0.6, duration: 0.4 }}
         className="fixed top-6 right-6 z-[60] hidden md:block"
       >
-        <Link href="/chat">
-          <Button className="group animated-background from-accent to-accent/80 relative inline-flex animate-bounce cursor-pointer items-center gap-2 rounded-full bg-gradient-to-r px-5 py-2 text-sm font-semibold text-white shadow-md transition duration-300 hover:from-indigo-500 hover:to-blue-600 hover:shadow-lg">
-            <span className="relative z-10">Try Kornelia</span>
-            <span
-              className="absolute inset-0 rounded-full opacity-0 transition group-hover:opacity-100 group-hover:ring-2 group-hover:ring-white/40"
-              aria-hidden="true"
+        <Button
+          asChild
+          className="group animated-background from-accent to-accent/80 relative inline-flex animate-bounce cursor-pointer items-center gap-2 rounded-full bg-gradient-to-r px-5 py-2 text-sm font-semibold text-white shadow-md transition duration-300 hover:from-indigo-500 hover:to-blue-600 hover:shadow-lg"
+        >
+          {typeof document !== 'undefined' && (
+            <PopupButton
+              url="https://calendly.com/thomas-korefocus/30min"
+              rootElement={document.body}
+              text="Book a meeting"
+              pageSettings={{
+                primaryColor: '2d62ff',
+              }}
             />
-          </Button>
-        </Link>
+          )}
+        </Button>
       </motion.div>
     </motion.header>
   );

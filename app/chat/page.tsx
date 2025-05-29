@@ -1,5 +1,6 @@
 import { Chat } from '@/components/chat';
 import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 
 export const metadata: Metadata = {
   title: 'Chat with Korefocus – ask questions about our AI and data services',
@@ -32,5 +33,6 @@ export const metadata: Metadata = {
 };
 
 export default function ChatPage() {
+  return notFound();
   return <Chat initialMessages={[]} isReadonly={false} autoResume={false} />;
 }

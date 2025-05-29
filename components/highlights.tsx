@@ -94,7 +94,7 @@ export default function HomeHighlights() {
           </div>
 
           {/* Right column */}
-          <div className="flex flex-col items-center justify-center md:col-span-7">
+          <div className="flex flex-col items-center justify-center px-4 md:col-span-7">
             <p className="text-center text-lg font-semibold">
               {item.shortText}
             </p>

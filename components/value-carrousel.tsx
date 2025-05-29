@@ -87,7 +87,6 @@ function ValueCarousel() {
               key={item.title}
             >
               <div className="relative h-full w-full overflow-hidden rounded-2xl bg-zinc-100">
-                {/* ✅ Mobile-friendly layout: only visible below md */}
                 <div className="space-y-6 p-6 md:hidden">
                   <h3 className="text-primary text-xl font-bold">
                     {item.title}
