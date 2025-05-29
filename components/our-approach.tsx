@@ -1,43 +1,42 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
-import Lenis from 'lenis';
-import { useScroll, motion, useReducedMotion } from 'framer-motion';
+import { useRef } from 'react';
+import { motion } from 'framer-motion';
 import type { OurApproach } from '@/lib/sanity/types';
-import ApproachCard from './approach-card';
 import { fadeIn } from '@/lib/motion';
+import ValueCarousel from './value-carrousel';
 
 export default function OurApproach({ approach }: { approach: OurApproach }) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start start', 'end end'],
-  });
+  // const { scrollYProgress } = useScroll({
+  //   target: containerRef,
+  //   offset: ['start start', 'end end'],
+  // });
 
   // Smooth scroll
-  useEffect(() => {
-    const lenis = new Lenis();
-    function raf(time: number) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-    return () => lenis.destroy();
-  }, []);
+  // useEffect(() => {
+  //   const lenis = new Lenis();
+  //   function raf(time: number) {
+  //     lenis.raf(time);
+  //     requestAnimationFrame(raf);
+  //   }
+  //   requestAnimationFrame(raf);
+  //   return () => lenis.destroy();
+  // }, []);
 
-  // number of steps
-  const stepCount = approach.steps?.length ?? 0;
-  const shouldReduce = useReducedMotion();
+  // // number of steps
+  // const stepCount = approach.steps?.length ?? 0;
+  // const shouldReduce = useReducedMotion();
 
   return (
     <section
-      className="relative h-[2400px] scroll-mt-24 pt-12 pb-48"
+      className="relative scroll-mt-24 pt-12 pb-48"
       ref={containerRef}
       id="how-we-work"
     >
       <motion.div
-        className="sticky top-[20vh] container mx-auto mb-4 max-w-[700px] px-4"
-        initial={shouldReduce ? {} : 'hidden'}
+        className="container mx-auto mb-4 max-w-[700px] px-4"
+        // initial={shouldReduce ? {} : 'hidden'}
         whileInView="show"
         viewport={{ once: true, amount: 0.3 }}
         variants={fadeIn}
@@ -60,8 +59,8 @@ export default function OurApproach({ approach }: { approach: OurApproach }) {
           )}
         </div>
       </motion.div>
-
-      <div className="sticky top-[50vh] mt-[50px] flex w-full flex-col">
+      <ValueCarousel />
+      {/* <div className="sticky top-[50vh] mt-[50px] flex w-full flex-col">
         {approach.steps?.map((step, i) => {
           const start = i / stepCount;
           const end = (i + 1) / stepCount;
@@ -76,7 +75,7 @@ export default function OurApproach({ approach }: { approach: OurApproach }) {
             />
           );
         })}
-      </div>
+      </div> */}
     </section>
   );
 }

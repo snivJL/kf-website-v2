@@ -42,7 +42,7 @@ const items = [
 function ValueCarousel() {
   const [activeItem, setActiveItem] = useState(0);
   const wrapperRef = useRef<HTMLUListElement | null>(null);
-  const timeoutRef = useRef<number | null>(null);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     if (!wrapperRef.current) return;
@@ -68,9 +68,9 @@ function ValueCarousel() {
 
   return (
     <div className="container mx-auto flex h-full flex-col items-center justify-center py-12">
-      <h2 className="mb-6 pb-12 text-center text-4xl font-bold">
+      {/* <h2 className="mb-6 pb-12 text-center text-4xl font-bold">
         How we create value for your business
-      </h2>
+      </h2> */}
       <div className="w-full max-w-full">
         <ul
           ref={wrapperRef}
@@ -93,7 +93,7 @@ function ValueCarousel() {
               <div className="relative h-full w-full overflow-hidden rounded-2xl bg-zinc-100">
                 <p
                   className={cn(
-                    'bg-accent border-accent absolute top-46 -left-48 mx-auto w-[480px] rotate-270 rounded-tl-2xl rounded-tr-2xl border-l py-10 pr-4 pl-12 text-3xl font-semibold transition-colors ease-in-out md:hover:text-blue-500',
+                    'bg-accent border-accent absolute top-46 -left-48 mx-auto w-[480px] rotate-270 rounded-tl-2xl rounded-tr-2xl border-l py-10 pr-4 pl-12 text-3xl font-semibold transition-colors ease-in-out md:hover:text-white/80',
                     activeItem === index ? 'text-blue-500' : 'text-white'
                   )}
                 >
