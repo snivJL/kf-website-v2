@@ -16,22 +16,6 @@ export const heroQuery = `
 }
 `;
 
-export const whatWeDoQuery = `
-*[_type == "whatWeDo"][0] {
-  heading,
-  blueSubHeading,
-  graySubHeading,
-  cards[] {
-    title,
-    subtitle,
-    buttonText,
-    buttonLink,
-    blueLines,
-    grayLines
-  }
-}
-`;
-
 export const ourApproachQuery = `
 *[_type == "ourApproach"][0] {
   heading,
@@ -93,13 +77,29 @@ export const contactUsQuery = `
 }
 `;
 
+export const highlightsQuery = groq`
+*[_type == "highlights"][0] {
+  heading,
+  graySubHeading,
+  blueSubHeading,
+  items[] {
+    title,
+    problem,
+    solution,
+    shortText,
+    testimonial,
+    tagline
+  }
+}
+`;
+
 export const homePageQuery = groq`
 {
   "hero": ${heroQuery},
-  "whatWeDo": ${whatWeDoQuery},
   "ourApproach": ${ourApproachQuery},
   "faq": ${faqQuery},
   "useCase": ${useCaseQuery},
-  "contactUs": ${contactUsQuery}
+  "contactUs": ${contactUsQuery},
+  "highlights": ${highlightsQuery}
 }
 `;

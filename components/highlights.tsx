@@ -1,61 +1,43 @@
+'use client';
+import { Highlights } from '@/lib/sanity/types';
 import { cn } from '@/lib/utils';
+import { motion } from 'framer-motion';
+import { PortableText } from 'next-sanity';
 
-const items = [
-  {
-    title: 'CRM that powers progress, not friction',
-    problem: [
-      'CRMs are cluttered with limited, messy, and outdated data - hard to trust, harder to use',
-      'They demand continuous upkeep, pulling teams away from revenue-driving work',
-    ],
-    solution: [
-      'AI auto-enriches your CRM with fresh, reliable data - automatically sourced and pulled from your internal systems and trusted external platforms',
-      'No manual work. No outdated info. Just clean, ready-to-use insights',
-      'Your team stays focused on what matters: driving revenue, not fixing data',
-    ],
-    shortText: 'See how automation keeps your CRM clean.',
-    testimonial:
-      '“Before Korefocus, we lost valuable insights every day—internal intel from meetings that never made it into the CRM due to time constraints and system limitations. I spent nearly an hour daily trying to structure notes and delegate CRM entry, but much of the nuance got lost, and the CRM couldn’t handle unstructured data or updates from external sources.” – Alex P.',
-    tagline: 'CRM, solved.',
-  },
-  {
-    title: 'Agile automation for decisive action',
-    problem: [
-      'Chasing follow-ups, syncing with teammates, and managing to-dos is mind-numbing and time-sucking',
-      'These repetitive tasks fundamentally drain your focus and stall real progress',
-    ],
-    solution: [
-      'AI drafts your content and takes action - like chasing follow-ups or sending updates',
-      'Emails, memos, and decks? All of this is now pre-filled, formatted, and fast',
-      'In the end, you get work flows without the manual grind, so that you focus on outcomes, not tasks',
-    ],
-    shortText: 'Watch automation speed up your work.',
-    testimonial: '“Our team works faster than ever.” – Jamie L.',
-    tagline: 'Focus on outcomes.',
-  },
-  {
-    title: 'Decisions in motion, not in slides',
-    problem: [
-      'Insights buried in scattered reports, clunky tools, and slow, error-prone analysis steal your time.',
-      'Taking action should be easier, but it’s not. And decisions always get delayed',
-    ],
-    solution: [
-      'AI automates the hard parts - collecting, analyzing, and structuring your data behind the scenes',
-      'It delivers polished dashboards, pre-filled decks, and smart assistants (all tailored to your needs) to guide your decisions',
-      'What used to take hours now happens in seconds. Just insight, action, and results',
-    ],
-    shortText: 'Move from slides to real-time insight.',
-    testimonial: '“We decide faster, with confidence.” – Morgan K.',
-    tagline: 'Act on insight.',
-  },
-];
+type HighlightsProps = {
+  highlights: Highlights;
+};
 
-export default function HomeHighlights() {
+export default function HomeHighlights({ highlights }: HighlightsProps) {
   return (
     <section
       id="highlights"
       className="container mx-auto snap-y snap-mandatory space-y-4 overflow-y-auto px-4 py-12"
     >
-      {items.map((item, i) => (
+      <motion.div
+        className="container mx-auto mb-8 max-w-[700px] space-y-2 px-4 text-center"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.6 }}
+      >
+        {highlights.heading && (
+          <h2 className="mb-4 text-3xl font-bold md:text-4xl">
+            {highlights.heading}
+          </h2>
+        )}
+        {highlights.graySubHeading && (
+          <p className="mx-auto max-w-3xl text-2xl text-gray-400">
+            {highlights.graySubHeading}
+          </p>
+        )}
+        {highlights.blueSubHeading && (
+          <p className="text-accent mx-auto max-w-3xl text-2xl">
+            {highlights.blueSubHeading}
+          </p>
+        )}
+      </motion.div>
+      {(highlights.items || []).map((item, i) => (
         <div
           key={item.title}
           className={cn(
@@ -75,20 +57,12 @@ export default function HomeHighlights() {
             </p>
             <div className="space-y-2 pb-4">
               <ul className="space-y-2 pl-6">
-                {item.problem.map((line) => (
-                  <li className="-ml-1" key={line}>
-                    {line}
-                  </li>
-                ))}
+                <PortableText value={item.problem || []} />
               </ul>
             </div>
             <div className="space-y-2">
               <ul className="space-y-2 pl-6">
-                {item.solution.map((line) => (
-                  <li className="-ml-1" key={line}>
-                    {line}
-                  </li>
-                ))}
+                <PortableText value={item.solution || []} />
               </ul>
             </div>
           </div>
@@ -113,7 +87,7 @@ export default function HomeHighlights() {
               </video>
             </div>
             <blockquote className="text-center text-base text-gray-600 italic">
-              {item.testimonial}
+              <PortableText value={item.testimonial || []} />
             </blockquote>
             <p className="text-accent font-semibold">{item.tagline}</p>
           </div>
