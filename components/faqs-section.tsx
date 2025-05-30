@@ -12,6 +12,7 @@ import { Faq } from '@/lib/sanity/types';
 import { fadeIn } from '@/lib/motion';
 import Script from 'next/script';
 import AnimatedSection from './animated-section';
+import { ChevronDown } from 'lucide-react';
 
 type FaqProps = {
   faq: Faq;
@@ -67,6 +68,14 @@ export default function FaqSection({ faq }: FaqProps) {
                     <AccordionItem value={item._key}>
                       <AccordionTrigger className="flex min-h-[106px] cursor-pointer items-center p-6 text-2xl font-medium text-gray-900">
                         {item.question}
+                        <div className="mt-1 flex-shrink-0">
+                          <div
+                            className="flex h-8 w-8 items-center justify-center rounded-full transition-all duration-300 group-data-[state=open]:rotate-180"
+                            style={{ backgroundColor: '#2D62FF' }}
+                          >
+                            <ChevronDown className="h-4 w-4 text-white" />
+                          </div>
+                        </div>
                       </AccordionTrigger>
                       <AccordionContent className="prose prose-p px-4 pt-0 pb-5 pl-7 text-gray-500">
                         <PortableText value={item.answer ?? []} />
