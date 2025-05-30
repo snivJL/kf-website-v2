@@ -63,20 +63,18 @@ export default function HomeHighlights({ highlights }: HighlightsProps) {
             <p className="text-center text-lg font-semibold">
               {item.shortText}
             </p>
-            <div className="relative my-6 aspect-video w-full overflow-hidden rounded-xl">
-              <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="auto"
-                className="absolute inset-0 h-full w-full object-cover"
-              >
-                <source src="/kf-ai-connecting-people.mp4" type="video/mp4" />
-                <source src="/kf-ai-connecting-people.webm" type="video/webm" />
-                Your browser does not support the video tag.
-              </video>
-            </div>
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="metadata"
+              className="my-6 aspect-video w-full overflow-hidden rounded-xl object-cover"
+            >
+              <source src="/kf-ai-connecting-people.mp4" type="video/mp4" />
+              <source src="/kf-ai-connecting-people.webm" type="video/webm" />
+              Your browser does not support the video tag.
+            </video>
             <blockquote className="text-center text-base text-gray-600 italic">
               <PortableText value={item.testimonial || []} />
             </blockquote>
