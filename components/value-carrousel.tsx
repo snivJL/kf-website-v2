@@ -84,14 +84,7 @@ function ValueCarousel({ items }: Props) {
                   {item.title}
                 </p>
 
-                <div
-                  className={cn(
-                    'top-0 left-32 hidden flex-col justify-between px-0 pt-6 pb-12 md:absolute md:flex md:h-full md:w-[360px] 2xl:w-[424px]',
-                    activeItem === index
-                      ? 'md:translate-x-0'
-                      : 'md:translate-x-4'
-                  )}
-                >
+                <div className="top-0 left-32 hidden flex-col justify-between px-0 pt-6 pb-12 md:absolute md:flex md:h-full md:w-[360px] 2xl:w-[424px]">
                   <div className="space-y-2">
                     <p className="text-primary pt-4 pb-6 text-2xl font-bold uppercase">
                       {item.title}
