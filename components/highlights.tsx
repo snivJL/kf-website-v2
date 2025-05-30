@@ -46,10 +46,7 @@ export default function HomeHighlights({ highlights }: HighlightsProps) {
             <h3 className="prose prose-2xl pb-8 font-bold md:text-3xl">
               {item.title}
             </h3>
-            <p className="prose prose-xl bg-primary rounded-lg p-8 font-semibold text-white">
-              We now have a dynamic, enriched and structured view of our
-              collective company knowledge, without any manual input
-            </p>
+
             <div className="prose pb-4">
               <PortableText value={item.problem || []} />
             </div>

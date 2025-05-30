@@ -41,8 +41,8 @@ export default async function HomePage() {
   return (
     <>
       <HeroSection hero={hero} />
-      <OurApproach approach={ourApproach} />
       <HomeHighlights highlights={highlights} />
+      <OurApproach approach={ourApproach} />
       <UseCases useCaseSection={useCase} />
       <FaqSection faq={faq} />
       <ContactUs contactUsSection={contactUs} />

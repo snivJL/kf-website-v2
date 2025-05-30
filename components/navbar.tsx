@@ -102,13 +102,13 @@ export default function Navbar() {
 
             <nav
               aria-label="Mobile"
-              className="mt-6 flex flex-col space-y-4 px-4"
+              className="mt-6 flex flex-col justify-center space-y-4 px-4"
             >
               {navItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="block rounded-lg px-4 py-2 text-lg font-medium hover:bg-gray-100"
+                  className="rounded-lg px-4 text-lg font-medium hover:bg-gray-100"
                 >
                   {item.name}
                 </Link>
@@ -130,7 +130,7 @@ export default function Navbar() {
             >
               <Link
                 href={item.href}
-                className="hover:bg-primary/90 inline-block rounded-full px-4 py-2"
+                className="hover:bg-primary/90 inline-block rounded-full px-4 py-1"
               >
                 {item.name}
               </Link>
