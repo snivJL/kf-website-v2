@@ -7,7 +7,7 @@ import { MultimodalInput } from './multimodal-input';
 import { useAutoResume } from '@/hooks/use-auto-resume';
 import { ChatSDKError } from '@/lib/errors';
 import { fetchWithErrorHandlers, generateUUID } from '@/lib/utils';
-import { Messages } from '@/components/messages';
+import { Messages } from '@/components/chatbot/messages';
 import { toast } from 'sonner';
 import {
   generateFollowUpQuestions,

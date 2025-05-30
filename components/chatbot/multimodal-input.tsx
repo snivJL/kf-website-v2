@@ -5,8 +5,8 @@ import { useRef, useEffect, useCallback, memo } from 'react';
 import { toast } from 'sonner';
 import { useLocalStorage, useWindowSize } from 'usehooks-ts';
 
-import { Button } from './ui/button';
-import { Textarea } from './ui/textarea';
+import { Button } from '../ui/button';
+import { Textarea } from '../ui/textarea';
 import equal from 'fast-deep-equal';
 import type { UseChatHelpers } from '@ai-sdk/react';
 import { AnimatePresence, motion } from 'framer-motion';

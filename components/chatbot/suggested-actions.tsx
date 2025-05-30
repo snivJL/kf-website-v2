@@ -1,9 +1,9 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Button } from './ui/button';
 import { memo } from 'react';
 import type { UseChatHelpers } from '@ai-sdk/react';
+import { Button } from '../ui/button';
 
 interface SuggestedActionsProps {
   append: UseChatHelpers['append'];

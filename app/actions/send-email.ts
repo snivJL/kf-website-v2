@@ -1,7 +1,7 @@
 'use server';
 
 import { Resend } from 'resend';
-import type { ContactFormData } from '@/components/contact-form';
+import type { ContactFormData } from '@/components/chatbot/contact-form';
 import type { Message } from 'ai';
 
 const resend = new Resend(process.env.RESEND_API_KEY);

@@ -4,7 +4,7 @@ import type { Question } from '@/app/actions/generate-followup';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import { MailIcon, MessageCircle, UserSearch } from 'lucide-react';
-import { Skeleton } from './ui/skeleton';
+import { Skeleton } from '../ui/skeleton';
 
 interface SuggestedQuestionsProps {
   questions: Question[];

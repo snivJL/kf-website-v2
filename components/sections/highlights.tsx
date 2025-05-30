@@ -129,11 +129,6 @@ export default function HomeHighlights({ highlights }: HighlightsProps) {
         </div>
 
         <div className="flex flex-col items-center justify-center px-4 md:col-span-7">
-          {highlights.shortText && (
-            <div className="text-muted-foreground rounded-xl px-6 py-4 text-center text-2xl font-semibold italic">
-              {highlights.shortText}
-            </div>
-          )}
           <div className="relative w-full">
             <video
               autoPlay
@@ -141,7 +136,7 @@ export default function HomeHighlights({ highlights }: HighlightsProps) {
               muted
               playsInline
               preload="metadata"
-              className="my-6 aspect-video w-full overflow-hidden rounded-2xl object-cover shadow-lg"
+              className="aspect-video w-full overflow-hidden rounded-2xl object-cover shadow-lg"
               style={{
                 border: `3px solid #2D62FF`,
                 boxShadow:
@@ -153,25 +148,6 @@ export default function HomeHighlights({ highlights }: HighlightsProps) {
               Your browser does not support the video tag.
             </video>
           </div>
-          {highlights.testimonial && (
-            <blockquote className="text-muted-foreground relative rounded-xl px-6 py-4 text-center text-lg leading-relaxed italic">
-              <div className="relative z-10">
-                <PortableText value={highlights.testimonial} />
-              </div>
-              {/* Quote marks */}
-              <div className="text-accent absolute top-2 left-4 text-4xl font-bold opacity-20">
-                &quot;
-              </div>
-              <div className="text-accent absolute right-4 bottom-2 text-4xl font-bold opacity-20">
-                &quot;
-              </div>
-            </blockquote>
-          )}
-          {highlights.tagline && (
-            <div className="text-accent rounded-full px-6 py-3 text-xl font-bold">
-              {highlights.tagline}
-            </div>
-          )}
         </div>
       </div>
     </AnimatedSection>

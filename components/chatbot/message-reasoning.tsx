@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Markdown } from './markdown';
+import { Markdown } from '../markdown';
 import { ChevronDownIcon, LoaderIcon } from 'lucide-react';
 
 interface MessageReasoningProps {

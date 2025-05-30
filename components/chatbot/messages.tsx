@@ -7,7 +7,7 @@ import type { UseChatHelpers } from '@ai-sdk/react';
 import { motion } from 'framer-motion';
 import { useMessages } from '@/hooks/use-messages';
 import { sendEmail } from '@/app/actions/send-email';
-import { Button } from './ui/button';
+import { Button } from '../ui/button';
 import type { Question } from '@/app/actions/generate-followup';
 
 interface MessagesProps {

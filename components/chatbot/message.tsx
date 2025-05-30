@@ -3,14 +3,14 @@
 import type { UIMessage } from 'ai';
 import { AnimatePresence, motion } from 'framer-motion';
 import { memo } from 'react';
-import { Markdown } from './markdown';
+import { Markdown } from '../markdown';
 import equal from 'fast-deep-equal';
 import { cn, sanitizeText } from '@/lib/utils';
 import { MessageReasoning } from './message-reasoning';
 import type { UseChatHelpers } from '@ai-sdk/react';
 import { SparklesIcon } from 'lucide-react';
-import { ContactForm, type ContactFormData } from './contact-form';
-import AnalyticsShowcase from './analytics-showcase';
+import { ContactForm, type ContactFormData } from '../chatbot/contact-form';
+import AnalyticsShowcase from '../chatbot/analytics-showcase';
 import Image from 'next/image';
 import SuggestedQuestions from './suggested-questions';
 import type { Question } from '@/app/actions/generate-followup';

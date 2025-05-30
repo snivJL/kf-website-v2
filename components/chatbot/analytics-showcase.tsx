@@ -1,8 +1,8 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { AreaChart } from './charts/area-chart';
-import { BarChart } from './charts/bar-chart';
+import { AreaChart } from '../charts/area-chart';
+import { BarChart } from '../charts/bar-chart';
 
 const AnalyticsShowcase = () => {
   return (

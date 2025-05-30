@@ -1,4 +1,4 @@
-import { Chat } from '@/components/chat';
+import { Chat } from '@/components/chatbot/chat';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
