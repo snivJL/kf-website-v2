@@ -104,7 +104,7 @@ export default function HomeHighlights({ highlights }: HighlightsProps) {
                         <div className="space-y-3">
                           <div className="flex items-center gap-2">
                             <h3 className="text-lg font-semibold text-gray-800">
-                              The Challenge
+                              Challenge
                             </h3>
                           </div>
                           <div className="prose prose-sm max-w-none">
@@ -119,7 +119,7 @@ export default function HomeHighlights({ highlights }: HighlightsProps) {
                         <div className="space-y-3">
                           <div className="flex items-center gap-2">
                             <h3 className="text-primary text-lg font-semibold">
-                              Our Solution
+                              Solution
                             </h3>
                           </div>
                           <div className="prose prose-sm max-w-none">
