@@ -11,6 +11,7 @@ import { PortableText, toPlainText } from 'next-sanity';
 import { Faq } from '@/lib/sanity/types';
 import { fadeIn } from '@/lib/motion';
 import Script from 'next/script';
+import AnimatedSection from './animated-section';
 
 type FaqProps = {
   faq: Faq;
@@ -32,7 +33,7 @@ export default function FaqSection({ faq }: FaqProps) {
   };
 
   return (
-    <section
+    <AnimatedSection
       className="bg-accent min-h-[calc(100dvh-96px)] scroll-mt-24 py-12 text-white"
       id="faq"
     >
@@ -85,6 +86,6 @@ export default function FaqSection({ faq }: FaqProps) {
           __html: JSON.stringify(faqSchema),
         }}
       />
-    </section>
+    </AnimatedSection>
   );
 }

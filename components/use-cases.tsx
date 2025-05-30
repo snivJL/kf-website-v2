@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { motion, useReducedMotion, Variants } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import {
   Card,
   CardContent,
@@ -11,7 +11,7 @@ import {
 import { Button } from '@/components/ui/button';
 import type { UseCase } from '@/lib/sanity/types';
 import { PortableText } from 'next-sanity';
-import { fadeIn } from '@/lib/motion';
+import AnimatedSection from './animated-section';
 
 const container: Variants = {
   hidden: {},
@@ -34,15 +34,10 @@ type UseCasesProps = {
 export const UseCases = ({ useCaseSection }: UseCasesProps) => {
   const { heading, subHeading, description, useCases, blueSection } =
     useCaseSection || {};
-  const shouldReduce = useReducedMotion();
   return (
-    <motion.section
+    <AnimatedSection
       id="use-cases"
-      className="h-[calc(100dvh-96px)] scroll-mt-24 bg-white px-8 py-12"
-      initial={shouldReduce ? {} : 'hidden'}
-      whileInView="show"
-      viewport={{ once: true, amount: 0.3 }}
-      variants={fadeIn}
+      className="min-h-[calc(100dvh-96px)] scroll-mt-24 bg-white px-8 py-24"
     >
       <div className="mx-auto grid h-full max-w-7xl grid-cols-1 items-center gap-12 md:grid-cols-2">
         {/* Left Intro */}
@@ -86,6 +81,6 @@ export const UseCases = ({ useCaseSection }: UseCasesProps) => {
             : null}
         </motion.div>
       </div>
-    </motion.section>
+    </AnimatedSection>
   );
 };

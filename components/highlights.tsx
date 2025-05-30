@@ -1,8 +1,8 @@
 'use client';
 import { Highlights } from '@/lib/sanity/types';
 import { cn } from '@/lib/utils';
-import { motion } from 'framer-motion';
 import { PortableText } from 'next-sanity';
+import AnimatedSection from './animated-section';
 
 type HighlightsProps = {
   highlights: Highlights;
@@ -10,14 +10,12 @@ type HighlightsProps = {
 
 export default function HomeHighlights({ highlights }: HighlightsProps) {
   return (
-    <section id="highlights" className="container mx-auto space-y-4 px-4 py-12">
-      <motion.div
-        className="container mx-auto mb-8 max-w-[700px] space-y-2 px-4 text-center"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.6 }}
-      >
+    <AnimatedSection
+      id="what-we-do"
+      amount={0.1}
+      className="container mx-auto min-h-[calc(100dvh-96px)] space-y-4 px-4 py-24"
+    >
+      <div className="container mx-auto mb-8 max-w-[700px] space-y-2 px-4 text-center">
         {highlights.heading && (
           <h2 className="mb-4 text-3xl font-bold md:text-4xl">
             {highlights.heading}
@@ -33,7 +31,7 @@ export default function HomeHighlights({ highlights }: HighlightsProps) {
             {highlights.blueSubHeading}
           </p>
         )}
-      </motion.div>
+      </div>
       {(highlights.items || []).map((item, i) => (
         <div
           key={item.title}
@@ -86,6 +84,6 @@ export default function HomeHighlights({ highlights }: HighlightsProps) {
           </div>
         </div>
       ))}
-    </section>
+    </AnimatedSection>
   );
 }

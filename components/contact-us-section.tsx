@@ -14,6 +14,7 @@ import { useTransition } from 'react';
 import { toast } from 'sonner';
 import { ContactUsPage } from '@/lib/sanity/types';
 import { InlineWidget } from 'react-calendly';
+import AnimatedSection from './animated-section';
 
 const formSchema = z.object({
   firstName: z.string().min(1, 'Please enter your first name'),
@@ -55,12 +56,9 @@ export default function ContactUs({
   };
 
   return (
-    <motion.section
-      className="min-h-[calc(100vh-96px)] px-6 py-[clamp(4rem,8vh,10rem)] md:px-12"
+    <AnimatedSection
+      className="min-h-[calc(100dvh-96px)] px-6 py-24 md:px-12"
       id="contact-us"
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.3 }}
       variants={fadeIn}
     >
       <div className="mx-auto w-full max-w-7xl space-y-12">
@@ -186,6 +184,6 @@ export default function ContactUs({
           </Card>
         </div>
       </div>
-    </motion.section>
+    </AnimatedSection>
   );
 }

@@ -10,6 +10,7 @@ import type { Hero } from '@/lib/sanity/types';
 import { fadeIn, fadeUp } from '@/lib/motion';
 import { Button } from './ui/button';
 import { ArrowRight } from 'lucide-react';
+import AnimatedSection from './animated-section';
 
 const container = {
   hidden: fadeIn.hidden,
@@ -37,7 +38,7 @@ export default function HeroSection({ hero }: { hero: Hero }) {
   const shouldReduce = useReducedMotion();
 
   return (
-    <div className="flex h-screen flex-col justify-between px-4 py-[clamp(3rem,8vh,6rem)]">
+    <AnimatedSection className="flex min-h-[calc(100dvh-96px)] flex-col justify-between px-4 py-24">
       <motion.section
         className="flex flex-col items-center gap-6 md:pt-[clamp(2rem,8vh,5rem)]"
         initial={shouldReduce ? undefined : 'hidden'}
@@ -55,7 +56,6 @@ export default function HeroSection({ hero }: { hero: Hero }) {
           </h1>
         </motion.div>
       </motion.section>
-
       {/* BLURBS */}
       <motion.div
         className="mx-auto mt-8 grid w-full max-w-5xl gap-6 px-4 pb-[clamp(3rem,8vh,6rem)] sm:grid-cols-2 md:grid-cols-3"
@@ -95,6 +95,6 @@ export default function HeroSection({ hero }: { hero: Hero }) {
           Sundar Pichai, CEO of Google.
         </blockquote>
       </div>
-    </div>
+    </AnimatedSection>
   );
 }

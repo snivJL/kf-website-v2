@@ -1,18 +1,15 @@
 'use client';
 
-import { useRef } from 'react';
 import { motion } from 'framer-motion';
 import type { OurApproach } from '@/lib/sanity/types';
 import { fadeIn } from '@/lib/motion';
 import ValueCarousel from './value-carrousel';
+import AnimatedSection from './animated-section';
 
 export default function OurApproach({ approach }: { approach: OurApproach }) {
-  const containerRef = useRef<HTMLDivElement>(null);
-
   return (
-    <section
-      className="relative scroll-mt-24 pt-12"
-      ref={containerRef}
+    <AnimatedSection
+      className="relative min-h-[calc(100dvh-96px)] scroll-mt-24 py-24"
       id="how-we-work"
     >
       <motion.div
@@ -40,6 +37,6 @@ export default function OurApproach({ approach }: { approach: OurApproach }) {
         </div>
       </motion.div>
       <ValueCarousel />
-    </section>
+    </AnimatedSection>
   );
 }
