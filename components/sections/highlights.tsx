@@ -11,6 +11,7 @@ import {
   AccordionContent,
 } from '@/components/ui/accordion';
 import { CheckCircle, ChevronDown } from 'lucide-react';
+import { useState } from 'react';
 
 type HighlightsProps = {
   highlights: Highlights;
@@ -29,6 +30,7 @@ const portableComponents: Partial<PortableTextReactComponents> = {
   ),
 };
 export default function HomeHighlights({ highlights }: HighlightsProps) {
+  const [active, setActive] = useState<string | null>(null);
   return (
     <AnimatedSection
       id="what-we-do"
@@ -67,26 +69,36 @@ export default function HomeHighlights({ highlights }: HighlightsProps) {
                 <AccordionItem
                   key={item.title}
                   value={item.title || ''}
-                  className="overflow-hidden rounded-2xl border-0 bg-white shadow-sm transition-all duration-300 hover:shadow-md"
+                  className="bg-primary hover:bg-accent overflow-hidden rounded-2xl border-0 text-white shadow-sm transition-all duration-300 hover:shadow-md"
                   style={{
                     border: '1px solid #f1f5f9',
                     boxShadow:
                       '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
                   }}
                 >
-                  <AccordionTrigger className="group text-primary bg-accent/5 cursor-pointer rounded-none border-0 px-6 py-5 text-xl font-semibold hover:no-underline">
+                  <AccordionTrigger
+                    className={cn(
+                      'group cursor-pointer rounded-none border-0 px-6 py-5 text-xl font-semibold shadow-sm hover:no-underline',
+                      { 'bg-accent': active === item.title }
+                    )}
+                    onClick={() =>
+                      active === item.title
+                        ? setActive(null)
+                        : setActive(item.title!)
+                    }
+                  >
                     <div className="flex w-full items-center justify-between">
                       <span className="text-left leading-tight">
                         {item.title}
                       </span>
                       <div className="ml-4 flex-shrink-0">
-                        <div className="bg-accent flex h-8 w-8 items-center justify-center rounded-full transition-all duration-300 group-data-[state=open]:rotate-180">
-                          <ChevronDown className="h-4 w-4 text-white" />
+                        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white transition-all duration-300 group-data-[state=open]:rotate-180">
+                          <ChevronDown className="text-primary h-4 w-4" />
                         </div>
                       </div>
                     </div>
                   </AccordionTrigger>
-                  <AccordionContent className="px-6 pt-2 pb-6">
+                  <AccordionContent className="bg-white px-6 pt-6 pb-6">
                     <div className="space-y-5">
                       {item.problem && (
                         <div className="space-y-3">
@@ -95,7 +107,7 @@ export default function HomeHighlights({ highlights }: HighlightsProps) {
                               The Challenge
                             </h3>
                           </div>
-                          <div className="prose prose-sm max-w-none pl-3">
+                          <div className="prose prose-sm max-w-none">
                             <div className="leading-relaxed text-gray-700">
                               <PortableText value={item.problem} />
                             </div>
@@ -106,7 +118,7 @@ export default function HomeHighlights({ highlights }: HighlightsProps) {
                       {item.solution && (
                         <div className="space-y-3">
                           <div className="flex items-center gap-2">
-                            <h3 className="text-accent text-lg font-semibold">
+                            <h3 className="text-primary text-lg font-semibold">
                               Our Solution
                             </h3>
                           </div>
