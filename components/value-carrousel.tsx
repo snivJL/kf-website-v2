@@ -1,45 +1,13 @@
 'use client';
+import { HowWeWorkItem } from '@/lib/sanity/types';
 import { cn } from '@/lib/utils';
+import { PortableText } from 'next-sanity';
 import { useEffect, useRef, useState } from 'react';
 
-const items = [
-  {
-    title: 'Plan Your Journey',
-    problem:
-      'You’re surrounded by opportunities—but where to begin? With so many goals, it’s hard to prioritize and estimate real costs.',
-    solution:
-      'We translate your operational pain points and business objectives into a clear, actionable roadmap—simple projects with real impact.',
-  },
-  {
-    title: 'Build Your Toolkit',
-    problem:
-      'The AI market is a maze. Do you pick the latest tool or adapt what you already have? Change your processes or refine them?',
-    solution:
-      'We define the most valuable use cases and design workflows that enhance your existing business processes—no overhauls unless needed.',
-  },
-  {
-    title: 'Upgrade Your Tech Stack',
-    problem:
-      'New tools rarely play nice. Integrations cause friction, and mismatched systems slow down everything.',
-    solution:
-      'We design and embed AI solutions into your current tech stack—so everything works together smoothly, with minimal disruption.',
-  },
-  {
-    title: 'Deliver Lasting Impact',
-    problem:
-      'Your teams need time. Change is hard, and AI adoption doesn’t happen overnight. How do you keep momentum without burnout?',
-    solution:
-      'We offer tailored training, knowledge bases, and real-time user support—plus continuous improvement based on feedback and usage.',
-  },
-  {
-    title: 'Keep AI in Control',
-    problem:
-      'AI brings value—but also risk. How do you ensure safety, compliance, and trust in every decision it makes?',
-    solution:
-      'Our AI Framework embeds security, ethics, confidentiality, and governance—so you stay in control, always.',
-  },
-];
-function ValueCarousel() {
+type Props = {
+  items: HowWeWorkItem[];
+};
+function ValueCarousel({ items }: Props) {
   const [activeItem, setActiveItem] = useState(0);
   const wrapperRef = useRef<HTMLUListElement | null>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -95,13 +63,13 @@ function ValueCarousel() {
                     <p className="text-primary text-sm font-semibold uppercase">
                       Problem to be solved
                     </p>
-                    <p className="text-primary">{item.problem}</p>
+                    <PortableText value={item.problem || []} />
                   </div>
                   <div>
                     <p className="text-primary text-sm font-semibold uppercase">
                       Our Approach
                     </p>
-                    <p className="text-primary">{item.solution}</p>
+                    <PortableText value={item.solution || []} />
                   </div>
                 </div>
 
@@ -132,18 +100,14 @@ function ValueCarousel() {
                     <p className="text-primary text-xl font-semibold tracking-wide uppercase">
                       Problem to be solved
                     </p>
-                    <p className="prose prose-lg text-primary">
-                      {item.problem}
-                    </p>
+                    <PortableText value={item.problem || []} />
                   </div>
                   <div className="divider-animated divider-animated--delay" />
                   <div className="space-y-2 delay-100">
                     <p className="text-primary text-xl font-semibold tracking-wide uppercase">
                       Our Approach
                     </p>
-                    <p className="prose prose-lg text-primary">
-                      {item.solution}
-                    </p>
+                    <PortableText value={item.solution || []} />
                   </div>
                 </div>
               </div>

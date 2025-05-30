@@ -69,10 +69,7 @@ export default function FaqSection({ faq }: FaqProps) {
                       <AccordionTrigger className="flex min-h-[106px] cursor-pointer items-center p-6 text-2xl font-medium text-gray-900">
                         {item.question}
                         <div className="mt-1 flex-shrink-0">
-                          <div
-                            className="flex h-8 w-8 items-center justify-center rounded-full transition-all duration-300 group-data-[state=open]:rotate-180"
-                            style={{ backgroundColor: '#2D62FF' }}
-                          >
+                          <div className="bg-accent flex h-8 w-8 items-center justify-center rounded-full transition-all duration-300 group-data-[state=open]:rotate-180">
                             <ChevronDown className="h-4 w-4 text-white" />
                           </div>
                         </div>

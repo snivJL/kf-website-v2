@@ -93,6 +93,21 @@ export const highlightsQuery = groq`
 }
 `;
 
+export const howWeWorkQuery = groq`
+*[_type == "howWeWork"][0] {
+    title,
+    blueSubHeading,
+    graySubHeading,
+    items[]{
+      title,
+      problemLabel,
+      problem,
+      solutionLabel,
+      solution
+    }
+  }
+`;
+
 export const homePageQuery = groq`
 {
   "hero": ${heroQuery},
@@ -100,6 +115,7 @@ export const homePageQuery = groq`
   "faq": ${faqQuery},
   "useCase": ${useCaseQuery},
   "contactUs": ${contactUsQuery},
-  "highlights": ${highlightsQuery}
+  "highlights": ${highlightsQuery},
+  "howWeWork": ${howWeWorkQuery}
 }
 `;

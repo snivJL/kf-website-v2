@@ -141,12 +141,12 @@ export default function HomeHighlights({ highlights }: HighlightsProps) {
           <div className="flex flex-col items-center justify-center space-y-6 px-4 md:col-span-7">
             {firstItem.shortText && (
               <div
-                className="rounded-xl px-6 py-4 text-center text-xl font-semibold"
-                style={{
-                  color: '#171717',
-                  backgroundColor: '#f8faff',
-                  border: `2px solid #e6f0ff`,
-                }}
+                className="text-muted-foreground rounded-xl px-6 py-4 text-center text-2xl font-semibold italic"
+                // style={{
+                //   color: '#171717',
+                //   backgroundColor: '#f8faff',
+                //   border: `2px solid #e6f0ff`,
+                // }}
               >
                 {firstItem.shortText}
               </div>
@@ -170,43 +170,23 @@ export default function HomeHighlights({ highlights }: HighlightsProps) {
                 Your browser does not support the video tag.
               </video>
               {/* Decorative gradient overlay */}
-              <div
-                className="absolute -inset-1 -z-10 rounded-2xl opacity-20 blur-sm"
-                style={{
-                  background: `linear-gradient(45deg, #2D62FF, #171717)`,
-                }}
-              />
             </div>
             {firstItem.testimonial && (
-              <blockquote
-                className="relative rounded-xl px-6 py-4 text-center text-lg leading-relaxed italic"
-                style={{
-                  color: '#4a5568',
-                  backgroundColor: '#f7fafc',
-                  border: `1px solid #e2e8f0`,
-                }}
-              >
+              <blockquote className="text-muted-foreground relative rounded-xl px-6 py-4 text-center text-lg leading-relaxed italic">
                 <div className="relative z-10">
                   <PortableText value={firstItem.testimonial} />
                 </div>
                 {/* Quote marks */}
-                <div
-                  className="absolute top-2 left-4 text-4xl font-bold opacity-20"
-                  style={{ color: '#2D62FF' }}
-                >
+                <div className="text-accent absolute top-2 left-4 text-4xl font-bold opacity-20">
+                  &quot;
+                </div>
+                <div className="text-accent absolute right-4 bottom-2 text-4xl font-bold opacity-20">
                   &quot;
                 </div>
               </blockquote>
             )}
             {firstItem.tagline && (
-              <div
-                className="rounded-full px-6 py-3 text-xl font-bold"
-                style={{
-                  color: 'white',
-                  backgroundColor: '#2D62FF',
-                  boxShadow: '0 4px 14px 0 rgba(45, 98, 255, 0.3)',
-                }}
-              >
+              <div className="text-accent rounded-full px-6 py-3 text-xl font-bold">
                 {firstItem.tagline}
               </div>
             )}

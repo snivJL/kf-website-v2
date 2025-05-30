@@ -6,12 +6,12 @@ import { UseCases } from '@/components/use-cases';
 import { sanityClient } from '@/lib/sanity/client';
 import {
   Hero,
-  OurApproach as OurApproachType,
   Highlights as HighlightsType,
   Faq,
   Home,
   UseCase as UseCaseType,
   ContactUsPage,
+  HowWeWork,
 } from '@/lib/sanity/types';
 import type { Metadata } from 'next';
 import { homePageQuery } from '@/lib/sanity/queries';
@@ -27,22 +27,22 @@ export const metadata: Metadata = {
 };
 
 export default async function HomePage() {
-  const { hero, highlights, ourApproach, faq, useCase, contactUs } =
+  const { hero, highlights, faq, useCase, contactUs, howWeWork } =
     await sanityClient.fetch<{
       hero: Hero;
       home: Home;
       highlights: HighlightsType;
-      ourApproach: OurApproachType;
       faq: Faq;
       useCase: UseCaseType;
       contactUs: ContactUsPage;
+      howWeWork: HowWeWork;
     }>(homePageQuery);
-
+  console.log(howWeWork);
   return (
     <>
       <HeroSection hero={hero} />
       <HomeHighlights highlights={highlights} />
-      <OurApproach approach={ourApproach} />
+      <OurApproach howWeWork={howWeWork} />
       <UseCases useCaseSection={useCase} />
       <FaqSection faq={faq} />
       <ContactUs contactUsSection={contactUs} />
