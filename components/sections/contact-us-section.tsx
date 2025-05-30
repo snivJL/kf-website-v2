@@ -14,7 +14,7 @@ import { useTransition } from 'react';
 import { toast } from 'sonner';
 import { ContactUsPage } from '@/lib/sanity/types';
 import { InlineWidget } from 'react-calendly';
-import AnimatedSection from './animated-section';
+import AnimatedSection from '../animated-section';
 
 const formSchema = z.object({
   firstName: z.string().min(1, 'Please enter your first name'),

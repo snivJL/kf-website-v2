@@ -3,7 +3,7 @@
 import type { Highlights } from '@/lib/sanity/types';
 import { cn } from '@/lib/utils';
 import { PortableText, PortableTextReactComponents } from 'next-sanity';
-import AnimatedSection from './animated-section';
+import AnimatedSection from '../animated-section';
 import {
   Accordion,
   AccordionItem,
@@ -23,14 +23,12 @@ const portableComponents: Partial<PortableTextReactComponents> = {
   },
   listItem: (props) => (
     <li className="flex items-start">
-      <CheckCircle className="mt-1 mr-2 h-4 w-4 shrink-0 text-[#2D62FF]" />
+      <CheckCircle className="text-accent mt-1 mr-2 h-4 w-4 shrink-0" />
       <span>{props.children}</span>
     </li>
   ),
 };
 export default function HomeHighlights({ highlights }: HighlightsProps) {
-  const firstItem = highlights.items?.[0];
-
   return (
     <AnimatedSection
       id="what-we-do"
@@ -39,10 +37,7 @@ export default function HomeHighlights({ highlights }: HighlightsProps) {
     >
       <div className="container mx-auto mb-8 max-w-[700px] space-y-2 px-4 text-center">
         {highlights.heading && (
-          <h2
-            className="mb-4 text-3xl font-bold md:text-4xl"
-            style={{ color: '#171717' }}
-          >
+          <h2 className="text-primary mb-4 text-3xl font-bold md:text-4xl">
             {highlights.heading}
           </h2>
         )}
@@ -52,10 +47,7 @@ export default function HomeHighlights({ highlights }: HighlightsProps) {
           </p>
         )}
         {highlights.blueSubHeading && (
-          <p
-            className="mx-auto max-w-3xl text-2xl font-semibold"
-            style={{ color: '#2D62FF' }}
-          >
+          <p className="text-accent mx-auto max-w-3xl text-2xl font-semibold">
             {highlights.blueSubHeading}
           </p>
         )}
@@ -136,62 +128,51 @@ export default function HomeHighlights({ highlights }: HighlightsProps) {
           </div>
         </div>
 
-        {/* Right column: static first item */}
-        {firstItem && (
-          <div className="flex flex-col items-center justify-center space-y-6 px-4 md:col-span-7">
-            {firstItem.shortText && (
-              <div
-                className="text-muted-foreground rounded-xl px-6 py-4 text-center text-2xl font-semibold italic"
-                // style={{
-                //   color: '#171717',
-                //   backgroundColor: '#f8faff',
-                //   border: `2px solid #e6f0ff`,
-                // }}
-              >
-                {firstItem.shortText}
-              </div>
-            )}
-            <div className="relative w-full">
-              <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="metadata"
-                className="my-6 aspect-video w-full overflow-hidden rounded-2xl object-cover shadow-lg"
-                style={{
-                  border: `3px solid #2D62FF`,
-                  boxShadow:
-                    '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
-                }}
-              >
-                <source src="/kf-ai-connecting-people.mp4" type="video/mp4" />
-                <source src="/kf-ai-connecting-people.webm" type="video/webm" />
-                Your browser does not support the video tag.
-              </video>
-              {/* Decorative gradient overlay */}
+        <div className="flex flex-col items-center justify-center px-4 md:col-span-7">
+          {highlights.shortText && (
+            <div className="text-muted-foreground rounded-xl px-6 py-4 text-center text-2xl font-semibold italic">
+              {highlights.shortText}
             </div>
-            {firstItem.testimonial && (
-              <blockquote className="text-muted-foreground relative rounded-xl px-6 py-4 text-center text-lg leading-relaxed italic">
-                <div className="relative z-10">
-                  <PortableText value={firstItem.testimonial} />
-                </div>
-                {/* Quote marks */}
-                <div className="text-accent absolute top-2 left-4 text-4xl font-bold opacity-20">
-                  &quot;
-                </div>
-                <div className="text-accent absolute right-4 bottom-2 text-4xl font-bold opacity-20">
-                  &quot;
-                </div>
-              </blockquote>
-            )}
-            {firstItem.tagline && (
-              <div className="text-accent rounded-full px-6 py-3 text-xl font-bold">
-                {firstItem.tagline}
-              </div>
-            )}
+          )}
+          <div className="relative w-full">
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="metadata"
+              className="my-6 aspect-video w-full overflow-hidden rounded-2xl object-cover shadow-lg"
+              style={{
+                border: `3px solid #2D62FF`,
+                boxShadow:
+                  '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+              }}
+            >
+              <source src="/kf-ai-connecting-people.mp4" type="video/mp4" />
+              <source src="/kf-ai-connecting-people.webm" type="video/webm" />
+              Your browser does not support the video tag.
+            </video>
           </div>
-        )}
+          {highlights.testimonial && (
+            <blockquote className="text-muted-foreground relative rounded-xl px-6 py-4 text-center text-lg leading-relaxed italic">
+              <div className="relative z-10">
+                <PortableText value={highlights.testimonial} />
+              </div>
+              {/* Quote marks */}
+              <div className="text-accent absolute top-2 left-4 text-4xl font-bold opacity-20">
+                &quot;
+              </div>
+              <div className="text-accent absolute right-4 bottom-2 text-4xl font-bold opacity-20">
+                &quot;
+              </div>
+            </blockquote>
+          )}
+          {highlights.tagline && (
+            <div className="text-accent rounded-full px-6 py-3 text-xl font-bold">
+              {highlights.tagline}
+            </div>
+          )}
+        </div>
       </div>
     </AnimatedSection>
   );

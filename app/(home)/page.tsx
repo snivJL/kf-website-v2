@@ -1,21 +1,20 @@
-import ContactUs from '@/components/contact-us-section';
-import FaqSection from '@/components/faqs-section';
-import HeroSection from '@/components/hero';
+import ContactUs from '@/components/sections/contact-us-section';
+import FaqSection from '@/components/sections/faqs-section';
+import HeroSection from '@/components/sections/hero';
 import OurApproach from '@/components/our-approach';
-import { UseCases } from '@/components/use-cases';
+import { UseCases } from '@/components/sections/use-cases';
 import { sanityClient } from '@/lib/sanity/client';
 import {
   Hero,
   Highlights as HighlightsType,
   Faq,
-  Home,
   UseCase as UseCaseType,
   ContactUsPage,
   HowWeWork,
 } from '@/lib/sanity/types';
 import type { Metadata } from 'next';
 import { homePageQuery } from '@/lib/sanity/queries';
-import HomeHighlights from '@/components/highlights';
+import HomeHighlights from '@/components/sections/highlights';
 
 // **1 min cache / ISR**
 export const revalidate = 60;
@@ -30,7 +29,6 @@ export default async function HomePage() {
   const { hero, highlights, faq, useCase, contactUs, howWeWork } =
     await sanityClient.fetch<{
       hero: Hero;
-      home: Home;
       highlights: HighlightsType;
       faq: Faq;
       useCase: UseCaseType;

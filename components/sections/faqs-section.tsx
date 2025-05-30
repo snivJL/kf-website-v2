@@ -11,7 +11,7 @@ import { PortableText, toPlainText } from 'next-sanity';
 import { Faq } from '@/lib/sanity/types';
 import { fadeIn } from '@/lib/motion';
 import Script from 'next/script';
-import AnimatedSection from './animated-section';
+import AnimatedSection from '../animated-section';
 import { ChevronDown } from 'lucide-react';
 
 type FaqProps = {

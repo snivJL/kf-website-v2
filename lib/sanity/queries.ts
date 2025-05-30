@@ -16,20 +16,6 @@ export const heroQuery = `
 }
 `;
 
-export const ourApproachQuery = `
-*[_type == "ourApproach"][0] {
-  heading,
-  graySubHeading,
-  blueSubHeading,
-  steps[] {
-    _key,
-    title,
-    index,
-    description[]  
-  }
-}
-`;
-
 export const faqQuery = `
 *[_type == "faq"][0] {
   heading,
@@ -82,13 +68,14 @@ export const highlightsQuery = groq`
   heading,
   graySubHeading,
   blueSubHeading,
+  shortText,
+    testimonial,
+    tagline,
   items[] {
     title,
     problem,
     solution,
-    shortText,
-    testimonial,
-    tagline
+    
   }
 }
 `;
@@ -111,11 +98,10 @@ export const howWeWorkQuery = groq`
 export const homePageQuery = groq`
 {
   "hero": ${heroQuery},
-  "ourApproach": ${ourApproachQuery},
-  "faq": ${faqQuery},
+  "highlights": ${highlightsQuery},
+  "howWeWork": ${howWeWorkQuery},
   "useCase": ${useCaseQuery},
   "contactUs": ${contactUsQuery},
-  "highlights": ${highlightsQuery},
-  "howWeWork": ${howWeWorkQuery}
+  "faq": ${faqQuery}
 }
 `;

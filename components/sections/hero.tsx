@@ -8,9 +8,9 @@ import {
 import Link from 'next/link';
 import type { Hero } from '@/lib/sanity/types';
 import { fadeIn, fadeUp } from '@/lib/motion';
-import { Button } from './ui/button';
+import { Button } from '../ui/button';
 import { ArrowRight } from 'lucide-react';
-import AnimatedSection from './animated-section';
+import AnimatedSection from '../animated-section';
 
 const container = {
   hidden: fadeIn.hidden,

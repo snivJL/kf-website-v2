@@ -11,7 +11,7 @@ import {
 import { Button } from '@/components/ui/button';
 import type { UseCase } from '@/lib/sanity/types';
 import { PortableText } from 'next-sanity';
-import AnimatedSection from './animated-section';
+import AnimatedSection from '../animated-section';
 
 const container: Variants = {
   hidden: {},
