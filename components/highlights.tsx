@@ -10,10 +10,7 @@ type HighlightsProps = {
 
 export default function HomeHighlights({ highlights }: HighlightsProps) {
   return (
-    <section
-      id="highlights"
-      className="container mx-auto snap-y snap-mandatory space-y-4 overflow-y-auto px-4 py-12"
-    >
+    <section id="highlights" className="container mx-auto space-y-4 px-4 py-12">
       <motion.div
         className="container mx-auto mb-8 max-w-[700px] space-y-2 px-4 text-center"
         initial={{ opacity: 0, y: 20 }}
@@ -41,29 +38,25 @@ export default function HomeHighlights({ highlights }: HighlightsProps) {
         <div
           key={item.title}
           className={cn(
-            'grid items-center gap-12 md:grid-cols-12',
+            'grid items-center gap-12 md:grid-cols-12 [&_li]:ml-1 [&_li]:list-inside [&_li]:list-disc md:[&_li]:-ml-4',
             i % 2 === 1 ? 'md:[&>*:first-child]:order-last' : ''
           )}
           style={{ minHeight: 'calc(100vh - 96px)' }}
         >
           {/* Left column */}
           <div className="flex flex-col space-y-6 md:col-span-5">
-            <h3 className="pb-8 text-2xl font-bold md:text-3xl">
+            <h3 className="prose prose-2xl pb-8 font-bold md:text-3xl">
               {item.title}
             </h3>
             <p className="prose prose-xl bg-primary rounded-lg p-8 font-semibold text-white">
               We now have a dynamic, enriched and structured view of our
               collective company knowledge, without any manual input
             </p>
-            <div className="space-y-2 pb-4">
-              <ul className="space-y-2 pl-6">
-                <PortableText value={item.problem || []} />
-              </ul>
+            <div className="prose pb-4">
+              <PortableText value={item.problem || []} />
             </div>
-            <div className="space-y-2">
-              <ul className="space-y-2 pl-6">
-                <PortableText value={item.solution || []} />
-              </ul>
+            <div className="prose">
+              <PortableText value={item.solution || []} />
             </div>
           </div>
 
