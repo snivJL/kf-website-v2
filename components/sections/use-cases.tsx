@@ -67,7 +67,7 @@ export const UseCases = ({ useCaseSection }: UseCasesProps) => {
                 <motion.div key={useCase._key} variants={item}>
                   <Card className="shadow-sm transition-shadow hover:shadow-md">
                     <CardContent className="space-y-4">
-                      <CardTitle className="text-xl">{useCase.title}</CardTitle>
+                      <CardTitle className="text-xl">{`${useCase.title} ${useCase.company}`}</CardTitle>
                       <CardDescription className="text-gray-600">
                         {useCase.hook}
                       </CardDescription>

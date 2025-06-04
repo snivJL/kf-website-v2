@@ -7,7 +7,7 @@ import { UseCaseItem } from '@/lib/sanity/types';
 import UseCaseNavigator, { SECTIONS } from './use-case-navigator';
 import { Card, CardContent, CardHeader } from './ui/card';
 import { UseCaseMobileNav } from './use-case-mobile-nav';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { cn } from '@/lib/utils';
 import { useOverflow } from '@/hooks/use-overflow';
@@ -19,20 +19,31 @@ interface Props {
 export default function UseCaseContent({ useCase }: Props) {
   const [activeId, setActiveId] = useState<string>(SECTIONS[0].id);
   const isMobile = useIsMobile();
-  const topOffset = isMobile ? 500 : 96;
+  const bottomRef = useRef<HTMLDivElement | null>(null);
+
+  const topOffset = isMobile ? 500 : 224;
   const [ref, overflow, isScrolledToBottom] = useOverflow<HTMLDivElement>();
 
   // scroll-spy
   useEffect(() => {
+    const sentinel = bottomRef.current;
+
     const observer = new IntersectionObserver(
       (entries) => {
+        if (sentinel) {
+          const endEntry = entries.find((e) => e.target === sentinel);
+          if (endEntry?.isIntersecting) {
+            setActiveId(SECTIONS[SECTIONS.length - 1].id);
+            return;
+          }
+        }
         const visible = entries
-          .filter((e) => e.isIntersecting)
+          .filter((e) => e.isIntersecting && e.target !== sentinel)
           .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
         if (visible.length) setActiveId(visible[0].target.id);
       },
       {
-        rootMargin: `${-topOffset}px 0px -60% 0px`,
+        rootMargin: `${-topOffset}px 0px -55% 0px`,
         threshold: 0,
       }
     );
@@ -40,6 +51,8 @@ export default function UseCaseContent({ useCase }: Props) {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
     });
+    if (sentinel) observer.observe(sentinel);
+
     return () => observer.disconnect();
   }, [topOffset]);
 
@@ -50,8 +63,9 @@ export default function UseCaseContent({ useCase }: Props) {
 
   const showScrollerClass =
     (overflow === 'y' || overflow === 'both') && !isScrolledToBottom;
+
   return (
-    <article className="mx-auto max-w-7xl scroll-smooth px-4 md:grid md:grid-cols-12 md:gap-x-12 md:pt-16">
+    <article className="mx-auto max-w-7xl scroll-smooth px-4 md:grid md:grid-cols-12 md:gap-x-12">
       {/* LEFT: Sticky overview + nav */}
       <aside className="sticky top-24 col-span-4 self-start bg-white md:top-32 md:space-y-8">
         <div className="flex w-full flex-col">
@@ -91,8 +105,13 @@ export default function UseCaseContent({ useCase }: Props) {
       </aside>
 
       {/* RIGHT: Scrollable deep dive */}
-      <main className="col-span-8 space-y-8 px-4 pt-12 pb-4 md:space-y-8 md:px-16 md:pt-0 md:pb-8 [&_li]:ml-1 [&_li]:list-outside [&_li]:list-disc md:[&_li]:ml-4">
-        {/* TODO: ADD TITLE HERE {useCase.title}  */}
+      <main className="col-span-8 space-y-8 px-4 pb-4 md:space-y-8 md:px-16 md:pt-0 md:pb-8 [&_li]:ml-1 [&_li]:list-outside [&_li]:list-disc md:[&_li]:ml-4">
+        <div className="sticky top-24 z-10 bg-white pt-8 pb-8">
+          <h1 className="text-3xl font-bold md:text-4xl">
+            <span>{useCase.title}</span>{' '}
+            <span className="text-accent">{useCase.company}</span>
+          </h1>
+        </div>
         {SECTIONS.map(({ id, label }) => (
           <section
             key={id}
@@ -130,6 +149,7 @@ export default function UseCaseContent({ useCase }: Props) {
             </div>
           </section>
         ))}
+        <div ref={bottomRef} style={{ height: '1px' }} />
 
         <Button asChild variant="outline">
           <Link href="/#use-cases">← Back to all use cases</Link>

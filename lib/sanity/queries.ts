@@ -35,7 +35,7 @@ export const useCaseQuery = `
   blueSection,   
   useCases[] {
     _key,
-    title,
+    title,company,
     hook,
     buttonText,
     buttonLink,

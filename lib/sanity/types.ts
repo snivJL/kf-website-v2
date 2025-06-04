@@ -64,6 +64,7 @@ export type Cta = {
 export type UseCaseItem = {
   _type: 'useCaseItem';
   title?: string;
+  company?: string;
   hook?: string;
   buttonText?: string;
   buttonLink?: string;
@@ -522,10 +523,11 @@ export type AllSanitySchemaTypes =
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ../kf-website-frontend/app/use-cases/[slug]/page.tsx
 // Variable: useCaseQuery
-// Query: *[_type == "useCase"][0] {    "useCase": useCases[buttonLink == "/use-cases/" + $slug][0] {      title,      objective[]{..., markDefs[]{...}},      painPoints[]{..., markDefs[]{...}},      solution[]{..., markDefs[]{...}},      benefits[]{..., markDefs[]{...}},      korefocusRole[]{..., markDefs[]{...}},      testimonial[]{..., markDefs[]{...}}    }  }
+// Query: *[_type == "useCase"][0] {    "useCase": useCases[buttonLink == "/use-cases/" + $slug][0] {      title,      company,      objective[]{..., markDefs[]{...}},      painPoints[]{..., markDefs[]{...}},      solution[]{..., markDefs[]{...}},      benefits[]{..., markDefs[]{...}},      korefocusRole[]{..., markDefs[]{...}},      testimonial[]{..., markDefs[]{...}}    }  }
 export type UseCaseQueryResult = {
   useCase: {
     title: string | null;
+    company: string | null;
     objective: Array<{
       children?: Array<{
         marks?: Array<string>;
@@ -761,7 +763,7 @@ export type HowWeWorkQueryResult = {
   }> | null;
 } | null;
 // Variable: homePageQuery
-// Query: {  "hero": *[_type == "hero"][0] {  heading,  headingBlue,  image {    asset,    alt  },  ctas[] {    text,    linkText,    linkTarget,  }},  "highlights": *[_type == "highlights"][0] {  heading,  graySubHeading,  blueSubHeading,  shortText,    testimonial,    tagline,  items[] {    title,    problem,    solution,      }},  "howWeWork": *[_type == "howWeWork"][0] {    title,    blueSubHeading,    graySubHeading,    items[]{      title,      problemLabel,      problem,      solutionLabel,      solution    }  },  "useCase": *[_type == "useCase"][0] {  heading,  subHeading,  description,    blueSection,     useCases[] {    _key,    title,    hook,    buttonText,    buttonLink,    objective[]{..., markDefs[]{...}},    painPoints[]{..., markDefs[]{...}},    solution[]{..., markDefs[]{...}},    benefits[]{..., markDefs[]{...}},    korefocusRole[]{..., markDefs[]{...}}  }},  "contactUs": *[_type == "contactUsPage"][0] {  title,  description,  phoneLabel,  phoneNumber,  emailLabel,  emailAddress,  submitButtonText,  sendingButtonText,  successToast,  errorToast},  "faq": *[_type == "faq"][0] {  heading,  faqItem[] {    _key,    question,    answer[]          }}}
+// Query: {  "hero": *[_type == "hero"][0] {  heading,  headingBlue,  image {    asset,    alt  },  ctas[] {    text,    linkText,    linkTarget,  }},  "highlights": *[_type == "highlights"][0] {  heading,  graySubHeading,  blueSubHeading,  shortText,    testimonial,    tagline,  items[] {    title,    problem,    solution,      }},  "howWeWork": *[_type == "howWeWork"][0] {    title,    blueSubHeading,    graySubHeading,    items[]{      title,      problemLabel,      problem,      solutionLabel,      solution    }  },  "useCase": *[_type == "useCase"][0] {  heading,  subHeading,  description,    blueSection,     useCases[] {    _key,    title,company,    hook,    buttonText,    buttonLink,    objective[]{..., markDefs[]{...}},    painPoints[]{..., markDefs[]{...}},    solution[]{..., markDefs[]{...}},    benefits[]{..., markDefs[]{...}},    korefocusRole[]{..., markDefs[]{...}}  }},  "contactUs": *[_type == "contactUsPage"][0] {  title,  description,  phoneLabel,  phoneNumber,  emailLabel,  emailAddress,  submitButtonText,  sendingButtonText,  successToast,  errorToast},  "faq": *[_type == "faq"][0] {  heading,  faqItem[] {    _key,    question,    answer[]          }}}
 export type HomePageQueryResult = {
   hero: {
     heading: string | null;
@@ -940,6 +942,7 @@ export type HomePageQueryResult = {
     useCases: Array<{
       _key: string;
       title: string | null;
+      company: string | null;
       hook: string | null;
       buttonText: string | null;
       buttonLink: string | null;
@@ -1122,14 +1125,14 @@ export type HomePageQueryResult = {
   } | null;
 };
 
-// Query TypeMap
+// // Query TypeMap
 // import "@sanity/client";
 // declare module "@sanity/client" {
 //   interface SanityQueries {
-//     "\n  *[_type == \"useCase\"][0] {\n    \"useCase\": useCases[buttonLink == \"/use-cases/\" + $slug][0] {\n      title,\n      objective[]{..., markDefs[]{...}},\n      painPoints[]{..., markDefs[]{...}},\n      solution[]{..., markDefs[]{...}},\n      benefits[]{..., markDefs[]{...}},\n      korefocusRole[]{..., markDefs[]{...}},\n      testimonial[]{..., markDefs[]{...}}\n    }\n  }\n": UseCaseQueryResult;
+//     "\n  *[_type == \"useCase\"][0] {\n    \"useCase\": useCases[buttonLink == \"/use-cases/\" + $slug][0] {\n      title,\n      company,\n      objective[]{..., markDefs[]{...}},\n      painPoints[]{..., markDefs[]{...}},\n      solution[]{..., markDefs[]{...}},\n      benefits[]{..., markDefs[]{...}},\n      korefocusRole[]{..., markDefs[]{...}},\n      testimonial[]{..., markDefs[]{...}}\n    }\n  }\n": UseCaseQueryResult;
 //     "\n  *[_type == \"useCase\"][0] {\n    \"useCase\": useCases[buttonLink == \"/use-cases/\" + $slug][0] {\n      title,\n      hook\n    }\n  }\n": MetaQueryResult;
 //     "\n*[_type == \"highlights\"][0] {\n  heading,\n  graySubHeading,\n  blueSubHeading,\n  shortText,\n    testimonial,\n    tagline,\n  items[] {\n    title,\n    problem,\n    solution,\n    \n  }\n}\n": HighlightsQueryResult;
 //     "\n*[_type == \"howWeWork\"][0] {\n    title,\n    blueSubHeading,\n    graySubHeading,\n    items[]{\n      title,\n      problemLabel,\n      problem,\n      solutionLabel,\n      solution\n    }\n  }\n": HowWeWorkQueryResult;
-//     "\n{\n  \"hero\": \n*[_type == \"hero\"][0] {\n  heading,\n  headingBlue,\n  image {\n    asset,\n    alt\n  },\n  ctas[] {\n    text,\n    linkText,\n    linkTarget,\n  }\n}\n,\n  \"highlights\": \n*[_type == \"highlights\"][0] {\n  heading,\n  graySubHeading,\n  blueSubHeading,\n  shortText,\n    testimonial,\n    tagline,\n  items[] {\n    title,\n    problem,\n    solution,\n    \n  }\n}\n,\n  \"howWeWork\": \n*[_type == \"howWeWork\"][0] {\n    title,\n    blueSubHeading,\n    graySubHeading,\n    items[]{\n      title,\n      problemLabel,\n      problem,\n      solutionLabel,\n      solution\n    }\n  }\n,\n  \"useCase\": \n*[_type == \"useCase\"][0] {\n  heading,\n  subHeading,\n  description,  \n  blueSection,   \n  useCases[] {\n    _key,\n    title,\n    hook,\n    buttonText,\n    buttonLink,\n    objective[]{..., markDefs[]{...}},\n    painPoints[]{..., markDefs[]{...}},\n    solution[]{..., markDefs[]{...}},\n    benefits[]{..., markDefs[]{...}},\n    korefocusRole[]{..., markDefs[]{...}}\n  }\n}\n,\n  \"contactUs\": \n*[_type == \"contactUsPage\"][0] {\n  title,\n  description,\n  phoneLabel,\n  phoneNumber,\n  emailLabel,\n  emailAddress,\n  submitButtonText,\n  sendingButtonText,\n  successToast,\n  errorToast\n}\n,\n  \"faq\": \n*[_type == \"faq\"][0] {\n  heading,\n  faqItem[] {\n    _key,\n    question,\n    answer[]        \n  }\n}\n\n}\n": HomePageQueryResult;
+//     "\n{\n  \"hero\": \n*[_type == \"hero\"][0] {\n  heading,\n  headingBlue,\n  image {\n    asset,\n    alt\n  },\n  ctas[] {\n    text,\n    linkText,\n    linkTarget,\n  }\n}\n,\n  \"highlights\": \n*[_type == \"highlights\"][0] {\n  heading,\n  graySubHeading,\n  blueSubHeading,\n  shortText,\n    testimonial,\n    tagline,\n  items[] {\n    title,\n    problem,\n    solution,\n    \n  }\n}\n,\n  \"howWeWork\": \n*[_type == \"howWeWork\"][0] {\n    title,\n    blueSubHeading,\n    graySubHeading,\n    items[]{\n      title,\n      problemLabel,\n      problem,\n      solutionLabel,\n      solution\n    }\n  }\n,\n  \"useCase\": \n*[_type == \"useCase\"][0] {\n  heading,\n  subHeading,\n  description,  \n  blueSection,   \n  useCases[] {\n    _key,\n    title,company,\n    hook,\n    buttonText,\n    buttonLink,\n    objective[]{..., markDefs[]{...}},\n    painPoints[]{..., markDefs[]{...}},\n    solution[]{..., markDefs[]{...}},\n    benefits[]{..., markDefs[]{...}},\n    korefocusRole[]{..., markDefs[]{...}}\n  }\n}\n,\n  \"contactUs\": \n*[_type == \"contactUsPage\"][0] {\n  title,\n  description,\n  phoneLabel,\n  phoneNumber,\n  emailLabel,\n  emailAddress,\n  submitButtonText,\n  sendingButtonText,\n  successToast,\n  errorToast\n}\n,\n  \"faq\": \n*[_type == \"faq\"][0] {\n  heading,\n  faqItem[] {\n    _key,\n    question,\n    answer[]        \n  }\n}\n\n}\n": HomePageQueryResult;
 //   }
 // }

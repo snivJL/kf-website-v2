@@ -11,6 +11,7 @@ const useCaseQuery = groq`
   *[_type == "useCase"][0] {
     "useCase": useCases[buttonLink == "/use-cases/" + $slug][0] {
       title,
+      company,
       objective[]{..., markDefs[]{...}},
       painPoints[]{..., markDefs[]{...}},
       solution[]{..., markDefs[]{...}},
