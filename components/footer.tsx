@@ -17,7 +17,7 @@ export default function Footer() {
         {/* Logo & Branding */}
         <div className="flex items-center space-x-3">
           <Image
-            src="/logo_large.png"
+            src="/logo-large.png"
             alt="Korefocus logo"
             width={256}
             height={256}
@@ -47,7 +47,7 @@ export default function Footer() {
         <div className="flex space-x-4">
           {[
             {
-              href: 'https://ae.linkedin.com/in/thomasmiklavec',
+              href: 'https://www.linkedin.com/company/korefocus',
             },
           ].map(({ href }) => (
             <Link

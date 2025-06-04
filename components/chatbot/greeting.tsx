@@ -15,10 +15,11 @@ export const Greeting = () => {
         className="absolute inset-x-0 -top-12 flex items-center justify-center"
       >
         <Image
-          src="/logo_large.png"
+          src="/logo-large.png"
           alt="Korefocus Logo"
           width={256}
           height={256}
+          priority
         />{' '}
       </motion.div>
 

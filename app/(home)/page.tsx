@@ -20,7 +20,7 @@ import HomeHighlights from '@/components/sections/highlights';
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: 'Korefocus – AI + Data + Workflows',
+  title: 'Korefocus – AI + Data + Orchestration',
   description:
     'Korefocus partners with you to streamline data and AI workflows. We blend business insight with technical expertise, delivering proven tools, custom API layers, and tailored AI agents. Discover our approach, use cases, and contact us today.',
 };

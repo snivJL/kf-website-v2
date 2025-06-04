@@ -76,7 +76,7 @@ export default function UseCaseContent({ useCase }: Props) {
           >
             <CardHeader className="gap-0">
               <h2 className="leading-tight font-semibold text-white md:text-xl">
-                {useCase.title}
+                Objective
               </h2>
             </CardHeader>
             <CardContent>
@@ -92,6 +92,7 @@ export default function UseCaseContent({ useCase }: Props) {
 
       {/* RIGHT: Scrollable deep dive */}
       <main className="col-span-8 space-y-8 px-4 pt-12 pb-4 md:space-y-8 md:px-16 md:pt-0 md:pb-8 [&_li]:ml-1 [&_li]:list-outside [&_li]:list-disc md:[&_li]:ml-4">
+        {/* TODO: ADD TITLE HERE {useCase.title}  */}
         {SECTIONS.map(({ id, label }) => (
           <section
             key={id}
@@ -110,7 +111,7 @@ export default function UseCaseContent({ useCase }: Props) {
             >
               {label}
             </h2>
-            <div className="prose leading-tight">
+            <div className={'prose leading-tight'}>
               <PortableText
                 value={
                   useCase[

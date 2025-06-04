@@ -1,6 +1,6 @@
 import { ImageResponse } from 'next/og';
 
-export const alt = 'Korefocus – AI + Data + Workflows';
+export const alt = 'Korefocus – AI + Data + Orchestration';
 export const size = {
   width: 1200,
   height: 630,

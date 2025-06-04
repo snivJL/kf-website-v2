@@ -26,7 +26,7 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL!),
-  title: 'Korefocus – AI + Data + Workflows',
+  title: 'Korefocus – AI + Data + Orchestration',
   description:
     'Korefocus partners with you to streamline data and AI workflows. We blend business insight with technical expertise, delivering proven tools, custom API layers, and tailored AI agents. Discover our approach, use cases, and contact us today.',
   keywords: ['AI workflows', 'data automation', 'Korefocus'],
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'Korefocus – AI + Data + Workflows',
+    title: 'Korefocus – AI + Data + Orchestration',
     description:
       'Korefocus partners with you to streamline data and AI workflows. We blend business insight with technical expertise, delivering proven tools, custom API layers, and tailored AI agents. Discover our approach, use cases, and contact us today.',
     url: process.env.NEXT_PUBLIC_BASE_URL,
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
         url: '/opengraph-image.png',
         width: 1200,
         height: 630,
-        alt: 'Korefocus – AI + Data + Workflows',
+        alt: 'Korefocus – AI + Data + Orchestration',
       },
     ],
     locale: 'en_US',
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Korefocus – AI + Data + Workflows',
+    title: 'Korefocus – AI + Data + Orchestration',
     description:
       'Korefocus partners with you to streamline data and AI workflows. We blend business insight with technical expertise, delivering proven tools, custom API layers, and tailored AI agents. Discover our approach, use cases, and contact us today.',
     images: ['/opengraph-image.png'],
