@@ -66,8 +66,8 @@ export default function Navbar() {
             <Image
               src="/logo-large.svg"
               alt="Korefocus logo"
-              width={128}
-              height={128}
+              width={216}
+              height={216}
               priority
             />
           </Link>
