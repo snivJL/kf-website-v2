@@ -57,7 +57,7 @@ export default function FaqSection({ faq }: FaqProps) {
                   key={item._key}
                   initial={shouldReduce ? {} : { opacity: 0, y: 20 }}
                   whileInView={shouldReduce ? {} : { opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.2 }}
+                  viewport={{ once: true, amount: 0.1 }}
                   transition={{ delay: i * 0.1, duration: 0.4 }}
                 >
                   <Accordion

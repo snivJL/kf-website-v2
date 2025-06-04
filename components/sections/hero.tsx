@@ -59,9 +59,7 @@ export default function HeroSection({ hero }: { hero: Hero }) {
       {/* BLURBS */}
       <motion.div
         className="mx-auto mt-8 grid w-full max-w-5xl gap-6 px-4 pb-[clamp(3rem,8vh,6rem)] sm:grid-cols-2 md:grid-cols-3"
-        // initial={shouldReduce ? undefined : 'hidden'}
         whileInView="show"
-        // viewport={{ once: true, amount: 0.3 }}
         variants={shouldReduce ? {} : blurbContainer}
       >
         {hero.ctas?.map((cta) => (
@@ -71,7 +69,7 @@ export default function HeroSection({ hero }: { hero: Hero }) {
             className="group border-border bg-card relative flex min-h-40 flex-col justify-between rounded-2xl border p-6 pb-4 shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg sm:min-h-52 md:pb-6 lg:min-h-60"
           >
             <>
-              <p className="text-muted-foreground prose prose-lg md:mb-4">
+              <p className="text-muted-foreground prose prose-lg mb-4">
                 {cta.text}
               </p>
               <Button className="group-hover:bg-accent text-lg! font-semibold">

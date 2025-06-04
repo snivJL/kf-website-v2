@@ -35,7 +35,7 @@ export default async function HomePage() {
       contactUs: ContactUsPage;
       howWeWork: HowWeWork;
     }>(homePageQuery);
-  console.log(howWeWork);
+
   return (
     <>
       <HeroSection hero={hero} />

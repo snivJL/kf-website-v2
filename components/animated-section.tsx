@@ -10,6 +10,7 @@ import {
 } from 'framer-motion';
 import { fadeIn } from '@/lib/motion';
 import { cn } from '@/lib/utils';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 interface AnimatedSectionProps extends React.HTMLAttributes<HTMLElement> {
   variants?: Variants;
@@ -26,8 +27,12 @@ export default function AnimatedSection({
   const shouldReduce = useReducedMotion();
   const controls = useAnimation();
   const ref = useRef(null);
-  const inView = useInView(ref, { amount });
+  const isMobile = useIsMobile();
 
+  const inView = useInView(ref, {
+    amount: isMobile ? 0.1 : amount,
+    once: true,
+  });
   useEffect(() => {
     if (shouldReduce) return;
     if (inView) {

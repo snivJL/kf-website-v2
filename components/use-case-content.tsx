@@ -51,16 +51,23 @@ export default function UseCaseContent({ useCase }: Props) {
   const showScrollerClass =
     (overflow === 'y' || overflow === 'both') && !isScrolledToBottom;
   return (
-    <article className="mx-auto max-w-7xl scroll-smooth px-4 md:grid md:grid-cols-3 md:gap-x-16 md:pt-16">
+    <article className="mx-auto max-w-7xl scroll-smooth px-4 md:grid md:grid-cols-12 md:gap-x-12 md:pt-16">
       {/* LEFT: Sticky overview + nav */}
-      <aside className="sticky top-24 col-span-1 self-start bg-white md:top-32 md:space-y-8">
-        <div className="space-y-4">
-          <h1 className="pl-4 text-xl font-bold md:text-3xl">
-            {useCase.title}
-          </h1>
+      <aside className="sticky top-24 col-span-4 self-start bg-white md:top-32 md:space-y-8">
+        <div className="flex w-full flex-col">
+          <blockquote className="pb-2 text-center text-xl text-gray-600 italic">
+            &quot;We now have a dynamic, enriched and structured view of our
+            collective company knowledge, without any manual input&quot;
+          </blockquote>
+          <blockquote className="ml-auto text-lg leading-tight font-semibold text-gray-800">
+            Christophe Peron,
+          </blockquote>
+          <blockquote className="ml-auto pb-6 text-lg leading-tight font-semibold text-gray-800">
+            Partner at Index Capital
+          </blockquote>
           <Card
             className={cn(
-              'bg-accent h-48 overflow-y-auto py-3 md:h-[268px] md:gap-2 md:py-6',
+              'bg-accent h-48 overflow-y-auto py-3 md:h-auto md:max-h-[268px] md:gap-2 md:py-6',
               {
                 scroller: showScrollerClass,
               }
@@ -68,12 +75,12 @@ export default function UseCaseContent({ useCase }: Props) {
             ref={ref}
           >
             <CardHeader className="gap-0">
-              <h2 className="prose prose-lg md:prose-xl font-semibold text-white">
-                Objective
+              <h2 className="leading-tight font-semibold text-white md:text-xl">
+                {useCase.title}
               </h2>
             </CardHeader>
             <CardContent>
-              <div className="prose md:prose-lg text-white">
+              <div className="prose text-white">
                 <PortableText value={useCase.objective || []} />
               </div>
             </CardContent>
@@ -84,7 +91,7 @@ export default function UseCaseContent({ useCase }: Props) {
       </aside>
 
       {/* RIGHT: Scrollable deep dive */}
-      <main className="col-span-2 space-y-8 px-4 pt-12 pb-4 md:space-y-16 md:px-16 md:pt-0 md:pb-8 [&_li]:ml-1 [&_li]:list-inside [&_li]:list-disc md:[&_li]:ml-4">
+      <main className="col-span-8 space-y-8 px-4 pt-12 pb-4 md:space-y-8 md:px-16 md:pt-0 md:pb-8 [&_li]:ml-1 [&_li]:list-outside [&_li]:list-disc md:[&_li]:ml-4">
         {SECTIONS.map(({ id, label }) => (
           <section
             key={id}
@@ -103,7 +110,7 @@ export default function UseCaseContent({ useCase }: Props) {
             >
               {label}
             </h2>
-            <div className="prose">
+            <div className="prose leading-tight">
               <PortableText
                 value={
                   useCase[
@@ -113,7 +120,9 @@ export default function UseCaseContent({ useCase }: Props) {
                         ? 'solution'
                         : id === 'benefits'
                           ? 'benefits'
-                          : 'korefocusRole'
+                          : id === 'testimonial'
+                            ? 'testimonial'
+                            : 'korefocusRole'
                   ] || []
                 }
               />

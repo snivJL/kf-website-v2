@@ -157,6 +157,24 @@ export type UseCaseItem = {
     _type: 'block';
     _key: string;
   }>;
+  testimonial?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: 'span';
+      _key: string;
+    }>;
+    style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote';
+    listItem?: 'bullet' | 'number';
+    markDefs?: Array<{
+      href?: string;
+      _type: 'link';
+      _key: string;
+    }>;
+    level?: number;
+    _type: 'block';
+    _key: string;
+  }>;
 };
 
 export type FaqItem = {
@@ -504,7 +522,7 @@ export type AllSanitySchemaTypes =
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ../kf-website-frontend/app/use-cases/[slug]/page.tsx
 // Variable: useCaseQuery
-// Query: *[_type == "useCase"][0] {    "useCase": useCases[buttonLink == "/use-cases/" + $slug][0] {      title,      objective[]{..., markDefs[]{...}},      painPoints[]{..., markDefs[]{...}},      solution[]{..., markDefs[]{...}},      benefits[]{..., markDefs[]{...}},      korefocusRole[]{..., markDefs[]{...}}    }  }
+// Query: *[_type == "useCase"][0] {    "useCase": useCases[buttonLink == "/use-cases/" + $slug][0] {      title,      objective[]{..., markDefs[]{...}},      painPoints[]{..., markDefs[]{...}},      solution[]{..., markDefs[]{...}},      benefits[]{..., markDefs[]{...}},      korefocusRole[]{..., markDefs[]{...}},      testimonial[]{..., markDefs[]{...}}    }  }
 export type UseCaseQueryResult = {
   useCase: {
     title: string | null;
@@ -581,6 +599,24 @@ export type UseCaseQueryResult = {
       _key: string;
     }> | null;
     korefocusRole: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: 'span';
+        _key: string;
+      }>;
+      style?: 'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal';
+      listItem?: 'bullet' | 'number';
+      markDefs: Array<{
+        href?: string;
+        _type: 'link';
+        _key: string;
+      }> | null;
+      level?: number;
+      _type: 'block';
+      _key: string;
+    }> | null;
+    testimonial: Array<{
       children?: Array<{
         marks?: Array<string>;
         text?: string;
@@ -725,7 +761,7 @@ export type HowWeWorkQueryResult = {
   }> | null;
 } | null;
 // Variable: homePageQuery
-// Query: {  "hero": *[_type == "hero"][0] {  heading,  headingBlue,  image {    asset,    alt  },  ctas[] {    text,    linkText,    linkTarget,  }},  "ourApproach": *[_type == "ourApproach"][0] {  heading,  graySubHeading,  blueSubHeading,  steps[] {    _key,    title,    index,    description[]    }},  "faq": *[_type == "faq"][0] {  heading,  faqItem[] {    _key,    question,    answer[]          }},  "useCase": *[_type == "useCase"][0] {  heading,  subHeading,  description,    blueSection,     useCases[] {    _key,    title,    hook,    buttonText,    buttonLink,    objective[]{..., markDefs[]{...}},    painPoints[]{..., markDefs[]{...}},    solution[]{..., markDefs[]{...}},    benefits[]{..., markDefs[]{...}},    korefocusRole[]{..., markDefs[]{...}}  }},  "contactUs": *[_type == "contactUsPage"][0] {  title,  description,  phoneLabel,  phoneNumber,  emailLabel,  emailAddress,  submitButtonText,  sendingButtonText,  successToast,  errorToast},  "highlights": *[_type == "highlights"][0] {  heading,  graySubHeading,  blueSubHeading,  shortText,    testimonial,    tagline,  items[] {    title,    problem,    solution,      }},  "howWeWork": *[_type == "howWeWork"][0] {    title,    blueSubHeading,    graySubHeading,    items[]{      title,      problemLabel,      problem,      solutionLabel,      solution    }  }}
+// Query: {  "hero": *[_type == "hero"][0] {  heading,  headingBlue,  image {    asset,    alt  },  ctas[] {    text,    linkText,    linkTarget,  }},  "highlights": *[_type == "highlights"][0] {  heading,  graySubHeading,  blueSubHeading,  shortText,    testimonial,    tagline,  items[] {    title,    problem,    solution,      }},  "howWeWork": *[_type == "howWeWork"][0] {    title,    blueSubHeading,    graySubHeading,    items[]{      title,      problemLabel,      problem,      solutionLabel,      solution    }  },  "useCase": *[_type == "useCase"][0] {  heading,  subHeading,  description,    blueSection,     useCases[] {    _key,    title,    hook,    buttonText,    buttonLink,    objective[]{..., markDefs[]{...}},    painPoints[]{..., markDefs[]{...}},    solution[]{..., markDefs[]{...}},    benefits[]{..., markDefs[]{...}},    korefocusRole[]{..., markDefs[]{...}}  }},  "contactUs": *[_type == "contactUsPage"][0] {  title,  description,  phoneLabel,  phoneNumber,  emailLabel,  emailAddress,  submitButtonText,  sendingButtonText,  successToast,  errorToast},  "faq": *[_type == "faq"][0] {  heading,  faqItem[] {    _key,    question,    answer[]          }}}
 export type HomePageQueryResult = {
   hero: {
     heading: string | null;
@@ -737,13 +773,121 @@ export type HomePageQueryResult = {
       linkTarget: string | null;
     }> | null;
   } | null;
-  ourApproach: null;
-  faq: {
+  highlights: {
     heading: string | null;
-    faqItem: Array<{
+    graySubHeading: string | null;
+    blueSubHeading: string | null;
+    shortText: string | null;
+    testimonial: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: 'span';
+        _key: string;
+      }>;
+      style?: 'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal';
+      listItem?: 'bullet' | 'number';
+      markDefs?: Array<{
+        href?: string;
+        _type: 'link';
+        _key: string;
+      }>;
+      level?: number;
+      _type: 'block';
       _key: string;
-      question: string | null;
-      answer: Array<{
+    }> | null;
+    tagline: string | null;
+    items: Array<{
+      title: string | null;
+      problem: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: 'span';
+          _key: string;
+        }>;
+        style?:
+          | 'blockquote'
+          | 'h1'
+          | 'h2'
+          | 'h3'
+          | 'h4'
+          | 'h5'
+          | 'h6'
+          | 'normal';
+        listItem?: 'bullet' | 'number';
+        markDefs?: Array<{
+          href?: string;
+          _type: 'link';
+          _key: string;
+        }>;
+        level?: number;
+        _type: 'block';
+        _key: string;
+      }> | null;
+      solution: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: 'span';
+          _key: string;
+        }>;
+        style?:
+          | 'blockquote'
+          | 'h1'
+          | 'h2'
+          | 'h3'
+          | 'h4'
+          | 'h5'
+          | 'h6'
+          | 'normal';
+        listItem?: 'bullet' | 'number';
+        markDefs?: Array<{
+          href?: string;
+          _type: 'link';
+          _key: string;
+        }>;
+        level?: number;
+        _type: 'block';
+        _key: string;
+      }> | null;
+    }> | null;
+  } | null;
+  howWeWork: {
+    title: string | null;
+    blueSubHeading: string | null;
+    graySubHeading: string | null;
+    items: Array<{
+      title: string | null;
+      problemLabel: string | null;
+      problem: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: 'span';
+          _key: string;
+        }>;
+        style?:
+          | 'blockquote'
+          | 'h1'
+          | 'h2'
+          | 'h3'
+          | 'h4'
+          | 'h5'
+          | 'h6'
+          | 'normal';
+        listItem?: 'bullet' | 'number';
+        markDefs?: Array<{
+          href?: string;
+          _type: 'link';
+          _key: string;
+        }>;
+        level?: number;
+        _type: 'block';
+        _key: string;
+      }> | null;
+      solutionLabel: string | null;
+      solution: Array<{
         children?: Array<{
           marks?: Array<string>;
           text?: string;
@@ -943,121 +1087,12 @@ export type HomePageQueryResult = {
     successToast: string | null;
     errorToast: string | null;
   } | null;
-  highlights: {
+  faq: {
     heading: string | null;
-    graySubHeading: string | null;
-    blueSubHeading: string | null;
-    shortText: string | null;
-    testimonial: Array<{
-      children?: Array<{
-        marks?: Array<string>;
-        text?: string;
-        _type: 'span';
-        _key: string;
-      }>;
-      style?: 'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal';
-      listItem?: 'bullet' | 'number';
-      markDefs?: Array<{
-        href?: string;
-        _type: 'link';
-        _key: string;
-      }>;
-      level?: number;
-      _type: 'block';
+    faqItem: Array<{
       _key: string;
-    }> | null;
-    tagline: string | null;
-    items: Array<{
-      title: string | null;
-      problem: Array<{
-        children?: Array<{
-          marks?: Array<string>;
-          text?: string;
-          _type: 'span';
-          _key: string;
-        }>;
-        style?:
-          | 'blockquote'
-          | 'h1'
-          | 'h2'
-          | 'h3'
-          | 'h4'
-          | 'h5'
-          | 'h6'
-          | 'normal';
-        listItem?: 'bullet' | 'number';
-        markDefs?: Array<{
-          href?: string;
-          _type: 'link';
-          _key: string;
-        }>;
-        level?: number;
-        _type: 'block';
-        _key: string;
-      }> | null;
-      solution: Array<{
-        children?: Array<{
-          marks?: Array<string>;
-          text?: string;
-          _type: 'span';
-          _key: string;
-        }>;
-        style?:
-          | 'blockquote'
-          | 'h1'
-          | 'h2'
-          | 'h3'
-          | 'h4'
-          | 'h5'
-          | 'h6'
-          | 'normal';
-        listItem?: 'bullet' | 'number';
-        markDefs?: Array<{
-          href?: string;
-          _type: 'link';
-          _key: string;
-        }>;
-        level?: number;
-        _type: 'block';
-        _key: string;
-      }> | null;
-    }> | null;
-  } | null;
-  howWeWork: {
-    title: string | null;
-    blueSubHeading: string | null;
-    graySubHeading: string | null;
-    items: Array<{
-      title: string | null;
-      problemLabel: string | null;
-      problem: Array<{
-        children?: Array<{
-          marks?: Array<string>;
-          text?: string;
-          _type: 'span';
-          _key: string;
-        }>;
-        style?:
-          | 'blockquote'
-          | 'h1'
-          | 'h2'
-          | 'h3'
-          | 'h4'
-          | 'h5'
-          | 'h6'
-          | 'normal';
-        listItem?: 'bullet' | 'number';
-        markDefs?: Array<{
-          href?: string;
-          _type: 'link';
-          _key: string;
-        }>;
-        level?: number;
-        _type: 'block';
-        _key: string;
-      }> | null;
-      solutionLabel: string | null;
-      solution: Array<{
+      question: string | null;
+      answer: Array<{
         children?: Array<{
           marks?: Array<string>;
           text?: string;
@@ -1091,10 +1126,10 @@ export type HomePageQueryResult = {
 // import "@sanity/client";
 // declare module "@sanity/client" {
 //   interface SanityQueries {
-//     "\n  *[_type == \"useCase\"][0] {\n    \"useCase\": useCases[buttonLink == \"/use-cases/\" + $slug][0] {\n      title,\n      objective[]{..., markDefs[]{...}},\n      painPoints[]{..., markDefs[]{...}},\n      solution[]{..., markDefs[]{...}},\n      benefits[]{..., markDefs[]{...}},\n      korefocusRole[]{..., markDefs[]{...}}\n    }\n  }\n": UseCaseQueryResult;
+//     "\n  *[_type == \"useCase\"][0] {\n    \"useCase\": useCases[buttonLink == \"/use-cases/\" + $slug][0] {\n      title,\n      objective[]{..., markDefs[]{...}},\n      painPoints[]{..., markDefs[]{...}},\n      solution[]{..., markDefs[]{...}},\n      benefits[]{..., markDefs[]{...}},\n      korefocusRole[]{..., markDefs[]{...}},\n      testimonial[]{..., markDefs[]{...}}\n    }\n  }\n": UseCaseQueryResult;
 //     "\n  *[_type == \"useCase\"][0] {\n    \"useCase\": useCases[buttonLink == \"/use-cases/\" + $slug][0] {\n      title,\n      hook\n    }\n  }\n": MetaQueryResult;
 //     "\n*[_type == \"highlights\"][0] {\n  heading,\n  graySubHeading,\n  blueSubHeading,\n  shortText,\n    testimonial,\n    tagline,\n  items[] {\n    title,\n    problem,\n    solution,\n    \n  }\n}\n": HighlightsQueryResult;
 //     "\n*[_type == \"howWeWork\"][0] {\n    title,\n    blueSubHeading,\n    graySubHeading,\n    items[]{\n      title,\n      problemLabel,\n      problem,\n      solutionLabel,\n      solution\n    }\n  }\n": HowWeWorkQueryResult;
-//     "\n{\n  \"hero\": \n*[_type == \"hero\"][0] {\n  heading,\n  headingBlue,\n  image {\n    asset,\n    alt\n  },\n  ctas[] {\n    text,\n    linkText,\n    linkTarget,\n  }\n}\n,\n  \"ourApproach\": \n*[_type == \"ourApproach\"][0] {\n  heading,\n  graySubHeading,\n  blueSubHeading,\n  steps[] {\n    _key,\n    title,\n    index,\n    description[]  \n  }\n}\n,\n  \"faq\": \n*[_type == \"faq\"][0] {\n  heading,\n  faqItem[] {\n    _key,\n    question,\n    answer[]        \n  }\n}\n,\n  \"useCase\": \n*[_type == \"useCase\"][0] {\n  heading,\n  subHeading,\n  description,  \n  blueSection,   \n  useCases[] {\n    _key,\n    title,\n    hook,\n    buttonText,\n    buttonLink,\n    objective[]{..., markDefs[]{...}},\n    painPoints[]{..., markDefs[]{...}},\n    solution[]{..., markDefs[]{...}},\n    benefits[]{..., markDefs[]{...}},\n    korefocusRole[]{..., markDefs[]{...}}\n  }\n}\n,\n  \"contactUs\": \n*[_type == \"contactUsPage\"][0] {\n  title,\n  description,\n  phoneLabel,\n  phoneNumber,\n  emailLabel,\n  emailAddress,\n  submitButtonText,\n  sendingButtonText,\n  successToast,\n  errorToast\n}\n,\n  \"highlights\": \n*[_type == \"highlights\"][0] {\n  heading,\n  graySubHeading,\n  blueSubHeading,\n  shortText,\n    testimonial,\n    tagline,\n  items[] {\n    title,\n    problem,\n    solution,\n    \n  }\n}\n,\n  \"howWeWork\": \n*[_type == \"howWeWork\"][0] {\n    title,\n    blueSubHeading,\n    graySubHeading,\n    items[]{\n      title,\n      problemLabel,\n      problem,\n      solutionLabel,\n      solution\n    }\n  }\n\n}\n": HomePageQueryResult;
+//     "\n{\n  \"hero\": \n*[_type == \"hero\"][0] {\n  heading,\n  headingBlue,\n  image {\n    asset,\n    alt\n  },\n  ctas[] {\n    text,\n    linkText,\n    linkTarget,\n  }\n}\n,\n  \"highlights\": \n*[_type == \"highlights\"][0] {\n  heading,\n  graySubHeading,\n  blueSubHeading,\n  shortText,\n    testimonial,\n    tagline,\n  items[] {\n    title,\n    problem,\n    solution,\n    \n  }\n}\n,\n  \"howWeWork\": \n*[_type == \"howWeWork\"][0] {\n    title,\n    blueSubHeading,\n    graySubHeading,\n    items[]{\n      title,\n      problemLabel,\n      problem,\n      solutionLabel,\n      solution\n    }\n  }\n,\n  \"useCase\": \n*[_type == \"useCase\"][0] {\n  heading,\n  subHeading,\n  description,  \n  blueSection,   \n  useCases[] {\n    _key,\n    title,\n    hook,\n    buttonText,\n    buttonLink,\n    objective[]{..., markDefs[]{...}},\n    painPoints[]{..., markDefs[]{...}},\n    solution[]{..., markDefs[]{...}},\n    benefits[]{..., markDefs[]{...}},\n    korefocusRole[]{..., markDefs[]{...}}\n  }\n}\n,\n  \"contactUs\": \n*[_type == \"contactUsPage\"][0] {\n  title,\n  description,\n  phoneLabel,\n  phoneNumber,\n  emailLabel,\n  emailAddress,\n  submitButtonText,\n  sendingButtonText,\n  successToast,\n  errorToast\n}\n,\n  \"faq\": \n*[_type == \"faq\"][0] {\n  heading,\n  faqItem[] {\n    _key,\n    question,\n    answer[]        \n  }\n}\n\n}\n": HomePageQueryResult;
 //   }
 // }

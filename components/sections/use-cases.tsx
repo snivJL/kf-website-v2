@@ -10,6 +10,9 @@ import {
 import type { UseCase } from '@/lib/sanity/types';
 import { PortableText } from 'next-sanity';
 import AnimatedSection from '../animated-section';
+import { Button } from '../ui/button';
+import Link from 'next/link';
+import { cn } from '@/lib/utils';
 
 const container: Variants = {
   hidden: {},
@@ -32,6 +35,7 @@ type UseCasesProps = {
 export const UseCases = ({ useCaseSection }: UseCasesProps) => {
   const { heading, subHeading, description, useCases, blueSection } =
     useCaseSection || {};
+
   return (
     <AnimatedSection
       id="use-cases"
@@ -59,7 +63,7 @@ export const UseCases = ({ useCaseSection }: UseCasesProps) => {
           viewport={{ once: true, amount: 0.2 }}
         >
           {useCases
-            ? useCases.map((useCase) => (
+            ? useCases.map((useCase, i) => (
                 <motion.div key={useCase._key} variants={item}>
                   <Card className="shadow-sm transition-shadow hover:shadow-md">
                     <CardContent className="space-y-4">
@@ -67,11 +71,17 @@ export const UseCases = ({ useCaseSection }: UseCasesProps) => {
                       <CardDescription className="text-gray-600">
                         {useCase.hook}
                       </CardDescription>
-                      {/* <Button asChild variant="outline">
+                      <Button
+                        asChild
+                        variant="outline"
+                        className={cn({
+                          invisible: i === 2,
+                        })}
+                      >
                         <Link href={useCase.buttonLink || ''}>
                           Learn More →
                         </Link>
-                      </Button> */}
+                      </Button>
                     </CardContent>
                   </Card>
                 </motion.div>

@@ -31,25 +31,26 @@ const portableComponents: Partial<PortableTextReactComponents> = {
 };
 export default function HomeHighlights({ highlights }: HighlightsProps) {
   const [active, setActive] = useState<string | null>(null);
+
   return (
     <AnimatedSection
       id="what-we-do"
       amount={0.1}
-      className="container mx-auto min-h-[calc(100dvh-96px)] space-y-4 px-4 py-24"
+      className="container mx-auto min-h-[calc(100dvh-96px)] space-y-4 px-4 md:py-24"
     >
-      <div className="container mx-auto mb-8 max-w-[700px] space-y-2 px-4 text-center">
+      <div className="container mx-auto mb-8 max-w-[700px] px-4 text-center">
         {highlights.heading && (
           <h2 className="text-primary mb-4 text-3xl font-bold md:text-4xl">
             {highlights.heading}
           </h2>
         )}
         {highlights.graySubHeading && (
-          <p className="mx-auto max-w-3xl text-2xl text-gray-500">
+          <p className="mx-auto max-w-3xl text-2xl leading-tight text-gray-500">
             {highlights.graySubHeading}
           </p>
         )}
         {highlights.blueSubHeading && (
-          <p className="text-accent mx-auto max-w-3xl text-2xl font-semibold">
+          <p className="text-accent mx-auto max-w-3xl text-2xl leading-tight font-semibold">
             {highlights.blueSubHeading}
           </p>
         )}

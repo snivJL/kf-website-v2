@@ -15,7 +15,8 @@ const useCaseQuery = groq`
       painPoints[]{..., markDefs[]{...}},
       solution[]{..., markDefs[]{...}},
       benefits[]{..., markDefs[]{...}},
-      korefocusRole[]{..., markDefs[]{...}}
+      korefocusRole[]{..., markDefs[]{...}},
+      testimonial[]{..., markDefs[]{...}}
     }
   }
 `;

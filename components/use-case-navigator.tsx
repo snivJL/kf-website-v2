@@ -1,6 +1,12 @@
 'use client';
 
-import { AlertTriangle, Lightbulb, TrendingUp, Users } from 'lucide-react';
+import {
+  AlertTriangle,
+  Lightbulb,
+  Quote,
+  TrendingUp,
+  Users,
+} from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from './ui/button';
 
@@ -9,6 +15,7 @@ export const SECTIONS = [
   { id: 'solution', label: 'Solution', Icon: Lightbulb },
   { id: 'benefits', label: 'Benefits', Icon: TrendingUp },
   { id: 'our-role', label: 'Korefocus Role', Icon: Users },
+  { id: 'testimonial', label: 'Testimonial', Icon: Quote },
 ] as const;
 
 export default function UseCaseNavigator({ activeId }: { activeId: string }) {
@@ -23,10 +30,9 @@ export default function UseCaseNavigator({ activeId }: { activeId: string }) {
 
   return (
     <nav aria-label="On-page navigation" className="relative hidden md:block">
-      {/* line between text and icon (icons are 2.5rem wide) */}
       <div className="absolute inset-y-0 left-[calc(100%-1.25rem)] w-px bg-gray-200" />
 
-      <ul className="space-y-10">
+      <ul className="space-y-6">
         {SECTIONS.map(({ id, label, Icon }) => {
           const isActive = id === activeId;
           return (
