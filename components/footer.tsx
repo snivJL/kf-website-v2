@@ -17,7 +17,7 @@ export default function Footer() {
         {/* Logo & Branding */}
         <div className="flex items-center space-x-3">
           <Image
-            src="/logo-large.png"
+            src="/logo-large.svg"
             alt="Korefocus logo"
             width={256}
             height={256}

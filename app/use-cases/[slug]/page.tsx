@@ -28,7 +28,7 @@ const useCaseQuery = groq`
 const metaQuery = groq`
   *[_type == "useCase"][0] {
     "useCase": useCases[buttonLink == "/use-cases/" + $slug][0] {
-      title,
+      title,company,
       hook
     }
   }
@@ -41,14 +41,14 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const { useCase } = await sanityClient.fetch<{
-    useCase: { title?: string; hook?: string } | null;
+    useCase: { title?: string; hook?: string; company?: string } | null;
   }>(metaQuery, { slug });
 
   if (!useCase) {
     return { title: 'Use case not found' };
   }
 
-  const title = `${useCase.title}`;
+  const title = `${useCase.title} ${useCase.company}}`;
   const description = useCase.hook ?? 'Explore how Korefocus can help you';
   const url = `${process.env.NEXT_PUBLIC_BASE_URL}/use-cases/${slug}`;
 
