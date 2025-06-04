@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import { motion, Variants } from 'framer-motion';
 import {
   Card,
@@ -8,7 +7,6 @@ import {
   CardTitle,
   CardDescription,
 } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
 import type { UseCase } from '@/lib/sanity/types';
 import { PortableText } from 'next-sanity';
 import AnimatedSection from '../animated-section';
@@ -69,11 +67,11 @@ export const UseCases = ({ useCaseSection }: UseCasesProps) => {
                       <CardDescription className="text-gray-600">
                         {useCase.hook}
                       </CardDescription>
-                      <Button asChild variant="outline">
+                      {/* <Button asChild variant="outline">
                         <Link href={useCase.buttonLink || ''}>
                           Learn More →
                         </Link>
-                      </Button>
+                      </Button> */}
                     </CardContent>
                   </Card>
                 </motion.div>
