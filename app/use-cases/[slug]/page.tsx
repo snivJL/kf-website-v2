@@ -17,7 +17,10 @@ const useCaseQuery = groq`
       solution[]{..., markDefs[]{...}},
       benefits[]{..., markDefs[]{...}},
       korefocusRole[]{..., markDefs[]{...}},
-      testimonial[]{..., markDefs[]{...}}
+      testimonial[]{..., markDefs[]{...}},
+      shortTestimonial,
+      shortTestimonialAuthor,
+      shortTestimonialCompany
     }
   }
 `;

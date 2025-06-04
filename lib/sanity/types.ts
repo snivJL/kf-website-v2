@@ -158,6 +158,9 @@ export type UseCaseItem = {
     _type: 'block';
     _key: string;
   }>;
+  shortTestimonial?: string;
+  shortTestimonialAuthor?: string;
+  shortTestimonialCompany?: string;
   testimonial?: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -522,122 +525,6 @@ export type AllSanitySchemaTypes =
   | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ../kf-website-frontend/app/use-cases/[slug]/page.tsx
-// Variable: useCaseQuery
-// Query: *[_type == "useCase"][0] {    "useCase": useCases[buttonLink == "/use-cases/" + $slug][0] {      title,      company,      objective[]{..., markDefs[]{...}},      painPoints[]{..., markDefs[]{...}},      solution[]{..., markDefs[]{...}},      benefits[]{..., markDefs[]{...}},      korefocusRole[]{..., markDefs[]{...}},      testimonial[]{..., markDefs[]{...}}    }  }
-export type UseCaseQueryResult = {
-  useCase: {
-    title: string | null;
-    company: string | null;
-    objective: Array<{
-      children?: Array<{
-        marks?: Array<string>;
-        text?: string;
-        _type: 'span';
-        _key: string;
-      }>;
-      style?: 'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal';
-      listItem?: 'bullet' | 'number';
-      markDefs: Array<{
-        href?: string;
-        _type: 'link';
-        _key: string;
-      }> | null;
-      level?: number;
-      _type: 'block';
-      _key: string;
-    }> | null;
-    painPoints: Array<{
-      children?: Array<{
-        marks?: Array<string>;
-        text?: string;
-        _type: 'span';
-        _key: string;
-      }>;
-      style?: 'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal';
-      listItem?: 'bullet' | 'number';
-      markDefs: Array<{
-        href?: string;
-        _type: 'link';
-        _key: string;
-      }> | null;
-      level?: number;
-      _type: 'block';
-      _key: string;
-    }> | null;
-    solution: Array<{
-      children?: Array<{
-        marks?: Array<string>;
-        text?: string;
-        _type: 'span';
-        _key: string;
-      }>;
-      style?: 'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal';
-      listItem?: 'bullet' | 'number';
-      markDefs: Array<{
-        href?: string;
-        _type: 'link';
-        _key: string;
-      }> | null;
-      level?: number;
-      _type: 'block';
-      _key: string;
-    }> | null;
-    benefits: Array<{
-      children?: Array<{
-        marks?: Array<string>;
-        text?: string;
-        _type: 'span';
-        _key: string;
-      }>;
-      style?: 'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal';
-      listItem?: 'bullet' | 'number';
-      markDefs: Array<{
-        href?: string;
-        _type: 'link';
-        _key: string;
-      }> | null;
-      level?: number;
-      _type: 'block';
-      _key: string;
-    }> | null;
-    korefocusRole: Array<{
-      children?: Array<{
-        marks?: Array<string>;
-        text?: string;
-        _type: 'span';
-        _key: string;
-      }>;
-      style?: 'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal';
-      listItem?: 'bullet' | 'number';
-      markDefs: Array<{
-        href?: string;
-        _type: 'link';
-        _key: string;
-      }> | null;
-      level?: number;
-      _type: 'block';
-      _key: string;
-    }> | null;
-    testimonial: Array<{
-      children?: Array<{
-        marks?: Array<string>;
-        text?: string;
-        _type: 'span';
-        _key: string;
-      }>;
-      style?: 'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal';
-      listItem?: 'bullet' | 'number';
-      markDefs: Array<{
-        href?: string;
-        _type: 'link';
-        _key: string;
-      }> | null;
-      level?: number;
-      _type: 'block';
-      _key: string;
-    }> | null;
-  } | null;
-} | null;
 // Variable: metaQuery
 // Query: *[_type == "useCase"][0] {    "useCase": useCases[buttonLink == "/use-cases/" + $slug][0] {      title,      hook    }  }
 export type MetaQueryResult = {
@@ -1125,11 +1012,10 @@ export type HomePageQueryResult = {
   } | null;
 };
 
-// // Query TypeMap
+// Query TypeMap
 // import "@sanity/client";
 // declare module "@sanity/client" {
 //   interface SanityQueries {
-//     "\n  *[_type == \"useCase\"][0] {\n    \"useCase\": useCases[buttonLink == \"/use-cases/\" + $slug][0] {\n      title,\n      company,\n      objective[]{..., markDefs[]{...}},\n      painPoints[]{..., markDefs[]{...}},\n      solution[]{..., markDefs[]{...}},\n      benefits[]{..., markDefs[]{...}},\n      korefocusRole[]{..., markDefs[]{...}},\n      testimonial[]{..., markDefs[]{...}}\n    }\n  }\n": UseCaseQueryResult;
 //     "\n  *[_type == \"useCase\"][0] {\n    \"useCase\": useCases[buttonLink == \"/use-cases/\" + $slug][0] {\n      title,\n      hook\n    }\n  }\n": MetaQueryResult;
 //     "\n*[_type == \"highlights\"][0] {\n  heading,\n  graySubHeading,\n  blueSubHeading,\n  shortText,\n    testimonial,\n    tagline,\n  items[] {\n    title,\n    problem,\n    solution,\n    \n  }\n}\n": HighlightsQueryResult;
 //     "\n*[_type == \"howWeWork\"][0] {\n    title,\n    blueSubHeading,\n    graySubHeading,\n    items[]{\n      title,\n      problemLabel,\n      problem,\n      solutionLabel,\n      solution\n    }\n  }\n": HowWeWorkQueryResult;

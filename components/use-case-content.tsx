@@ -70,14 +70,13 @@ export default function UseCaseContent({ useCase }: Props) {
       <aside className="sticky top-24 col-span-4 self-start bg-white md:top-32 md:space-y-8">
         <div className="flex w-full flex-col">
           <blockquote className="pb-2 text-center text-xl text-gray-600 italic">
-            &quot;We now have a dynamic, enriched and structured view of our
-            collective company knowledge, without any manual input&quot;
+            {useCase.shortTestimonial}
           </blockquote>
           <blockquote className="ml-auto text-lg leading-tight font-semibold text-gray-800">
-            Christophe Peron,
+            {useCase.shortTestimonialAuthor}
           </blockquote>
           <blockquote className="ml-auto pb-6 text-lg leading-tight font-semibold text-gray-800">
-            Partner at Index Capital
+            {useCase.shortTestimonialCompany}
           </blockquote>
           <Card
             className={cn(
