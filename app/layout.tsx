@@ -63,12 +63,6 @@ export const metadata: Metadata = {
         height: 630,
         alt: 'Korefocus – AI + Data + Orchestration',
       },
-      {
-        url: '/opengraph-image-square.png',
-        width: 1200,
-        height: 1200,
-        alt: 'Korefocus – AI + Data + Orchestration',
-      },
     ],
     locale: 'en_US',
     type: 'website',

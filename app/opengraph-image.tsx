@@ -25,8 +25,8 @@ export default function OpenGraphImage() {
           xmlns="http://www.w3.org/2000/svg"
           xmlSpace="preserve"
           viewBox="0 0 298.5 156.1"
-          height={600}
-          width={1200}
+          width={800}
+          height={420}
         >
           <path
             id="Background"
