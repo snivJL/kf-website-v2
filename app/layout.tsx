@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL!),
   title: 'Korefocus – AI + Data + Orchestration',
   description:
-    'Korefocus partners with you to streamline data and AI workflows. We blend business insight with technical expertise, delivering proven tools, custom API layers, and tailored AI agents. Discover our approach, use cases, and contact us today.',
+    'We make the AI journey simple for SMEs and mid-caps by delivering both the services and tools they need to unlock the power of data and AI—without the cost or complexity of building a full-fledged in-house team.',
   keywords: ['AI workflows', 'data automation', 'Korefocus'],
   authors: [{ name: 'Korefocus', url: process.env.NEXT_PUBLIC_BASE_URL }],
   creator: 'Korefocus',
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Korefocus – AI + Data + Orchestration',
     description:
-      'Korefocus partners with you to streamline data and AI workflows. We blend business insight with technical expertise, delivering proven tools, custom API layers, and tailored AI agents. Discover our approach, use cases, and contact us today.',
+      'We make the AI journey simple for SMEs and mid-caps by delivering both the services and tools they need to unlock the power of data and AI—without the cost or complexity of building a full-fledged in-house team.',
     url: process.env.NEXT_PUBLIC_BASE_URL,
     siteName: 'Korefocus',
     images: [
@@ -61,6 +61,12 @@ export const metadata: Metadata = {
         url: '/opengraph-image.png',
         width: 1200,
         height: 630,
+        alt: 'Korefocus – AI + Data + Orchestration',
+      },
+      {
+        url: '/opengraph-image-square.png',
+        width: 1200,
+        height: 1200,
         alt: 'Korefocus – AI + Data + Orchestration',
       },
     ],
@@ -71,7 +77,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Korefocus – AI + Data + Orchestration',
     description:
-      'Korefocus partners with you to streamline data and AI workflows. We blend business insight with technical expertise, delivering proven tools, custom API layers, and tailored AI agents. Discover our approach, use cases, and contact us today.',
+      'We make the AI journey simple for SMEs and mid-caps by delivering both the services and tools they need to unlock the power of data and AI—without the cost or complexity of building a full-fledged in-house team.',
     images: ['/opengraph-image.png'],
   },
   icons: {
@@ -112,6 +118,10 @@ export default function RootLayout({
               logo: `${process.env.NEXT_PUBLIC_BASE_URL}/logo.svg`,
             }),
           }}
+        />
+        <Script
+          src="https://apply.workable.com/assets/embed.js"
+          strategy="beforeInteractive"
         />
       </body>
     </html>
